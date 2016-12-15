@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/ScreenModel/src" modelPluginID="ScreenModel" modelName="ScreenModel"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="8.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>screenModel.ecore</foreignModel>
+  <genPackages prefix="ScreenModel" disposableProviderFactory="true" ecorePackage="screenModel.ecore#/">
+    <genClasses ecoreClass="screenModel.ecore#//ScreenModel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference screenModel.ecore#//ScreenModel/seite"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute screenModel.ecore#//ScreenModel/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference screenModel.ecore#//ScreenModel/datenobjekt"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference screenModel.ecore#//ScreenModel/klasse"/>
+    </genClasses>
+    <genClasses ecoreClass="screenModel.ecore#//Seite">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference screenModel.ecore#//Seite/button"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference screenModel.ecore#//Seite/dateneingabe"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference screenModel.ecore#//Seite/datenausgabe"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute screenModel.ecore#//Seite/pageName"/>
+    </genClasses>
+    <genClasses ecoreClass="screenModel.ecore#//Button">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference screenModel.ecore#//Button/seite"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute screenModel.ecore#//Button/displayText"/>
+    </genClasses>
+    <genClasses ecoreClass="screenModel.ecore#//Dateneingabe">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference screenModel.ecore#//Dateneingabe/datenobjekt"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference screenModel.ecore#//Dateneingabe/dateneingabefeld"/>
+    </genClasses>
+    <genClasses ecoreClass="screenModel.ecore#//Datenausgabe">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference screenModel.ecore#//Datenausgabe/datenobjekt"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference screenModel.ecore#//Datenausgabe/datenausgabefeld"/>
+    </genClasses>
+    <genClasses ecoreClass="screenModel.ecore#//Datenobjekt">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference screenModel.ecore#//Datenobjekt/datenstruktur"/>
+    </genClasses>
+    <genClasses ecoreClass="screenModel.ecore#//Datenstruktur">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference screenModel.ecore#//Datenstruktur/attribute"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute screenModel.ecore#//Datenstruktur/name"/>
+    </genClasses>
+    <genClasses ecoreClass="screenModel.ecore#//Attribut">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute screenModel.ecore#//Attribut/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute screenModel.ecore#//Attribut/datentyp"/>
+    </genClasses>
+    <genClasses ecoreClass="screenModel.ecore#//Datenausgabefeld">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference screenModel.ecore#//Datenausgabefeld/textfeld"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference screenModel.ecore#//Datenausgabefeld/ausgabefeld"/>
+    </genClasses>
+    <genClasses ecoreClass="screenModel.ecore#//Textfeld">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute screenModel.ecore#//Textfeld/displayText"/>
+    </genClasses>
+    <genClasses ecoreClass="screenModel.ecore#//Eingabefeld">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference screenModel.ecore#//Eingabefeld/attribut"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute screenModel.ecore#//Eingabefeld/inputText"/>
+    </genClasses>
+    <genClasses ecoreClass="screenModel.ecore#//Dateneingabefeld">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference screenModel.ecore#//Dateneingabefeld/eingabefeld"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference screenModel.ecore#//Dateneingabefeld/textfeld"/>
+    </genClasses>
+    <genClasses ecoreClass="screenModel.ecore#//Ausgabefeld">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference screenModel.ecore#//Ausgabefeld/attribut"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute screenModel.ecore#//Ausgabefeld/displayText"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

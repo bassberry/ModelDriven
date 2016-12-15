@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="workflowModel" nsURI="workflowModel" nsPrefix="workflowModel">
+  <eClassifiers xsi:type="ecore:EClass" name="Workflow">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="zustand" upperBound="-1"
+        eType="#//Zustand" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="datenobjekt" upperBound="-1"
+        eType="#//Datenobjekt" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="datenstruktur" upperBound="-1"
+        eType="#//Datenstruktur" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Zustand">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="übergang" eType="#//Übergang"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pageName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="datenobjektEingabe" eType="#//Datenobjekt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="datenobjektAusgabe" upperBound="-1"
+        eType="#//Datenobjekt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Übergang">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="zustand" lowerBound="1"
+        eType="#//Zustand"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Datenobjekt">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="datenstruktur" lowerBound="1"
+        eType="#//Datenstruktur"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Datenstruktur">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attribute" upperBound="-1"
+        eType="#//Attribut" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Attribut">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="datentyp" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+</ecore:EPackage>

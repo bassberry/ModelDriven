@@ -1,0 +1,24 @@
+-- @path ScreenModel=/ScreenModel/model/screenModel.ecore
+-- @path WorkflowModel=/WorkflowModel/model/workflowModel.ecore
+
+module Workflow2ModelTransformation;
+create OUT : ScreenModel from IN : WorkflowModel;
+
+rule Attribut2Attribut {
+	from WorkflowAttribut: WorkflowModel!Attribut
+	to ScreenModelAttribut: ScreenModel!Attribut (
+		name <-WorkflowAttribut.name,
+		datentyp <- WorkflowAttribut.datentyp
+	)
+}
+
+rule Datenstruktur2Datenstrukur {
+	from WorkflowDatenstruktur: WorkflowModel!Datenstruktur
+	to ScreenModelDatenstruktur: ScreenModel!Datenstruktur (
+		name <-WorkflowDatenstruktur.name,
+		attribute <- WorkflowDatenstruktur.attribute
+	)
+}
+
+
+
