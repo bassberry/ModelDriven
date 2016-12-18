@@ -42,14 +42,14 @@ import screenModel.Seite;
  */
 public class SeiteImpl extends MinimalEObjectImpl.Container implements Seite {
 	/**
-	 * The cached value of the '{@link #getButton() <em>Button</em>}' containment reference list.
+	 * The cached value of the '{@link #getButton() <em>Button</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getButton()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Button> button;
+	protected Button button;
 
 	/**
 	 * The cached value of the '{@link #getDateneingabe() <em>Dateneingabe</em>}' containment reference.
@@ -115,11 +115,42 @@ public class SeiteImpl extends MinimalEObjectImpl.Container implements Seite {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Button> getButton() {
-		if (button == null) {
-			button = new EObjectContainmentEList<Button>(Button.class, this, ScreenModelPackage.SEITE__BUTTON);
-		}
+	public Button getButton() {
 		return button;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetButton(Button newButton, NotificationChain msgs) {
+		Button oldButton = button;
+		button = newButton;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ScreenModelPackage.SEITE__BUTTON, oldButton, newButton);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setButton(Button newButton) {
+		if (newButton != button) {
+			NotificationChain msgs = null;
+			if (button != null)
+				msgs = ((InternalEObject)button).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ScreenModelPackage.SEITE__BUTTON, null, msgs);
+			if (newButton != null)
+				msgs = ((InternalEObject)newButton).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ScreenModelPackage.SEITE__BUTTON, null, msgs);
+			msgs = basicSetButton(newButton, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ScreenModelPackage.SEITE__BUTTON, newButton, newButton));
 	}
 
 	/**
@@ -207,7 +238,7 @@ public class SeiteImpl extends MinimalEObjectImpl.Container implements Seite {
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case ScreenModelPackage.SEITE__BUTTON:
-				return ((InternalEList<?>)getButton()).basicRemove(otherEnd, msgs);
+				return basicSetButton(null, msgs);
 			case ScreenModelPackage.SEITE__DATENEINGABE:
 				return basicSetDateneingabe(null, msgs);
 			case ScreenModelPackage.SEITE__DATENAUSGABE:
@@ -246,8 +277,7 @@ public class SeiteImpl extends MinimalEObjectImpl.Container implements Seite {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ScreenModelPackage.SEITE__BUTTON:
-				getButton().clear();
-				getButton().addAll((Collection<? extends Button>)newValue);
+				setButton((Button)newValue);
 				return;
 			case ScreenModelPackage.SEITE__DATENEINGABE:
 				setDateneingabe((Dateneingabe)newValue);
@@ -272,7 +302,7 @@ public class SeiteImpl extends MinimalEObjectImpl.Container implements Seite {
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case ScreenModelPackage.SEITE__BUTTON:
-				getButton().clear();
+				setButton((Button)null);
 				return;
 			case ScreenModelPackage.SEITE__DATENEINGABE:
 				setDateneingabe((Dateneingabe)null);
@@ -296,7 +326,7 @@ public class SeiteImpl extends MinimalEObjectImpl.Container implements Seite {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case ScreenModelPackage.SEITE__BUTTON:
-				return button != null && !button.isEmpty();
+				return button != null;
 			case ScreenModelPackage.SEITE__DATENEINGABE:
 				return dateneingabe != null;
 			case ScreenModelPackage.SEITE__DATENAUSGABE:

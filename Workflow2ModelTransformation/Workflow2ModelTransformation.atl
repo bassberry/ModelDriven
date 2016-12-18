@@ -11,7 +11,6 @@ rule Attribut2Attribut {
 		datentyp <- WorkflowAttribut.datentyp
 	)
 }
-
 rule Datenstruktur2Datenstrukur {
 	from WorkflowDatenstruktur: WorkflowModel!Datenstruktur
 	to ScreenModelDatenstruktur: ScreenModel!Datenstruktur (
@@ -19,6 +18,79 @@ rule Datenstruktur2Datenstrukur {
 		attribute <- WorkflowDatenstruktur.attribute
 	)
 }
+rule Datenobjekt2Datenobjekt {
+	from WorkflowDatenobjekt: WorkflowModel!Datenobjekt
+	to ScreenModelDatenobjekt: ScreenModel!Datenobjekt (
+		datenstruktur <- WorkflowDatenobjekt.datenstruktur
+	)
+}
+
+
+rule Uebergang2Button {
+	from WorkflowUebergang: WorkflowModel!Uebergang
+	to ScreenModelButton: ScreenModel!Button (
+		displayText <- WorkflowUebergang.name,
+		seite <- WorkflowUebergang.zustand
+	)
+}
+rule Zustand2Seite {
+	from WorkflowModelZustand: WorkflowModel!Zustand
+	to ScreenModelSeite: ScreenModel!Seite (
+		pageName <- WorkflowModelZustand.pageName,
+		button <- WorkflowModelZustand.uebergang
+	)
+}
+rule Zustand2Dateneingabe {
+	from WorkflowModelZustand: WorkflowModel!Zustand
+	to ScreenModelDateneingabe: ScreenModel!Dateneingabe (
+		datenobjekt <- WorkflowModelZustand.datenobjektEingabe
+	)
+}
+rule Zustand2Dateneingabefeld {
+	from WorkflowModelZustand: WorkflowModel!Zustand
+	to ScreenModelDateneingabefeld: ScreenModel!Dateneingabefeld ()
+}
+rule Zustand2Eingabefeld {
+	from WorkflowModelZustand: WorkflowModel!Zustand
+	to ScreenModelEingabefeld: ScreenModel!Eingabefeld ()
+}
+rule Zustand2Datenausgabe {
+	from WorkflowModelZustand: WorkflowModel!Zustand
+	to ScreenModelDatenausgabe: ScreenModel!Datenausgabe (
+		datenobjekt <- WorkflowModelZustand.datenobjektAusgabe
+	)
+}
+rule Zustand2Datenausgabefeld {
+	from WorkflowModelZustand: WorkflowModel!Zustand
+	to ScreenModelDatenausgabefeld: ScreenModel!Datenausgabefeld ()
+}
+rule Zustand2Ausgabefeld {
+	from WorkflowModelZustand: WorkflowModel!Zustand
+	to ScreenModelAusgabefeld: ScreenModel!Ausgabefeld ()
+}
+rule Zustand2Textfeld {
+	from WorkflowModelZustand: WorkflowModel!Zustand
+	to ScreenModelTextfeld: ScreenModel!Textfeld ()
+}
+
+
+
+rule Workflow2ScreenModel {
+	from workflow: WorkflowModel!Workflow
+	to screenModel: ScreenModel!ScreenModel (
+		name <- workflow.name,
+		seite <- workflow.zustand,
+		datenobjekt <- workflow.datenobjekt,
+		datenstruktur <- workflow.datenstruktur
+	)
+}
+
+
+
+
+
+
+
 
 
 

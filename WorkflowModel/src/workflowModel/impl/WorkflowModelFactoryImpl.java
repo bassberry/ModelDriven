@@ -58,7 +58,7 @@ public class WorkflowModelFactoryImpl extends EFactoryImpl implements WorkflowMo
 		switch (eClass.getClassifierID()) {
 			case WorkflowModelPackage.WORKFLOW: return createWorkflow();
 			case WorkflowModelPackage.ZUSTAND: return createZustand();
-			case WorkflowModelPackage.ÜBERGANG: return createÜbergang();
+			case WorkflowModelPackage.UEBERGANG: return createUebergang();
 			case WorkflowModelPackage.DATENOBJEKT: return createDatenobjekt();
 			case WorkflowModelPackage.DATENSTRUKTUR: return createDatenstruktur();
 			case WorkflowModelPackage.ATTRIBUT: return createAttribut();
@@ -92,9 +92,9 @@ public class WorkflowModelFactoryImpl extends EFactoryImpl implements WorkflowMo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Übergang createÜbergang() {
-		ÜbergangImpl übergang = new ÜbergangImpl();
-		return übergang;
+	public Uebergang createUebergang() {
+		UebergangImpl uebergang = new UebergangImpl();
+		return uebergang;
 	}
 
 	/**

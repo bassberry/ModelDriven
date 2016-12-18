@@ -12,11 +12,11 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import workflowModel.Attribut;
 import workflowModel.Datenobjekt;
 import workflowModel.Datenstruktur;
+import workflowModel.Uebergang;
 import workflowModel.Workflow;
 import workflowModel.WorkflowModelFactory;
 import workflowModel.WorkflowModelPackage;
 import workflowModel.Zustand;
-import workflowModel.Übergang;
 
 /**
  * <!-- begin-user-doc -->
@@ -44,7 +44,7 @@ public class WorkflowModelPackageImpl extends EPackageImpl implements WorkflowMo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass übergangEClass = null;
+	private EClass uebergangEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -187,7 +187,7 @@ public class WorkflowModelPackageImpl extends EPackageImpl implements WorkflowMo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getZustand_Übergang() {
+	public EReference getZustand_Uebergang() {
 		return (EReference)zustandEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -223,8 +223,8 @@ public class WorkflowModelPackageImpl extends EPackageImpl implements WorkflowMo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getÜbergang() {
-		return übergangEClass;
+	public EClass getUebergang() {
+		return uebergangEClass;
 	}
 
 	/**
@@ -232,8 +232,17 @@ public class WorkflowModelPackageImpl extends EPackageImpl implements WorkflowMo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getÜbergang_Zustand() {
-		return (EReference)übergangEClass.getEStructuralFeatures().get(0);
+	public EReference getUebergang_Zustand() {
+		return (EReference)uebergangEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getUebergang_Name() {
+		return (EAttribute)uebergangEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -343,13 +352,14 @@ public class WorkflowModelPackageImpl extends EPackageImpl implements WorkflowMo
 		createEAttribute(workflowEClass, WORKFLOW__NAME);
 
 		zustandEClass = createEClass(ZUSTAND);
-		createEReference(zustandEClass, ZUSTAND__ÜBERGANG);
+		createEReference(zustandEClass, ZUSTAND__UEBERGANG);
 		createEAttribute(zustandEClass, ZUSTAND__PAGE_NAME);
 		createEReference(zustandEClass, ZUSTAND__DATENOBJEKT_EINGABE);
 		createEReference(zustandEClass, ZUSTAND__DATENOBJEKT_AUSGABE);
 
-		übergangEClass = createEClass(ÜBERGANG);
-		createEReference(übergangEClass, ÜBERGANG__ZUSTAND);
+		uebergangEClass = createEClass(UEBERGANG);
+		createEReference(uebergangEClass, UEBERGANG__ZUSTAND);
+		createEAttribute(uebergangEClass, UEBERGANG__NAME);
 
 		datenobjektEClass = createEClass(DATENOBJEKT);
 		createEReference(datenobjektEClass, DATENOBJEKT__DATENSTRUKTUR);
@@ -397,27 +407,28 @@ public class WorkflowModelPackageImpl extends EPackageImpl implements WorkflowMo
 		initEReference(getWorkflow_Zustand(), this.getZustand(), null, "zustand", null, 0, -1, Workflow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getWorkflow_Datenobjekt(), this.getDatenobjekt(), null, "datenobjekt", null, 0, -1, Workflow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getWorkflow_Datenstruktur(), this.getDatenstruktur(), null, "datenstruktur", null, 0, -1, Workflow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getWorkflow_Name(), ecorePackage.getEString(), "name", null, 0, 1, Workflow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getWorkflow_Name(), ecorePackage.getEString(), "name", null, 1, 1, Workflow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(zustandEClass, Zustand.class, "Zustand", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getZustand_Übergang(), this.getÜbergang(), null, "übergang", null, 0, 1, Zustand.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getZustand_PageName(), ecorePackage.getEString(), "pageName", null, 0, 1, Zustand.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getZustand_Uebergang(), this.getUebergang(), null, "uebergang", null, 0, 1, Zustand.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getZustand_PageName(), ecorePackage.getEString(), "pageName", null, 1, 1, Zustand.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getZustand_DatenobjektEingabe(), this.getDatenobjekt(), null, "datenobjektEingabe", null, 0, 1, Zustand.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getZustand_DatenobjektAusgabe(), this.getDatenobjekt(), null, "datenobjektAusgabe", null, 0, -1, Zustand.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(übergangEClass, Übergang.class, "Übergang", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getÜbergang_Zustand(), this.getZustand(), null, "zustand", null, 1, 1, Übergang.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(uebergangEClass, Uebergang.class, "Uebergang", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getUebergang_Zustand(), this.getZustand(), null, "zustand", null, 1, 1, Uebergang.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUebergang_Name(), ecorePackage.getEString(), "name", null, 1, 1, Uebergang.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(datenobjektEClass, Datenobjekt.class, "Datenobjekt", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDatenobjekt_Datenstruktur(), this.getDatenstruktur(), null, "datenstruktur", null, 1, 1, Datenobjekt.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(datenstrukturEClass, Datenstruktur.class, "Datenstruktur", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDatenstruktur_Attribute(), this.getAttribut(), null, "attribute", null, 0, -1, Datenstruktur.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDatenstruktur_Name(), ecorePackage.getEString(), "name", null, 0, 1, Datenstruktur.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDatenstruktur_Name(), ecorePackage.getEString(), "name", null, 1, 1, Datenstruktur.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(attributEClass, Attribut.class, "Attribut", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getAttribut_Name(), ecorePackage.getEString(), "name", null, 0, 1, Attribut.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAttribut_Datentyp(), ecorePackage.getEString(), "datentyp", null, 0, 1, Attribut.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAttribut_Name(), ecorePackage.getEString(), "name", null, 1, 1, Attribut.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAttribut_Datentyp(), ecorePackage.getEString(), "datentyp", null, 1, 1, Attribut.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

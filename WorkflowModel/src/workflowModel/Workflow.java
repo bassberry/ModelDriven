@@ -85,7 +85,7 @@ public interface Workflow extends EObject {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see workflowModel.WorkflowModelPackage#getWorkflow_Name()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	String getName();

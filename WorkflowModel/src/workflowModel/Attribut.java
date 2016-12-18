@@ -33,7 +33,7 @@ public interface Attribut extends EObject {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see workflowModel.WorkflowModelPackage#getAttribut_Name()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	String getName();
@@ -59,7 +59,7 @@ public interface Attribut extends EObject {
 	 * @return the value of the '<em>Datentyp</em>' attribute.
 	 * @see #setDatentyp(String)
 	 * @see workflowModel.WorkflowModelPackage#getAttribut_Datentyp()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	String getDatentyp();

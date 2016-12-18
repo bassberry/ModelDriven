@@ -2,12 +2,7 @@
  */
 package workflowModel.impl;
 
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -15,37 +10,34 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
-
-import workflowModel.Attribut;
-import workflowModel.Datenstruktur;
+import workflowModel.Uebergang;
 import workflowModel.WorkflowModelPackage;
+import workflowModel.Zustand;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Datenstruktur</b></em>'.
+ * An implementation of the model object '<em><b>Uebergang</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link workflowModel.impl.DatenstrukturImpl#getAttribute <em>Attribute</em>}</li>
- *   <li>{@link workflowModel.impl.DatenstrukturImpl#getName <em>Name</em>}</li>
+ *   <li>{@link workflowModel.impl.UebergangImpl#getZustand <em>Zustand</em>}</li>
+ *   <li>{@link workflowModel.impl.UebergangImpl#getName <em>Name</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class DatenstrukturImpl extends MinimalEObjectImpl.Container implements Datenstruktur {
+public class UebergangImpl extends MinimalEObjectImpl.Container implements Uebergang {
 	/**
-	 * The cached value of the '{@link #getAttribute() <em>Attribute</em>}' containment reference list.
+	 * The cached value of the '{@link #getZustand() <em>Zustand</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getAttribute()
+	 * @see #getZustand()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Attribut> attribute;
+	protected Zustand zustand;
 
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -56,7 +48,6 @@ public class DatenstrukturImpl extends MinimalEObjectImpl.Container implements D
 	 * @ordered
 	 */
 	protected static final String NAME_EDEFAULT = null;
-
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -72,7 +63,7 @@ public class DatenstrukturImpl extends MinimalEObjectImpl.Container implements D
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected DatenstrukturImpl() {
+	protected UebergangImpl() {
 		super();
 	}
 
@@ -83,7 +74,7 @@ public class DatenstrukturImpl extends MinimalEObjectImpl.Container implements D
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return WorkflowModelPackage.Literals.DATENSTRUKTUR;
+		return WorkflowModelPackage.Literals.UEBERGANG;
 	}
 
 	/**
@@ -91,11 +82,37 @@ public class DatenstrukturImpl extends MinimalEObjectImpl.Container implements D
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Attribut> getAttribute() {
-		if (attribute == null) {
-			attribute = new EObjectContainmentEList<Attribut>(Attribut.class, this, WorkflowModelPackage.DATENSTRUKTUR__ATTRIBUTE);
+	public Zustand getZustand() {
+		if (zustand != null && zustand.eIsProxy()) {
+			InternalEObject oldZustand = (InternalEObject)zustand;
+			zustand = (Zustand)eResolveProxy(oldZustand);
+			if (zustand != oldZustand) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, WorkflowModelPackage.UEBERGANG__ZUSTAND, oldZustand, zustand));
+			}
 		}
-		return attribute;
+		return zustand;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Zustand basicGetZustand() {
+		return zustand;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setZustand(Zustand newZustand) {
+		Zustand oldZustand = zustand;
+		zustand = newZustand;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, WorkflowModelPackage.UEBERGANG__ZUSTAND, oldZustand, zustand));
 	}
 
 	/**
@@ -116,21 +133,7 @@ public class DatenstrukturImpl extends MinimalEObjectImpl.Container implements D
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WorkflowModelPackage.DATENSTRUKTUR__NAME, oldName, name));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case WorkflowModelPackage.DATENSTRUKTUR__ATTRIBUTE:
-				return ((InternalEList<?>)getAttribute()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
+			eNotify(new ENotificationImpl(this, Notification.SET, WorkflowModelPackage.UEBERGANG__NAME, oldName, name));
 	}
 
 	/**
@@ -141,9 +144,10 @@ public class DatenstrukturImpl extends MinimalEObjectImpl.Container implements D
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case WorkflowModelPackage.DATENSTRUKTUR__ATTRIBUTE:
-				return getAttribute();
-			case WorkflowModelPackage.DATENSTRUKTUR__NAME:
+			case WorkflowModelPackage.UEBERGANG__ZUSTAND:
+				if (resolve) return getZustand();
+				return basicGetZustand();
+			case WorkflowModelPackage.UEBERGANG__NAME:
 				return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -154,15 +158,13 @@ public class DatenstrukturImpl extends MinimalEObjectImpl.Container implements D
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case WorkflowModelPackage.DATENSTRUKTUR__ATTRIBUTE:
-				getAttribute().clear();
-				getAttribute().addAll((Collection<? extends Attribut>)newValue);
+			case WorkflowModelPackage.UEBERGANG__ZUSTAND:
+				setZustand((Zustand)newValue);
 				return;
-			case WorkflowModelPackage.DATENSTRUKTUR__NAME:
+			case WorkflowModelPackage.UEBERGANG__NAME:
 				setName((String)newValue);
 				return;
 		}
@@ -177,10 +179,10 @@ public class DatenstrukturImpl extends MinimalEObjectImpl.Container implements D
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case WorkflowModelPackage.DATENSTRUKTUR__ATTRIBUTE:
-				getAttribute().clear();
+			case WorkflowModelPackage.UEBERGANG__ZUSTAND:
+				setZustand((Zustand)null);
 				return;
-			case WorkflowModelPackage.DATENSTRUKTUR__NAME:
+			case WorkflowModelPackage.UEBERGANG__NAME:
 				setName(NAME_EDEFAULT);
 				return;
 		}
@@ -195,9 +197,9 @@ public class DatenstrukturImpl extends MinimalEObjectImpl.Container implements D
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case WorkflowModelPackage.DATENSTRUKTUR__ATTRIBUTE:
-				return attribute != null && !attribute.isEmpty();
-			case WorkflowModelPackage.DATENSTRUKTUR__NAME:
+			case WorkflowModelPackage.UEBERGANG__ZUSTAND:
+				return zustand != null;
+			case WorkflowModelPackage.UEBERGANG__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
@@ -219,4 +221,4 @@ public class DatenstrukturImpl extends MinimalEObjectImpl.Container implements D
 		return result.toString();
 	}
 
-} //DatenstrukturImpl
+} //UebergangImpl

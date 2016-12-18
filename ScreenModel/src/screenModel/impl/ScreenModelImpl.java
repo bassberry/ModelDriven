@@ -35,7 +35,7 @@ import screenModel.Seite;
  *   <li>{@link screenModel.impl.ScreenModelImpl#getSeite <em>Seite</em>}</li>
  *   <li>{@link screenModel.impl.ScreenModelImpl#getName <em>Name</em>}</li>
  *   <li>{@link screenModel.impl.ScreenModelImpl#getDatenobjekt <em>Datenobjekt</em>}</li>
- *   <li>{@link screenModel.impl.ScreenModelImpl#getKlasse <em>Klasse</em>}</li>
+ *   <li>{@link screenModel.impl.ScreenModelImpl#getDatenstruktur <em>Datenstruktur</em>}</li>
  * </ul>
  *
  * @generated
@@ -82,14 +82,14 @@ public class ScreenModelImpl extends MinimalEObjectImpl.Container implements Scr
 	protected EList<Datenobjekt> datenobjekt;
 
 	/**
-	 * The cached value of the '{@link #getKlasse() <em>Klasse</em>}' containment reference list.
+	 * The cached value of the '{@link #getDatenstruktur() <em>Datenstruktur</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getKlasse()
+	 * @see #getDatenstruktur()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Datenstruktur> klasse;
+	protected EList<Datenstruktur> datenstruktur;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -160,11 +160,11 @@ public class ScreenModelImpl extends MinimalEObjectImpl.Container implements Scr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Datenstruktur> getKlasse() {
-		if (klasse == null) {
-			klasse = new EObjectContainmentEList<Datenstruktur>(Datenstruktur.class, this, ScreenModelPackage.SCREEN_MODEL__KLASSE);
+	public EList<Datenstruktur> getDatenstruktur() {
+		if (datenstruktur == null) {
+			datenstruktur = new EObjectContainmentEList<Datenstruktur>(Datenstruktur.class, this, ScreenModelPackage.SCREEN_MODEL__DATENSTRUKTUR);
 		}
-		return klasse;
+		return datenstruktur;
 	}
 
 	/**
@@ -179,8 +179,8 @@ public class ScreenModelImpl extends MinimalEObjectImpl.Container implements Scr
 				return ((InternalEList<?>)getSeite()).basicRemove(otherEnd, msgs);
 			case ScreenModelPackage.SCREEN_MODEL__DATENOBJEKT:
 				return ((InternalEList<?>)getDatenobjekt()).basicRemove(otherEnd, msgs);
-			case ScreenModelPackage.SCREEN_MODEL__KLASSE:
-				return ((InternalEList<?>)getKlasse()).basicRemove(otherEnd, msgs);
+			case ScreenModelPackage.SCREEN_MODEL__DATENSTRUKTUR:
+				return ((InternalEList<?>)getDatenstruktur()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -199,8 +199,8 @@ public class ScreenModelImpl extends MinimalEObjectImpl.Container implements Scr
 				return getName();
 			case ScreenModelPackage.SCREEN_MODEL__DATENOBJEKT:
 				return getDatenobjekt();
-			case ScreenModelPackage.SCREEN_MODEL__KLASSE:
-				return getKlasse();
+			case ScreenModelPackage.SCREEN_MODEL__DATENSTRUKTUR:
+				return getDatenstruktur();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -225,9 +225,9 @@ public class ScreenModelImpl extends MinimalEObjectImpl.Container implements Scr
 				getDatenobjekt().clear();
 				getDatenobjekt().addAll((Collection<? extends Datenobjekt>)newValue);
 				return;
-			case ScreenModelPackage.SCREEN_MODEL__KLASSE:
-				getKlasse().clear();
-				getKlasse().addAll((Collection<? extends Datenstruktur>)newValue);
+			case ScreenModelPackage.SCREEN_MODEL__DATENSTRUKTUR:
+				getDatenstruktur().clear();
+				getDatenstruktur().addAll((Collection<? extends Datenstruktur>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -250,8 +250,8 @@ public class ScreenModelImpl extends MinimalEObjectImpl.Container implements Scr
 			case ScreenModelPackage.SCREEN_MODEL__DATENOBJEKT:
 				getDatenobjekt().clear();
 				return;
-			case ScreenModelPackage.SCREEN_MODEL__KLASSE:
-				getKlasse().clear();
+			case ScreenModelPackage.SCREEN_MODEL__DATENSTRUKTUR:
+				getDatenstruktur().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -271,8 +271,8 @@ public class ScreenModelImpl extends MinimalEObjectImpl.Container implements Scr
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case ScreenModelPackage.SCREEN_MODEL__DATENOBJEKT:
 				return datenobjekt != null && !datenobjekt.isEmpty();
-			case ScreenModelPackage.SCREEN_MODEL__KLASSE:
-				return klasse != null && !klasse.isEmpty();
+			case ScreenModelPackage.SCREEN_MODEL__DATENSTRUKTUR:
+				return datenstruktur != null && !datenstruktur.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

@@ -4,24 +4,26 @@
   <eClassifiers xsi:type="ecore:EClass" name="ScreenModel">
     <eStructuralFeatures xsi:type="ecore:EReference" name="seite" upperBound="-1"
         eType="#//Seite" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="datenobjekt" upperBound="-1"
         eType="#//Datenobjekt" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="klasse" upperBound="-1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="datenstruktur" upperBound="-1"
         eType="#//Datenstruktur" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Seite">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="button" upperBound="-1"
-        eType="#//Button" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="button" eType="#//Button"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="dateneingabe" eType="#//Dateneingabe"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="datenausgabe" upperBound="-1"
         eType="#//Datenausgabe" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pageName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pageName" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Button">
     <eStructuralFeatures xsi:type="ecore:EReference" name="seite" eType="#//Seite"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="displayText" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="displayText" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Dateneingabe">
     <eStructuralFeatures xsi:type="ecore:EReference" name="datenobjekt" eType="#//Datenobjekt"/>
@@ -40,11 +42,12 @@
   <eClassifiers xsi:type="ecore:EClass" name="Datenstruktur">
     <eStructuralFeatures xsi:type="ecore:EReference" name="attribute" upperBound="-1"
         eType="#//Attribut" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Attribut">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="datentyp" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="datentyp" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Datenausgabefeld">
     <eStructuralFeatures xsi:type="ecore:EReference" name="textfeld" lowerBound="1"
@@ -53,12 +56,14 @@
         eType="#//Ausgabefeld" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Textfeld">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="displayText" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="displayText" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Eingabefeld">
     <eStructuralFeatures xsi:type="ecore:EReference" name="attribut" lowerBound="1"
         eType="#//Attribut"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="inputText" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="inputText" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Dateneingabefeld">
     <eStructuralFeatures xsi:type="ecore:EReference" name="eingabefeld" lowerBound="1"
@@ -69,6 +74,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="Ausgabefeld">
     <eStructuralFeatures xsi:type="ecore:EReference" name="attribut" lowerBound="1"
         eType="#//Attribut"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="displayText" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="displayText" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>

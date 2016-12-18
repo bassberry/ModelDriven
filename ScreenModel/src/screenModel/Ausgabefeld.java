@@ -59,7 +59,7 @@ public interface Ausgabefeld extends EObject {
 	 * @return the value of the '<em>Display Text</em>' attribute.
 	 * @see #setDisplayText(String)
 	 * @see screenModel.ScreenModelPackage#getAusgabefeld_DisplayText()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	String getDisplayText();

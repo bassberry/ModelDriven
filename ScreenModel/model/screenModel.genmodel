@@ -9,7 +9,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference screenModel.ecore#//ScreenModel/seite"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute screenModel.ecore#//ScreenModel/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference screenModel.ecore#//ScreenModel/datenobjekt"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference screenModel.ecore#//ScreenModel/klasse"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference screenModel.ecore#//ScreenModel/datenstruktur"/>
     </genClasses>
     <genClasses ecoreClass="screenModel.ecore#//Seite">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference screenModel.ecore#//Seite/button"/>

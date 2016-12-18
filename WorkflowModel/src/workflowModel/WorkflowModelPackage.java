@@ -131,13 +131,13 @@ public interface WorkflowModelPackage extends EPackage {
 	int ZUSTAND = 1;
 
 	/**
-	 * The feature id for the '<em><b>Übergang</b></em>' containment reference.
+	 * The feature id for the '<em><b>Uebergang</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ZUSTAND__ÜBERGANG = 0;
+	int ZUSTAND__UEBERGANG = 0;
 
 	/**
 	 * The feature id for the '<em><b>Page Name</b></em>' attribute.
@@ -185,14 +185,14 @@ public interface WorkflowModelPackage extends EPackage {
 	int ZUSTAND_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link workflowModel.impl.ÜbergangImpl <em>Übergang</em>}' class.
+	 * The meta object id for the '{@link workflowModel.impl.UebergangImpl <em>Uebergang</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see workflowModel.impl.ÜbergangImpl
-	 * @see workflowModel.impl.WorkflowModelPackageImpl#getÜbergang()
+	 * @see workflowModel.impl.UebergangImpl
+	 * @see workflowModel.impl.WorkflowModelPackageImpl#getUebergang()
 	 * @generated
 	 */
-	int ÜBERGANG = 2;
+	int UEBERGANG = 2;
 
 	/**
 	 * The feature id for the '<em><b>Zustand</b></em>' reference.
@@ -201,25 +201,34 @@ public interface WorkflowModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ÜBERGANG__ZUSTAND = 0;
+	int UEBERGANG__ZUSTAND = 0;
 
 	/**
-	 * The number of structural features of the '<em>Übergang</em>' class.
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ÜBERGANG_FEATURE_COUNT = 1;
+	int UEBERGANG__NAME = 1;
 
 	/**
-	 * The number of operations of the '<em>Übergang</em>' class.
+	 * The number of structural features of the '<em>Uebergang</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ÜBERGANG_OPERATION_COUNT = 0;
+	int UEBERGANG_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Uebergang</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UEBERGANG_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link workflowModel.impl.DatenobjektImpl <em>Datenobjekt</em>}' class.
@@ -350,6 +359,7 @@ public interface WorkflowModelPackage extends EPackage {
 	 */
 	int ATTRIBUT_OPERATION_COUNT = 0;
 
+
 	/**
 	 * Returns the meta object for class '{@link workflowModel.Workflow <em>Workflow</em>}'.
 	 * <!-- begin-user-doc -->
@@ -415,15 +425,15 @@ public interface WorkflowModelPackage extends EPackage {
 	EClass getZustand();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link workflowModel.Zustand#getÜbergang <em>Übergang</em>}'.
+	 * Returns the meta object for the containment reference '{@link workflowModel.Zustand#getUebergang <em>Uebergang</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Übergang</em>'.
-	 * @see workflowModel.Zustand#getÜbergang()
+	 * @return the meta object for the containment reference '<em>Uebergang</em>'.
+	 * @see workflowModel.Zustand#getUebergang()
 	 * @see #getZustand()
 	 * @generated
 	 */
-	EReference getZustand_Übergang();
+	EReference getZustand_Uebergang();
 
 	/**
 	 * Returns the meta object for the attribute '{@link workflowModel.Zustand#getPageName <em>Page Name</em>}'.
@@ -459,25 +469,36 @@ public interface WorkflowModelPackage extends EPackage {
 	EReference getZustand_DatenobjektAusgabe();
 
 	/**
-	 * Returns the meta object for class '{@link workflowModel.Übergang <em>Übergang</em>}'.
+	 * Returns the meta object for class '{@link workflowModel.Uebergang <em>Uebergang</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Übergang</em>'.
-	 * @see workflowModel.Übergang
+	 * @return the meta object for class '<em>Uebergang</em>'.
+	 * @see workflowModel.Uebergang
 	 * @generated
 	 */
-	EClass getÜbergang();
+	EClass getUebergang();
 
 	/**
-	 * Returns the meta object for the reference '{@link workflowModel.Übergang#getZustand <em>Zustand</em>}'.
+	 * Returns the meta object for the reference '{@link workflowModel.Uebergang#getZustand <em>Zustand</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Zustand</em>'.
-	 * @see workflowModel.Übergang#getZustand()
-	 * @see #getÜbergang()
+	 * @see workflowModel.Uebergang#getZustand()
+	 * @see #getUebergang()
 	 * @generated
 	 */
-	EReference getÜbergang_Zustand();
+	EReference getUebergang_Zustand();
+
+	/**
+	 * Returns the meta object for the attribute '{@link workflowModel.Uebergang#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see workflowModel.Uebergang#getName()
+	 * @see #getUebergang()
+	 * @generated
+	 */
+	EAttribute getUebergang_Name();
 
 	/**
 	 * Returns the meta object for class '{@link workflowModel.Datenobjekt <em>Datenobjekt</em>}'.
@@ -640,12 +661,12 @@ public interface WorkflowModelPackage extends EPackage {
 		EClass ZUSTAND = eINSTANCE.getZustand();
 
 		/**
-		 * The meta object literal for the '<em><b>Übergang</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Uebergang</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ZUSTAND__ÜBERGANG = eINSTANCE.getZustand_Übergang();
+		EReference ZUSTAND__UEBERGANG = eINSTANCE.getZustand_Uebergang();
 
 		/**
 		 * The meta object literal for the '<em><b>Page Name</b></em>' attribute feature.
@@ -672,14 +693,14 @@ public interface WorkflowModelPackage extends EPackage {
 		EReference ZUSTAND__DATENOBJEKT_AUSGABE = eINSTANCE.getZustand_DatenobjektAusgabe();
 
 		/**
-		 * The meta object literal for the '{@link workflowModel.impl.ÜbergangImpl <em>Übergang</em>}' class.
+		 * The meta object literal for the '{@link workflowModel.impl.UebergangImpl <em>Uebergang</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see workflowModel.impl.ÜbergangImpl
-		 * @see workflowModel.impl.WorkflowModelPackageImpl#getÜbergang()
+		 * @see workflowModel.impl.UebergangImpl
+		 * @see workflowModel.impl.WorkflowModelPackageImpl#getUebergang()
 		 * @generated
 		 */
-		EClass ÜBERGANG = eINSTANCE.getÜbergang();
+		EClass UEBERGANG = eINSTANCE.getUebergang();
 
 		/**
 		 * The meta object literal for the '<em><b>Zustand</b></em>' reference feature.
@@ -687,7 +708,15 @@ public interface WorkflowModelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ÜBERGANG__ZUSTAND = eINSTANCE.getÜbergang_Zustand();
+		EReference UEBERGANG__ZUSTAND = eINSTANCE.getUebergang_Zustand();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute UEBERGANG__NAME = eINSTANCE.getUebergang_Name();
 
 		/**
 		 * The meta object literal for the '{@link workflowModel.impl.DatenobjektImpl <em>Datenobjekt</em>}' class.

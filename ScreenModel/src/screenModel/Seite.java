@@ -27,20 +27,30 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Seite extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Button</b></em>' containment reference list.
-	 * The list contents are of type {@link screenModel.Button}.
+	 * Returns the value of the '<em><b>Button</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Button</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Button</em>' containment reference list.
+	 * @return the value of the '<em>Button</em>' containment reference.
+	 * @see #setButton(Button)
 	 * @see screenModel.ScreenModelPackage#getSeite_Button()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Button> getButton();
+	Button getButton();
+
+	/**
+	 * Sets the value of the '{@link screenModel.Seite#getButton <em>Button</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Button</em>' containment reference.
+	 * @see #getButton()
+	 * @generated
+	 */
+	void setButton(Button value);
 
 	/**
 	 * Returns the value of the '<em><b>Dateneingabe</b></em>' containment reference.

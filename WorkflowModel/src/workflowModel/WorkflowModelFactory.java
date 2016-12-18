@@ -40,13 +40,13 @@ public interface WorkflowModelFactory extends EFactory {
 	Zustand createZustand();
 
 	/**
-	 * Returns a new object of class '<em>Übergang</em>'.
+	 * Returns a new object of class '<em>Uebergang</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Übergang</em>'.
+	 * @return a new object of class '<em>Uebergang</em>'.
 	 * @generated
 	 */
-	Übergang createÜbergang();
+	Uebergang createUebergang();
 
 	/**
 	 * Returns a new object of class '<em>Datenobjekt</em>'.

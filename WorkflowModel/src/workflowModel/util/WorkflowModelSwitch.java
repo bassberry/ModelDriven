@@ -78,9 +78,9 @@ public class WorkflowModelSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case WorkflowModelPackage.ÜBERGANG: {
-				Übergang übergang = (Übergang)theEObject;
-				T result = caseÜbergang(übergang);
+			case WorkflowModelPackage.UEBERGANG: {
+				Uebergang uebergang = (Uebergang)theEObject;
+				T result = caseUebergang(uebergang);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -137,17 +137,17 @@ public class WorkflowModelSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Übergang</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Uebergang</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Übergang</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Uebergang</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseÜbergang(Übergang object) {
+	public T caseUebergang(Uebergang object) {
 		return null;
 	}
 

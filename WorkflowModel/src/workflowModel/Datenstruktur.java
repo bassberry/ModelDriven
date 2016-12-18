@@ -51,7 +51,7 @@ public interface Datenstruktur extends EObject {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see workflowModel.WorkflowModelPackage#getDatenstruktur_Name()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	String getName();

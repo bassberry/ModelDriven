@@ -94,13 +94,13 @@ public interface ScreenModelPackage extends EPackage {
 	int SCREEN_MODEL__DATENOBJEKT = 2;
 
 	/**
-	 * The feature id for the '<em><b>Klasse</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Datenstruktur</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SCREEN_MODEL__KLASSE = 3;
+	int SCREEN_MODEL__DATENSTRUKTUR = 3;
 
 	/**
 	 * The number of structural features of the '<em>Screen Model</em>' class.
@@ -131,7 +131,7 @@ public interface ScreenModelPackage extends EPackage {
 	int SEITE = 1;
 
 	/**
-	 * The feature id for the '<em><b>Button</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Button</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -718,15 +718,15 @@ public interface ScreenModelPackage extends EPackage {
 	EReference getScreenModel_Datenobjekt();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link screenModel.ScreenModel#getKlasse <em>Klasse</em>}'.
+	 * Returns the meta object for the containment reference list '{@link screenModel.ScreenModel#getDatenstruktur <em>Datenstruktur</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Klasse</em>'.
-	 * @see screenModel.ScreenModel#getKlasse()
+	 * @return the meta object for the containment reference list '<em>Datenstruktur</em>'.
+	 * @see screenModel.ScreenModel#getDatenstruktur()
 	 * @see #getScreenModel()
 	 * @generated
 	 */
-	EReference getScreenModel_Klasse();
+	EReference getScreenModel_Datenstruktur();
 
 	/**
 	 * Returns the meta object for class '{@link screenModel.Seite <em>Seite</em>}'.
@@ -739,10 +739,10 @@ public interface ScreenModelPackage extends EPackage {
 	EClass getSeite();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link screenModel.Seite#getButton <em>Button</em>}'.
+	 * Returns the meta object for the containment reference '{@link screenModel.Seite#getButton <em>Button</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Button</em>'.
+	 * @return the meta object for the containment reference '<em>Button</em>'.
 	 * @see screenModel.Seite#getButton()
 	 * @see #getSeite()
 	 * @generated
@@ -1170,12 +1170,12 @@ public interface ScreenModelPackage extends EPackage {
 		EReference SCREEN_MODEL__DATENOBJEKT = eINSTANCE.getScreenModel_Datenobjekt();
 
 		/**
-		 * The meta object literal for the '<em><b>Klasse</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Datenstruktur</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference SCREEN_MODEL__KLASSE = eINSTANCE.getScreenModel_Klasse();
+		EReference SCREEN_MODEL__DATENSTRUKTUR = eINSTANCE.getScreenModel_Datenstruktur();
 
 		/**
 		 * The meta object literal for the '{@link screenModel.impl.SeiteImpl <em>Seite</em>}' class.
@@ -1188,7 +1188,7 @@ public interface ScreenModelPackage extends EPackage {
 		EClass SEITE = eINSTANCE.getSeite();
 
 		/**
-		 * The meta object literal for the '<em><b>Button</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Button</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

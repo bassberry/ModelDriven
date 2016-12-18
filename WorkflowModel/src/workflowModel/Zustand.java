@@ -3,6 +3,7 @@
 package workflowModel;
 
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -14,7 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link workflowModel.Zustand#getÜbergang <em>Übergang</em>}</li>
+ *   <li>{@link workflowModel.Zustand#getUebergang <em>Uebergang</em>}</li>
  *   <li>{@link workflowModel.Zustand#getPageName <em>Page Name</em>}</li>
  *   <li>{@link workflowModel.Zustand#getDatenobjektEingabe <em>Datenobjekt Eingabe</em>}</li>
  *   <li>{@link workflowModel.Zustand#getDatenobjektAusgabe <em>Datenobjekt Ausgabe</em>}</li>
@@ -26,30 +27,30 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Zustand extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Übergang</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Uebergang</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Übergang</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Uebergang</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Übergang</em>' containment reference.
-	 * @see #setÜbergang(Übergang)
-	 * @see workflowModel.WorkflowModelPackage#getZustand_Übergang()
+	 * @return the value of the '<em>Uebergang</em>' containment reference.
+	 * @see #setUebergang(Uebergang)
+	 * @see workflowModel.WorkflowModelPackage#getZustand_Uebergang()
 	 * @model containment="true"
 	 * @generated
 	 */
-	Übergang getÜbergang();
+	Uebergang getUebergang();
 
 	/**
-	 * Sets the value of the '{@link workflowModel.Zustand#getÜbergang <em>Übergang</em>}' containment reference.
+	 * Sets the value of the '{@link workflowModel.Zustand#getUebergang <em>Uebergang</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Übergang</em>' containment reference.
-	 * @see #getÜbergang()
+	 * @param value the new value of the '<em>Uebergang</em>' containment reference.
+	 * @see #getUebergang()
 	 * @generated
 	 */
-	void setÜbergang(Übergang value);
+	void setUebergang(Uebergang value);
 
 	/**
 	 * Returns the value of the '<em><b>Page Name</b></em>' attribute.
@@ -62,7 +63,7 @@ public interface Zustand extends EObject {
 	 * @return the value of the '<em>Page Name</em>' attribute.
 	 * @see #setPageName(String)
 	 * @see workflowModel.WorkflowModelPackage#getZustand_PageName()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	String getPageName();

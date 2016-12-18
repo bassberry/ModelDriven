@@ -60,7 +60,7 @@ public interface Eingabefeld extends EObject {
 	 * @return the value of the '<em>Input Text</em>' attribute.
 	 * @see #setInputText(String)
 	 * @see screenModel.ScreenModelPackage#getEingabefeld_InputText()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	String getInputText();

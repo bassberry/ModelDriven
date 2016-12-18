@@ -13,13 +13,14 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflowModel.ecore#//Workflow/name"/>
     </genClasses>
     <genClasses ecoreClass="workflowModel.ecore#//Zustand">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference workflowModel.ecore#//Zustand/übergang"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference workflowModel.ecore#//Zustand/uebergang"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflowModel.ecore#//Zustand/pageName"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference workflowModel.ecore#//Zustand/datenobjektEingabe"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference workflowModel.ecore#//Zustand/datenobjektAusgabe"/>
     </genClasses>
-    <genClasses ecoreClass="workflowModel.ecore#//Übergang">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference workflowModel.ecore#//Übergang/zustand"/>
+    <genClasses ecoreClass="workflowModel.ecore#//Uebergang">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference workflowModel.ecore#//Uebergang/zustand"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflowModel.ecore#//Uebergang/name"/>
     </genClasses>
     <genClasses ecoreClass="workflowModel.ecore#//Datenobjekt">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference workflowModel.ecore#//Datenobjekt/datenstruktur"/>

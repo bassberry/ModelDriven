@@ -76,8 +76,8 @@ public class WorkflowModelAdapterFactory extends AdapterFactoryImpl {
 				return createZustandAdapter();
 			}
 			@Override
-			public Adapter caseÜbergang(Übergang object) {
-				return createÜbergangAdapter();
+			public Adapter caseUebergang(Uebergang object) {
+				return createUebergangAdapter();
 			}
 			@Override
 			public Adapter caseDatenobjekt(Datenobjekt object) {
@@ -140,16 +140,16 @@ public class WorkflowModelAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link workflowModel.Übergang <em>Übergang</em>}'.
+	 * Creates a new adapter for an object of class '{@link workflowModel.Uebergang <em>Uebergang</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see workflowModel.Übergang
+	 * @see workflowModel.Uebergang
 	 * @generated
 	 */
-	public Adapter createÜbergangAdapter() {
+	public Adapter createUebergangAdapter() {
 		return null;
 	}
 

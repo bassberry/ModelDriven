@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link screenModel.ScreenModel#getSeite <em>Seite</em>}</li>
  *   <li>{@link screenModel.ScreenModel#getName <em>Name</em>}</li>
  *   <li>{@link screenModel.ScreenModel#getDatenobjekt <em>Datenobjekt</em>}</li>
- *   <li>{@link screenModel.ScreenModel#getKlasse <em>Klasse</em>}</li>
+ *   <li>{@link screenModel.ScreenModel#getDatenstruktur <em>Datenstruktur</em>}</li>
  * </ul>
  *
  * @see screenModel.ScreenModelPackage#getScreenModel()
@@ -53,7 +53,7 @@ public interface ScreenModel extends EObject {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see screenModel.ScreenModelPackage#getScreenModel_Name()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	String getName();
@@ -85,19 +85,19 @@ public interface ScreenModel extends EObject {
 	EList<Datenobjekt> getDatenobjekt();
 
 	/**
-	 * Returns the value of the '<em><b>Klasse</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Datenstruktur</b></em>' containment reference list.
 	 * The list contents are of type {@link screenModel.Datenstruktur}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Klasse</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Datenstruktur</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Klasse</em>' containment reference list.
-	 * @see screenModel.ScreenModelPackage#getScreenModel_Klasse()
+	 * @return the value of the '<em>Datenstruktur</em>' containment reference list.
+	 * @see screenModel.ScreenModelPackage#getScreenModel_Datenstruktur()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Datenstruktur> getKlasse();
+	EList<Datenstruktur> getDatenstruktur();
 
 } // ScreenModel

@@ -18,9 +18,9 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 import workflowModel.Datenobjekt;
+import workflowModel.Uebergang;
 import workflowModel.WorkflowModelPackage;
 import workflowModel.Zustand;
-import workflowModel.Übergang;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,7 +30,7 @@ import workflowModel.Übergang;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link workflowModel.impl.ZustandImpl#getÜbergang <em>Übergang</em>}</li>
+ *   <li>{@link workflowModel.impl.ZustandImpl#getUebergang <em>Uebergang</em>}</li>
  *   <li>{@link workflowModel.impl.ZustandImpl#getPageName <em>Page Name</em>}</li>
  *   <li>{@link workflowModel.impl.ZustandImpl#getDatenobjektEingabe <em>Datenobjekt Eingabe</em>}</li>
  *   <li>{@link workflowModel.impl.ZustandImpl#getDatenobjektAusgabe <em>Datenobjekt Ausgabe</em>}</li>
@@ -40,14 +40,14 @@ import workflowModel.Übergang;
  */
 public class ZustandImpl extends MinimalEObjectImpl.Container implements Zustand {
 	/**
-	 * The cached value of the '{@link #getÜbergang() <em>Übergang</em>}' containment reference.
+	 * The cached value of the '{@link #getUebergang() <em>Uebergang</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getÜbergang()
+	 * @see #getUebergang()
 	 * @generated
 	 * @ordered
 	 */
-	protected Übergang übergang;
+	protected Uebergang uebergang;
 
 	/**
 	 * The default value of the '{@link #getPageName() <em>Page Name</em>}' attribute.
@@ -113,8 +113,8 @@ public class ZustandImpl extends MinimalEObjectImpl.Container implements Zustand
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Übergang getÜbergang() {
-		return übergang;
+	public Uebergang getUebergang() {
+		return uebergang;
 	}
 
 	/**
@@ -122,11 +122,11 @@ public class ZustandImpl extends MinimalEObjectImpl.Container implements Zustand
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetÜbergang(Übergang newÜbergang, NotificationChain msgs) {
-		Übergang oldÜbergang = übergang;
-		übergang = newÜbergang;
+	public NotificationChain basicSetUebergang(Uebergang newUebergang, NotificationChain msgs) {
+		Uebergang oldUebergang = uebergang;
+		uebergang = newUebergang;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WorkflowModelPackage.ZUSTAND__ÜBERGANG, oldÜbergang, newÜbergang);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WorkflowModelPackage.ZUSTAND__UEBERGANG, oldUebergang, newUebergang);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -137,18 +137,18 @@ public class ZustandImpl extends MinimalEObjectImpl.Container implements Zustand
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setÜbergang(Übergang newÜbergang) {
-		if (newÜbergang != übergang) {
+	public void setUebergang(Uebergang newUebergang) {
+		if (newUebergang != uebergang) {
 			NotificationChain msgs = null;
-			if (übergang != null)
-				msgs = ((InternalEObject)übergang).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - WorkflowModelPackage.ZUSTAND__ÜBERGANG, null, msgs);
-			if (newÜbergang != null)
-				msgs = ((InternalEObject)newÜbergang).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - WorkflowModelPackage.ZUSTAND__ÜBERGANG, null, msgs);
-			msgs = basicSetÜbergang(newÜbergang, msgs);
+			if (uebergang != null)
+				msgs = ((InternalEObject)uebergang).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - WorkflowModelPackage.ZUSTAND__UEBERGANG, null, msgs);
+			if (newUebergang != null)
+				msgs = ((InternalEObject)newUebergang).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - WorkflowModelPackage.ZUSTAND__UEBERGANG, null, msgs);
+			msgs = basicSetUebergang(newUebergang, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WorkflowModelPackage.ZUSTAND__ÜBERGANG, newÜbergang, newÜbergang));
+			eNotify(new ENotificationImpl(this, Notification.SET, WorkflowModelPackage.ZUSTAND__UEBERGANG, newUebergang, newUebergang));
 	}
 
 	/**
@@ -230,8 +230,8 @@ public class ZustandImpl extends MinimalEObjectImpl.Container implements Zustand
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case WorkflowModelPackage.ZUSTAND__ÜBERGANG:
-				return basicSetÜbergang(null, msgs);
+			case WorkflowModelPackage.ZUSTAND__UEBERGANG:
+				return basicSetUebergang(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -244,8 +244,8 @@ public class ZustandImpl extends MinimalEObjectImpl.Container implements Zustand
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case WorkflowModelPackage.ZUSTAND__ÜBERGANG:
-				return getÜbergang();
+			case WorkflowModelPackage.ZUSTAND__UEBERGANG:
+				return getUebergang();
 			case WorkflowModelPackage.ZUSTAND__PAGE_NAME:
 				return getPageName();
 			case WorkflowModelPackage.ZUSTAND__DATENOBJEKT_EINGABE:
@@ -266,8 +266,8 @@ public class ZustandImpl extends MinimalEObjectImpl.Container implements Zustand
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case WorkflowModelPackage.ZUSTAND__ÜBERGANG:
-				setÜbergang((Übergang)newValue);
+			case WorkflowModelPackage.ZUSTAND__UEBERGANG:
+				setUebergang((Uebergang)newValue);
 				return;
 			case WorkflowModelPackage.ZUSTAND__PAGE_NAME:
 				setPageName((String)newValue);
@@ -291,8 +291,8 @@ public class ZustandImpl extends MinimalEObjectImpl.Container implements Zustand
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case WorkflowModelPackage.ZUSTAND__ÜBERGANG:
-				setÜbergang((Übergang)null);
+			case WorkflowModelPackage.ZUSTAND__UEBERGANG:
+				setUebergang((Uebergang)null);
 				return;
 			case WorkflowModelPackage.ZUSTAND__PAGE_NAME:
 				setPageName(PAGE_NAME_EDEFAULT);
@@ -315,8 +315,8 @@ public class ZustandImpl extends MinimalEObjectImpl.Container implements Zustand
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case WorkflowModelPackage.ZUSTAND__ÜBERGANG:
-				return übergang != null;
+			case WorkflowModelPackage.ZUSTAND__UEBERGANG:
+				return uebergang != null;
 			case WorkflowModelPackage.ZUSTAND__PAGE_NAME:
 				return PAGE_NAME_EDEFAULT == null ? pageName != null : !PAGE_NAME_EDEFAULT.equals(pageName);
 			case WorkflowModelPackage.ZUSTAND__DATENOBJEKT_EINGABE:

@@ -59,7 +59,7 @@ public interface Button extends EObject {
 	 * @return the value of the '<em>Display Text</em>' attribute.
 	 * @see #setDisplayText(String)
 	 * @see screenModel.ScreenModelPackage#getButton_DisplayText()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	String getDisplayText();

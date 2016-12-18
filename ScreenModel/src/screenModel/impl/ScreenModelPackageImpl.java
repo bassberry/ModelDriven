@@ -225,7 +225,7 @@ public class ScreenModelPackageImpl extends EPackageImpl implements ScreenModelP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getScreenModel_Klasse() {
+	public EReference getScreenModel_Datenstruktur() {
 		return (EReference)screenModelEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -585,7 +585,7 @@ public class ScreenModelPackageImpl extends EPackageImpl implements ScreenModelP
 		createEReference(screenModelEClass, SCREEN_MODEL__SEITE);
 		createEAttribute(screenModelEClass, SCREEN_MODEL__NAME);
 		createEReference(screenModelEClass, SCREEN_MODEL__DATENOBJEKT);
-		createEReference(screenModelEClass, SCREEN_MODEL__KLASSE);
+		createEReference(screenModelEClass, SCREEN_MODEL__DATENSTRUKTUR);
 
 		seiteEClass = createEClass(SEITE);
 		createEReference(seiteEClass, SEITE__BUTTON);
@@ -668,19 +668,19 @@ public class ScreenModelPackageImpl extends EPackageImpl implements ScreenModelP
 		// Initialize classes, features, and operations; add parameters
 		initEClass(screenModelEClass, ScreenModel.class, "ScreenModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getScreenModel_Seite(), this.getSeite(), null, "seite", null, 0, -1, ScreenModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getScreenModel_Name(), ecorePackage.getEString(), "name", null, 0, 1, ScreenModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getScreenModel_Name(), ecorePackage.getEString(), "name", null, 1, 1, ScreenModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getScreenModel_Datenobjekt(), this.getDatenobjekt(), null, "datenobjekt", null, 0, -1, ScreenModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getScreenModel_Klasse(), this.getDatenstruktur(), null, "klasse", null, 0, -1, ScreenModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getScreenModel_Datenstruktur(), this.getDatenstruktur(), null, "datenstruktur", null, 0, -1, ScreenModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(seiteEClass, Seite.class, "Seite", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getSeite_Button(), this.getButton(), null, "button", null, 0, -1, Seite.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSeite_Button(), this.getButton(), null, "button", null, 0, 1, Seite.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSeite_Dateneingabe(), this.getDateneingabe(), null, "dateneingabe", null, 0, 1, Seite.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSeite_Datenausgabe(), this.getDatenausgabe(), null, "datenausgabe", null, 0, -1, Seite.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSeite_PageName(), ecorePackage.getEString(), "pageName", null, 0, 1, Seite.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(buttonEClass, Button.class, "Button", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getButton_Seite(), this.getSeite(), null, "seite", null, 0, 1, Button.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getButton_DisplayText(), ecorePackage.getEString(), "displayText", null, 0, 1, Button.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getButton_DisplayText(), ecorePackage.getEString(), "displayText", null, 1, 1, Button.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dateneingabeEClass, Dateneingabe.class, "Dateneingabe", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDateneingabe_Datenobjekt(), this.getDatenobjekt(), null, "datenobjekt", null, 0, 1, Dateneingabe.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -695,22 +695,22 @@ public class ScreenModelPackageImpl extends EPackageImpl implements ScreenModelP
 
 		initEClass(datenstrukturEClass, Datenstruktur.class, "Datenstruktur", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDatenstruktur_Attribute(), this.getAttribut(), null, "attribute", null, 0, -1, Datenstruktur.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDatenstruktur_Name(), ecorePackage.getEString(), "name", null, 0, 1, Datenstruktur.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDatenstruktur_Name(), ecorePackage.getEString(), "name", null, 1, 1, Datenstruktur.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(attributEClass, Attribut.class, "Attribut", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getAttribut_Name(), ecorePackage.getEString(), "name", null, 0, 1, Attribut.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAttribut_Datentyp(), ecorePackage.getEString(), "datentyp", null, 0, 1, Attribut.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAttribut_Name(), ecorePackage.getEString(), "name", null, 1, 1, Attribut.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAttribut_Datentyp(), ecorePackage.getEString(), "datentyp", null, 1, 1, Attribut.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(datenausgabefeldEClass, Datenausgabefeld.class, "Datenausgabefeld", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDatenausgabefeld_Textfeld(), this.getTextfeld(), null, "textfeld", null, 1, 1, Datenausgabefeld.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDatenausgabefeld_Ausgabefeld(), this.getAusgabefeld(), null, "ausgabefeld", null, 1, 1, Datenausgabefeld.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(textfeldEClass, Textfeld.class, "Textfeld", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTextfeld_DisplayText(), ecorePackage.getEString(), "displayText", null, 0, 1, Textfeld.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTextfeld_DisplayText(), ecorePackage.getEString(), "displayText", null, 1, 1, Textfeld.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(eingabefeldEClass, Eingabefeld.class, "Eingabefeld", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEingabefeld_Attribut(), this.getAttribut(), null, "attribut", null, 1, 1, Eingabefeld.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEingabefeld_InputText(), ecorePackage.getEString(), "inputText", null, 0, 1, Eingabefeld.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEingabefeld_InputText(), ecorePackage.getEString(), "inputText", null, 1, 1, Eingabefeld.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dateneingabefeldEClass, Dateneingabefeld.class, "Dateneingabefeld", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDateneingabefeld_Eingabefeld(), this.getEingabefeld(), null, "eingabefeld", null, 1, 1, Dateneingabefeld.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -718,7 +718,7 @@ public class ScreenModelPackageImpl extends EPackageImpl implements ScreenModelP
 
 		initEClass(ausgabefeldEClass, Ausgabefeld.class, "Ausgabefeld", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAusgabefeld_Attribut(), this.getAttribut(), null, "attribut", null, 1, 1, Ausgabefeld.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAusgabefeld_DisplayText(), ecorePackage.getEString(), "displayText", null, 0, 1, Ausgabefeld.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAusgabefeld_DisplayText(), ecorePackage.getEString(), "displayText", null, 1, 1, Ausgabefeld.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
