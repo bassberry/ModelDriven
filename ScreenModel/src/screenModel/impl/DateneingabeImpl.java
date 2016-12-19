@@ -2,15 +2,19 @@
  */
 package screenModel.impl;
 
+import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 import screenModel.Dateneingabe;
 import screenModel.Dateneingabefeld;
 import screenModel.Datenobjekt;
@@ -42,14 +46,14 @@ public class DateneingabeImpl extends MinimalEObjectImpl.Container implements Da
 	protected Datenobjekt datenobjekt;
 
 	/**
-	 * The cached value of the '{@link #getDateneingabefeld() <em>Dateneingabefeld</em>}' containment reference.
+	 * The cached value of the '{@link #getDateneingabefeld() <em>Dateneingabefeld</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getDateneingabefeld()
 	 * @generated
 	 * @ordered
 	 */
-	protected Dateneingabefeld dateneingabefeld;
+	protected EList<Dateneingabefeld> dateneingabefeld;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -113,42 +117,11 @@ public class DateneingabeImpl extends MinimalEObjectImpl.Container implements Da
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Dateneingabefeld getDateneingabefeld() {
+	public EList<Dateneingabefeld> getDateneingabefeld() {
+		if (dateneingabefeld == null) {
+			dateneingabefeld = new EObjectContainmentEList<Dateneingabefeld>(Dateneingabefeld.class, this, ScreenModelPackage.DATENEINGABE__DATENEINGABEFELD);
+		}
 		return dateneingabefeld;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetDateneingabefeld(Dateneingabefeld newDateneingabefeld, NotificationChain msgs) {
-		Dateneingabefeld oldDateneingabefeld = dateneingabefeld;
-		dateneingabefeld = newDateneingabefeld;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ScreenModelPackage.DATENEINGABE__DATENEINGABEFELD, oldDateneingabefeld, newDateneingabefeld);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setDateneingabefeld(Dateneingabefeld newDateneingabefeld) {
-		if (newDateneingabefeld != dateneingabefeld) {
-			NotificationChain msgs = null;
-			if (dateneingabefeld != null)
-				msgs = ((InternalEObject)dateneingabefeld).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ScreenModelPackage.DATENEINGABE__DATENEINGABEFELD, null, msgs);
-			if (newDateneingabefeld != null)
-				msgs = ((InternalEObject)newDateneingabefeld).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ScreenModelPackage.DATENEINGABE__DATENEINGABEFELD, null, msgs);
-			msgs = basicSetDateneingabefeld(newDateneingabefeld, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ScreenModelPackage.DATENEINGABE__DATENEINGABEFELD, newDateneingabefeld, newDateneingabefeld));
 	}
 
 	/**
@@ -160,7 +133,7 @@ public class DateneingabeImpl extends MinimalEObjectImpl.Container implements Da
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case ScreenModelPackage.DATENEINGABE__DATENEINGABEFELD:
-				return basicSetDateneingabefeld(null, msgs);
+				return ((InternalEList<?>)getDateneingabefeld()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -187,6 +160,7 @@ public class DateneingabeImpl extends MinimalEObjectImpl.Container implements Da
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -194,7 +168,8 @@ public class DateneingabeImpl extends MinimalEObjectImpl.Container implements Da
 				setDatenobjekt((Datenobjekt)newValue);
 				return;
 			case ScreenModelPackage.DATENEINGABE__DATENEINGABEFELD:
-				setDateneingabefeld((Dateneingabefeld)newValue);
+				getDateneingabefeld().clear();
+				getDateneingabefeld().addAll((Collection<? extends Dateneingabefeld>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -212,7 +187,7 @@ public class DateneingabeImpl extends MinimalEObjectImpl.Container implements Da
 				setDatenobjekt((Datenobjekt)null);
 				return;
 			case ScreenModelPackage.DATENEINGABE__DATENEINGABEFELD:
-				setDateneingabefeld((Dateneingabefeld)null);
+				getDateneingabefeld().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -229,7 +204,7 @@ public class DateneingabeImpl extends MinimalEObjectImpl.Container implements Da
 			case ScreenModelPackage.DATENEINGABE__DATENOBJEKT:
 				return datenobjekt != null;
 			case ScreenModelPackage.DATENEINGABE__DATENEINGABEFELD:
-				return dateneingabefeld != null;
+				return dateneingabefeld != null && !dateneingabefeld.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

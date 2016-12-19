@@ -4,77 +4,6 @@
 module Workflow2ModelTransformation;
 create OUT : ScreenModel from IN : WorkflowModel;
 
-rule Attribut2Attribut {
-	from WorkflowAttribut: WorkflowModel!Attribut
-	to ScreenModelAttribut: ScreenModel!Attribut (
-		name <-WorkflowAttribut.name,
-		datentyp <- WorkflowAttribut.datentyp
-	)
-}
-rule Datenstruktur2Datenstrukur {
-	from WorkflowDatenstruktur: WorkflowModel!Datenstruktur
-	to ScreenModelDatenstruktur: ScreenModel!Datenstruktur (
-		name <-WorkflowDatenstruktur.name,
-		attribute <- WorkflowDatenstruktur.attribute
-	)
-}
-rule Datenobjekt2Datenobjekt {
-	from WorkflowDatenobjekt: WorkflowModel!Datenobjekt
-	to ScreenModelDatenobjekt: ScreenModel!Datenobjekt (
-		datenstruktur <- WorkflowDatenobjekt.datenstruktur
-	)
-}
-
-
-rule Uebergang2Button {
-	from WorkflowUebergang: WorkflowModel!Uebergang
-	to ScreenModelButton: ScreenModel!Button (
-		displayText <- WorkflowUebergang.name,
-		seite <- WorkflowUebergang.zustand
-	)
-}
-rule Zustand2Seite {
-	from WorkflowModelZustand: WorkflowModel!Zustand
-	to ScreenModelSeite: ScreenModel!Seite (
-		pageName <- WorkflowModelZustand.pageName,
-		button <- WorkflowModelZustand.uebergang
-	)
-}
-rule Zustand2Dateneingabe {
-	from WorkflowModelZustand: WorkflowModel!Zustand
-	to ScreenModelDateneingabe: ScreenModel!Dateneingabe (
-		datenobjekt <- WorkflowModelZustand.datenobjektEingabe
-	)
-}
-rule Zustand2Dateneingabefeld {
-	from WorkflowModelZustand: WorkflowModel!Zustand
-	to ScreenModelDateneingabefeld: ScreenModel!Dateneingabefeld ()
-}
-rule Zustand2Eingabefeld {
-	from WorkflowModelZustand: WorkflowModel!Zustand
-	to ScreenModelEingabefeld: ScreenModel!Eingabefeld ()
-}
-rule Zustand2Datenausgabe {
-	from WorkflowModelZustand: WorkflowModel!Zustand
-	to ScreenModelDatenausgabe: ScreenModel!Datenausgabe (
-		datenobjekt <- WorkflowModelZustand.datenobjektAusgabe
-	)
-}
-rule Zustand2Datenausgabefeld {
-	from WorkflowModelZustand: WorkflowModel!Zustand
-	to ScreenModelDatenausgabefeld: ScreenModel!Datenausgabefeld ()
-}
-rule Zustand2Ausgabefeld {
-	from WorkflowModelZustand: WorkflowModel!Zustand
-	to ScreenModelAusgabefeld: ScreenModel!Ausgabefeld ()
-}
-rule Zustand2Textfeld {
-	from WorkflowModelZustand: WorkflowModel!Zustand
-	to ScreenModelTextfeld: ScreenModel!Textfeld ()
-}
-
-
-
 rule Workflow2ScreenModel {
 	from workflow: WorkflowModel!Workflow
 	to screenModel: ScreenModel!ScreenModel (
@@ -84,11 +13,46 @@ rule Workflow2ScreenModel {
 		datenstruktur <- workflow.datenstruktur
 	)
 }
-
-
-
-
-
+rule Zustand2Seite {
+	from zustand: WorkflowModel!Zustand
+	to seite: ScreenModel!Seite (
+		pageName <- zustand.pageName,
+		button <-zustand.uebergang,
+		dateneingabe <- zustand.datenobjektEingabe,
+		datenausgabe <- zustand.datenobjektAusgabe
+	)
+}
+rule Datenobjekt2Dateneingabe {
+	from datenobjekt: WorkflowModel!Datenobjekt
+	to dateneingabe: ScreenModel2Dateneingabe ()
+}
+rule Uebergang2Button {
+	from uebergang: WorkflowModel!Uebergang
+	to button: ScreenModel!Button (
+		displayText <- uebergang.name,
+		seite <- uebergang.zustand
+	)
+}
+rule Datenobjekt2Datenobjekt {
+	from workflowDatenobjekt: WorkflowModel!Datenobjekt
+	to screenDatenobjekt: ScreenModel!Datenobjekt (
+		datenstruktur <- screenDatenobjekt.datenstruktur
+	)
+}
+rule Datenstruktur2Datenstruktur {
+	from workflowDatenstruktur: WorkflowModel!Datenstruktur
+	to screenDatenstruktur: ScreenModel!Datenstruktur (
+		name <- workflowDatenstruktur.name,
+		attribute <- workflowDatenstruktur.attribute
+	)
+}
+rule Attribut2Attribut {
+	from workflowAttribut: WorkflowModel!Attribut
+	to screenAttribut: ScreenModel!Attribut (
+		name <- workflowAttribut.name,
+		datentyp <- workflowAttribut.datentyp
+	)
+}
 
 
 

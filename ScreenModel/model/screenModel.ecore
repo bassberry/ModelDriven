@@ -28,12 +28,12 @@
   <eClassifiers xsi:type="ecore:EClass" name="Dateneingabe">
     <eStructuralFeatures xsi:type="ecore:EReference" name="datenobjekt" eType="#//Datenobjekt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="dateneingabefeld" lowerBound="1"
-        eType="#//Dateneingabefeld" containment="true"/>
+        upperBound="-1" eType="#//Dateneingabefeld" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Datenausgabe">
     <eStructuralFeatures xsi:type="ecore:EReference" name="datenobjekt" eType="#//Datenobjekt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="datenausgabefeld" lowerBound="1"
-        eType="#//Datenausgabefeld" containment="true"/>
+        upperBound="-1" eType="#//Datenausgabefeld" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Datenobjekt">
     <eStructuralFeatures xsi:type="ecore:EReference" name="datenstruktur" lowerBound="1"
