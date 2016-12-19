@@ -676,7 +676,7 @@ public class ScreenModelPackageImpl extends EPackageImpl implements ScreenModelP
 		initEReference(getSeite_Button(), this.getButton(), null, "button", null, 0, 1, Seite.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSeite_Dateneingabe(), this.getDateneingabe(), null, "dateneingabe", null, 0, 1, Seite.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSeite_Datenausgabe(), this.getDatenausgabe(), null, "datenausgabe", null, 0, -1, Seite.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSeite_PageName(), ecorePackage.getEString(), "pageName", null, 0, 1, Seite.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSeite_PageName(), ecorePackage.getEString(), "pageName", null, 1, 1, Seite.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(buttonEClass, Button.class, "Button", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getButton_Seite(), this.getSeite(), null, "seite", null, 0, 1, Button.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -684,11 +684,11 @@ public class ScreenModelPackageImpl extends EPackageImpl implements ScreenModelP
 
 		initEClass(dateneingabeEClass, Dateneingabe.class, "Dateneingabe", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDateneingabe_Datenobjekt(), this.getDatenobjekt(), null, "datenobjekt", null, 0, 1, Dateneingabe.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDateneingabe_Dateneingabefeld(), this.getDateneingabefeld(), null, "dateneingabefeld", null, 1, 1, Dateneingabe.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDateneingabe_Dateneingabefeld(), this.getDateneingabefeld(), null, "dateneingabefeld", null, 1, -1, Dateneingabe.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(datenausgabeEClass, Datenausgabe.class, "Datenausgabe", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDatenausgabe_Datenobjekt(), this.getDatenobjekt(), null, "datenobjekt", null, 0, 1, Datenausgabe.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDatenausgabe_Datenausgabefeld(), this.getDatenausgabefeld(), null, "datenausgabefeld", null, 1, 1, Datenausgabe.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDatenausgabe_Datenausgabefeld(), this.getDatenausgabefeld(), null, "datenausgabefeld", null, 1, -1, Datenausgabe.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(datenobjektEClass, Datenobjekt.class, "Datenobjekt", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDatenobjekt_Datenstruktur(), this.getDatenstruktur(), null, "datenstruktur", null, 1, 1, Datenobjekt.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

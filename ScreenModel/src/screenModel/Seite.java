@@ -105,7 +105,7 @@ public interface Seite extends EObject {
 	 * @return the value of the '<em>Page Name</em>' attribute.
 	 * @see #setPageName(String)
 	 * @see screenModel.ScreenModelPackage#getSeite_PageName()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	String getPageName();

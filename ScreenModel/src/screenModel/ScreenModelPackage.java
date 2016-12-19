@@ -250,7 +250,7 @@ public interface ScreenModelPackage extends EPackage {
 	int DATENEINGABE__DATENOBJEKT = 0;
 
 	/**
-	 * The feature id for the '<em><b>Dateneingabefeld</b></em>' containment reference.
+	 * The feature id for the '<em><b>Dateneingabefeld</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -296,7 +296,7 @@ public interface ScreenModelPackage extends EPackage {
 	int DATENAUSGABE__DATENOBJEKT = 0;
 
 	/**
-	 * The feature id for the '<em><b>Datenausgabefeld</b></em>' containment reference.
+	 * The feature id for the '<em><b>Datenausgabefeld</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -836,10 +836,10 @@ public interface ScreenModelPackage extends EPackage {
 	EReference getDateneingabe_Datenobjekt();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link screenModel.Dateneingabe#getDateneingabefeld <em>Dateneingabefeld</em>}'.
+	 * Returns the meta object for the containment reference list '{@link screenModel.Dateneingabe#getDateneingabefeld <em>Dateneingabefeld</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Dateneingabefeld</em>'.
+	 * @return the meta object for the containment reference list '<em>Dateneingabefeld</em>'.
 	 * @see screenModel.Dateneingabe#getDateneingabefeld()
 	 * @see #getDateneingabe()
 	 * @generated
@@ -868,10 +868,10 @@ public interface ScreenModelPackage extends EPackage {
 	EReference getDatenausgabe_Datenobjekt();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link screenModel.Datenausgabe#getDatenausgabefeld <em>Datenausgabefeld</em>}'.
+	 * Returns the meta object for the containment reference list '{@link screenModel.Datenausgabe#getDatenausgabefeld <em>Datenausgabefeld</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Datenausgabefeld</em>'.
+	 * @return the meta object for the containment reference list '<em>Datenausgabefeld</em>'.
 	 * @see screenModel.Datenausgabe#getDatenausgabefeld()
 	 * @see #getDatenausgabe()
 	 * @generated
@@ -1264,7 +1264,7 @@ public interface ScreenModelPackage extends EPackage {
 		EReference DATENEINGABE__DATENOBJEKT = eINSTANCE.getDateneingabe_Datenobjekt();
 
 		/**
-		 * The meta object literal for the '<em><b>Dateneingabefeld</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Dateneingabefeld</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -1290,7 +1290,7 @@ public interface ScreenModelPackage extends EPackage {
 		EReference DATENAUSGABE__DATENOBJEKT = eINSTANCE.getDatenausgabe_Datenobjekt();
 
 		/**
-		 * The meta object literal for the '<em><b>Datenausgabefeld</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Datenausgabefeld</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

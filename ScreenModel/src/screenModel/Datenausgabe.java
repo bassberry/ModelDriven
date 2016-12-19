@@ -2,6 +2,7 @@
  */
 package screenModel;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -49,29 +50,19 @@ public interface Datenausgabe extends EObject {
 	void setDatenobjekt(Datenobjekt value);
 
 	/**
-	 * Returns the value of the '<em><b>Datenausgabefeld</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Datenausgabefeld</b></em>' containment reference list.
+	 * The list contents are of type {@link screenModel.Datenausgabefeld}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Datenausgabefeld</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Datenausgabefeld</em>' containment reference.
-	 * @see #setDatenausgabefeld(Datenausgabefeld)
+	 * @return the value of the '<em>Datenausgabefeld</em>' containment reference list.
 	 * @see screenModel.ScreenModelPackage#getDatenausgabe_Datenausgabefeld()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	Datenausgabefeld getDatenausgabefeld();
-
-	/**
-	 * Sets the value of the '{@link screenModel.Datenausgabe#getDatenausgabefeld <em>Datenausgabefeld</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Datenausgabefeld</em>' containment reference.
-	 * @see #getDatenausgabefeld()
-	 * @generated
-	 */
-	void setDatenausgabefeld(Datenausgabefeld value);
+	EList<Datenausgabefeld> getDatenausgabefeld();
 
 } // Datenausgabe
