@@ -1,0 +1,152 @@
+«IMPORT screenModel»
+
+«DEFINE main FOR ScreenModel»
+
+«EXPAND seite FOREACH seite»«REM»Erstellen der Seiten für jsp«ENDREM»
+«EXPAND javaClass FOREACH datenstruktur»«REM»Erstellen der Datenstrukturen als Java-Code«ENDREM»
+
+«ENDDEFINE»
+
+
+«DEFINE seite FOR Seite»
+«FILE pageName + ".jsp"»
+
+«ENDFILE»
+«ENDDEFINE»
+
+
+«DEFINE javaClass FOR Datenstruktur»
+«FILE "dataobjects/" + name + ".java"»
+package dataobjects;
+
+public class «name» {
+	
+	«EXPAND deklaration FOREACH attribute»
+	«EXPAND getset FOREACH attribute»
+}
+«ENDFILE»
+«ENDDEFINE»
+
+«DEFINE deklaration FOR Attribut»
+	private «datentyp» «name»;
+	
+«ENDDEFINE»
+
+«DEFINE getset FOR Attribut»
+	public «datentyp» get«name»() {
+		return this.«name»;
+	}
+	
+	public void set«name»(«datentyp» «name») {
+		this.«name» = «name»;
+	}
+	
+«ENDDEFINE»
+
+«DEFINE ausgabeFeld FOR Ausgabefeld»
+
+«ENDDEFINE»
+
+
+«DEFINE eingabeFeld FOR Eingabefeld»
+
+«ENDDEFINE»
+
+
+
+«REM»
+«DEFINE main FOR Student»
+«FILE "Page1.jsp"»
+
+
+<%@page import="dataobjects.*"%>
+<%
+	// Fetch content to be displayed !
+%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" media="screen,projection"
+	title="Standardstylesheet" href="stylesheets/default.css"
+	type="text/css" />
+</head>
+<body>
+	<form action="index.jsp" method="post">
+		<div class="object">
+			<div>
+				<label>«name»</label> <input type="text" name="name" />
+			</div>
+			<div>
+				<label>«id»</label> <input type="number" name="id" />
+			</div>
+		</div>
+		<div class="controlPanel">
+			<button type="submit" name="proceedAction" value="Page1">Proceed</button>
+		</div>
+	</form>
+</body>
+</html>
+
+
+«ENDFILE»
+
+«FILE "Page2.jsp"»
+<%@page import="dataobjects.*"%>
+<%
+	// Fetch content to be displayed !
+
+	Student Student1 = (Student) DataStorage.INSTANCE.get("Student1");
+%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" media="screen,projection"
+	title="Standardstylesheet" href="stylesheets/default.css"
+	type="text/css" />
+</head>
+<body>
+
+	<form action="index.jsp" method="post">
+		<div class="object">
+			<div>
+				<label>«name»</label>
+				<%
+					out.print(Student1.getName());
+				%>
+			</div>
+			<div>
+				<label>«id»</label>
+				<%
+					out.print(Student1.getId());
+				%>
+			</div>
+		</div>
+«EXPAND pruefung FOREACH pruefungsliste»
+	</form>
+</body>
+</html>
+«ENDFILE»
+«ENDDEFINE»
+
+«DEFINE pruefung FOR Pruefung»
+		<div class="object">
+			<div>
+				<label>«name»</label> <input type="text" name="name" />
+			</div>
+			<div>
+				<label>«antritte»</label> <input type="number" name="antritte" />
+			</div>
+		</div>
+		<div class="controlPanel">
+			<button type="submit" name="proceedAction" value="Page2">Proceed</button>
+		</div>
+«ENDDEFINE»
+«ENDREM»
