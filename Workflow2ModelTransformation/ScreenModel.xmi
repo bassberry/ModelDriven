@@ -1,10 +1,34 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:screenModel="screenModel">
-  <screenModel:ScreenModel name="Personendaten">
-    <datenobjekt/>
-    <datenstruktur name="Person">
-      <attribute name="Name" datentyp="String"/>
-    </datenstruktur>
-  </screenModel:ScreenModel>
-  <screenModel:Button displayText="Weiter"/>
-</xmi:XMI>
+<screenModel:ScreenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:screenModel="screenModel" name="Personendaten">
+  <seite pageName="Page1">
+    <button seite="//@seite.1" displayText="Weiter"/>
+    <dateneingabe datenobjekt="//@datenobjekt.0">
+      <dateneingabefeld>
+        <eingabefeld/>
+      </dateneingabefeld>
+    </dateneingabe>
+    <datenausgabe>
+      <datenausgabefeld>
+        <textfeld/>
+        <ausgabefeld/>
+      </datenausgabefeld>
+    </datenausgabe>
+  </seite>
+  <seite pageName="Page2">
+    <dateneingabe>
+      <dateneingabefeld>
+        <eingabefeld/>
+      </dateneingabefeld>
+    </dateneingabe>
+    <datenausgabe datenobjekt="//@datenobjekt.0">
+      <datenausgabefeld>
+        <textfeld/>
+        <ausgabefeld/>
+      </datenausgabefeld>
+    </datenausgabe>
+  </seite>
+  <datenobjekt datenstruktur="//@datenstruktur.0"/>
+  <datenstruktur name="Person">
+    <attribute name="Name" datentyp="String"/>
+  </datenstruktur>
+</screenModel:ScreenModel>
