@@ -2,15 +2,19 @@
  */
 package screenModel.impl;
 
+import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 import screenModel.Datenausgabe;
 import screenModel.Datenausgabefeld;
 import screenModel.Datenobjekt;
@@ -42,14 +46,14 @@ public class DatenausgabeImpl extends MinimalEObjectImpl.Container implements Da
 	protected Datenobjekt datenobjekt;
 
 	/**
-	 * The cached value of the '{@link #getDatenausgabefeld() <em>Datenausgabefeld</em>}' containment reference.
+	 * The cached value of the '{@link #getDatenausgabefeld() <em>Datenausgabefeld</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getDatenausgabefeld()
 	 * @generated
 	 * @ordered
 	 */
-	protected Datenausgabefeld datenausgabefeld;
+	protected EList<Datenausgabefeld> datenausgabefeld;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -113,42 +117,11 @@ public class DatenausgabeImpl extends MinimalEObjectImpl.Container implements Da
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Datenausgabefeld getDatenausgabefeld() {
+	public EList<Datenausgabefeld> getDatenausgabefeld() {
+		if (datenausgabefeld == null) {
+			datenausgabefeld = new EObjectContainmentEList<Datenausgabefeld>(Datenausgabefeld.class, this, ScreenModelPackage.DATENAUSGABE__DATENAUSGABEFELD);
+		}
 		return datenausgabefeld;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetDatenausgabefeld(Datenausgabefeld newDatenausgabefeld, NotificationChain msgs) {
-		Datenausgabefeld oldDatenausgabefeld = datenausgabefeld;
-		datenausgabefeld = newDatenausgabefeld;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ScreenModelPackage.DATENAUSGABE__DATENAUSGABEFELD, oldDatenausgabefeld, newDatenausgabefeld);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setDatenausgabefeld(Datenausgabefeld newDatenausgabefeld) {
-		if (newDatenausgabefeld != datenausgabefeld) {
-			NotificationChain msgs = null;
-			if (datenausgabefeld != null)
-				msgs = ((InternalEObject)datenausgabefeld).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ScreenModelPackage.DATENAUSGABE__DATENAUSGABEFELD, null, msgs);
-			if (newDatenausgabefeld != null)
-				msgs = ((InternalEObject)newDatenausgabefeld).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ScreenModelPackage.DATENAUSGABE__DATENAUSGABEFELD, null, msgs);
-			msgs = basicSetDatenausgabefeld(newDatenausgabefeld, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ScreenModelPackage.DATENAUSGABE__DATENAUSGABEFELD, newDatenausgabefeld, newDatenausgabefeld));
 	}
 
 	/**
@@ -160,7 +133,7 @@ public class DatenausgabeImpl extends MinimalEObjectImpl.Container implements Da
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case ScreenModelPackage.DATENAUSGABE__DATENAUSGABEFELD:
-				return basicSetDatenausgabefeld(null, msgs);
+				return ((InternalEList<?>)getDatenausgabefeld()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -187,6 +160,7 @@ public class DatenausgabeImpl extends MinimalEObjectImpl.Container implements Da
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -194,7 +168,8 @@ public class DatenausgabeImpl extends MinimalEObjectImpl.Container implements Da
 				setDatenobjekt((Datenobjekt)newValue);
 				return;
 			case ScreenModelPackage.DATENAUSGABE__DATENAUSGABEFELD:
-				setDatenausgabefeld((Datenausgabefeld)newValue);
+				getDatenausgabefeld().clear();
+				getDatenausgabefeld().addAll((Collection<? extends Datenausgabefeld>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -212,7 +187,7 @@ public class DatenausgabeImpl extends MinimalEObjectImpl.Container implements Da
 				setDatenobjekt((Datenobjekt)null);
 				return;
 			case ScreenModelPackage.DATENAUSGABE__DATENAUSGABEFELD:
-				setDatenausgabefeld((Datenausgabefeld)null);
+				getDatenausgabefeld().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -229,7 +204,7 @@ public class DatenausgabeImpl extends MinimalEObjectImpl.Container implements Da
 			case ScreenModelPackage.DATENAUSGABE__DATENOBJEKT:
 				return datenobjekt != null;
 			case ScreenModelPackage.DATENAUSGABE__DATENAUSGABEFELD:
-				return datenausgabefeld != null;
+				return datenausgabefeld != null && !datenausgabefeld.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

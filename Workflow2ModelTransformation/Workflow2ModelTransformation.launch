@@ -19,7 +19,7 @@
 <mapEntry key="WorkflowModel" value="METAMODELINPUT"/>
 </mapAttribute>
 <mapAttribute key="Options">
-<mapEntry key="OPTION_CLEAR" value="false"/>
+<mapEntry key="OPTION_CLEAR" value="true"/>
 <mapEntry key="OPTION_CONTENT_TYPE" value="false"/>
 <mapEntry key="OPTION_DERIVED" value="true"/>
 <mapEntry key="allowInterModelReferences" value="false"/>
@@ -37,7 +37,7 @@
 <mapEntry key="OUT" value="ScreenModel"/>
 </mapAttribute>
 <mapAttribute key="Path">
-<mapEntry key="IN" value="/WorkflowModel/model/Workflow.xmi"/>
+<mapEntry key="IN" value="/WorkflowModel/model/My.workflowmodel"/>
 <mapEntry key="OUT" value="/Workflow2ModelTransformation/ScreenModel.xmi"/>
 <mapEntry key="ScreenModel" value="/ScreenModel/model/screenModel.ecore"/>
 <mapEntry key="WorkflowModel" value="/WorkflowModel/model/workflowModel.ecore"/>
