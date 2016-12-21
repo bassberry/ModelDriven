@@ -31,6 +31,7 @@
     </genClasses>
     <genClasses ecoreClass="screenModel.ecore#//Datenobjekt">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference screenModel.ecore#//Datenobjekt/datenstruktur"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute screenModel.ecore#//Datenobjekt/name"/>
     </genClasses>
     <genClasses ecoreClass="screenModel.ecore#//Datenstruktur">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference screenModel.ecore#//Datenstruktur/attribute"/>

@@ -24,6 +24,7 @@
     </genClasses>
     <genClasses ecoreClass="workflowModel.ecore#//Datenobjekt">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference workflowModel.ecore#//Datenobjekt/datenstruktur"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workflowModel.ecore#//Datenobjekt/name"/>
     </genClasses>
     <genClasses ecoreClass="workflowModel.ecore#//Datenstruktur">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference workflowModel.ecore#//Datenstruktur/attribute"/>
