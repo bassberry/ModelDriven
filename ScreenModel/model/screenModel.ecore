@@ -38,6 +38,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="Datenobjekt">
     <eStructuralFeatures xsi:type="ecore:EReference" name="datenstruktur" lowerBound="1"
         eType="#//Datenstruktur"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Datenstruktur">
     <eStructuralFeatures xsi:type="ecore:EReference" name="attribute" upperBound="-1"

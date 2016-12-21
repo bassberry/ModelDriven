@@ -4,6 +4,7 @@
 module Workflow2ModelTransformation;
 create OUT : ScreenModel from IN : WorkflowModel;
 
+<<<<<<< HEAD
 helper context WorkflowModel!Zustand def: hasEingabe(): Boolean =
 	if not self.datenobjektEingabe.oclIsUndefined() then 
 		if self.datenobjektAusgabe.oclIsUndefined() then
@@ -36,6 +37,16 @@ helper context WorkflowModel!Zustand def: hasEinUndAusgabe(): Boolean =
 	else 
 		false
 	endif;
+=======
+
+helper context WorkflowModel!Zustand def: eingabeIsEmpty(): Boolean =
+	if not self.datenobjektEingabe.oclIsUndefined() then
+		true
+	else
+		false
+	endif;
+
+>>>>>>> origin/master
 
 rule Workflow2ScreenModel {
 	from workflow: WorkflowModel!Workflow
@@ -67,6 +78,7 @@ rule Attribut2Attribut {
 	)
 }
 
+<<<<<<< HEAD
 --Seite mit Datenein- und ausgabe
 rule Zustand2SeiteEinUndAusgabe {
 	from zustand: WorkflowModel!Zustand (zustand.hasEinUndAusgabe())
@@ -120,10 +132,34 @@ rule Uebergang2Button {
 lazy rule Attribut2Eingabe {
 	from attribut: WorkflowModel!Attribut 
 	to eingabefeld: ScreenModel!Dateneingabefeld (
+=======
+--rule Zustand2Seite {
+--	from zustand: WorkflowModel!Zustand
+--	to 	
+--		seite: ScreenModel!Seite (
+--			pageName <- zustand.pageName,
+--			button <- zustand.uebergang)
+--}
+rule Zustand2Seite {
+	from zustand: WorkflowModel!Zustand
+	to 	
+		seite: ScreenModel!Seite (
+			pageName <- zustand.pageName,
+			button <- zustand.uebergang,
+			dateneingabe <- eingabe,
+			datenausgabe <- ausgabe
+		),
+		eingabe: ScreenModel!Dateneingabe (
+			datenobjekt <- zustand.datenobjektEingabe,
+			dateneingabefeld <- eingabefeld
+		),
+		eingabefeld: ScreenModel!Dateneingabefeld (
+>>>>>>> origin/master
 			eingabefeld <- ScreenModelEingabefeld,
 			textfeld <- ScreenModelTextfeld
 		),
 		ScreenModelEingabefeld: ScreenModel!Eingabefeld (
+<<<<<<< HEAD
 			attribut <- attribut
 		),
 		ScreenModelTextfeld: ScreenModel!Textfeld (
@@ -133,16 +169,44 @@ lazy rule Attribut2Eingabe {
 lazy rule Attribut2Ausgabe {
 	from attribut: WorkflowModel!Attribut 
 	to ausgabefeld: ScreenModel!Datenausgabefeld (
+=======
+			--attribut <- eingabe.datenobjekt.attribute
+		),
+		ausgabe: ScreenModel!Datenausgabe (
+			datenobjekt <- zustand.datenobjektAusgabe,
+			datenausgabefeld <- ausgabefeld
+		),
+		ausgabefeld: ScreenModel!Datenausgabefeld (
+>>>>>>> origin/master
 			ausgabefeld <- ScreenModelAusgabefeld,
 			textfeld <- ScreenModelTextfeld
 		),
 		ScreenModelAusgabefeld: ScreenModel!Ausgabefeld (
+<<<<<<< HEAD
 			attribut <- attribut
 		),
 		ScreenModelTextfeld: ScreenModel!Textfeld (
 			displayText <- attribut.name+':'
 		)
 }
+=======
+			--displayText <-
+		),
+		ScreenModelTextfeld: ScreenModel!Textfeld (
+			--displayText <-
+		)
+}
+rule Uebergang2Button {
+	from uebergang: WorkflowModel!Uebergang
+	to button: ScreenModel!Button (
+		displayText <- uebergang.name,
+		seite <- uebergang.zustand
+	)
+}
+
+
+
+>>>>>>> origin/master
 
 
 
