@@ -14,7 +14,6 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link screenModel.Ausgabefeld#getAttribut <em>Attribut</em>}</li>
- *   <li>{@link screenModel.Ausgabefeld#getDisplayText <em>Display Text</em>}</li>
  * </ul>
  *
  * @see screenModel.ScreenModelPackage#getAusgabefeld()
@@ -47,31 +46,5 @@ public interface Ausgabefeld extends EObject {
 	 * @generated
 	 */
 	void setAttribut(Attribut value);
-
-	/**
-	 * Returns the value of the '<em><b>Display Text</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Display Text</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Display Text</em>' attribute.
-	 * @see #setDisplayText(String)
-	 * @see screenModel.ScreenModelPackage#getAusgabefeld_DisplayText()
-	 * @model required="true"
-	 * @generated
-	 */
-	String getDisplayText();
-
-	/**
-	 * Sets the value of the '{@link screenModel.Ausgabefeld#getDisplayText <em>Display Text</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Display Text</em>' attribute.
-	 * @see #getDisplayText()
-	 * @generated
-	 */
-	void setDisplayText(String value);
 
 } // Ausgabefeld

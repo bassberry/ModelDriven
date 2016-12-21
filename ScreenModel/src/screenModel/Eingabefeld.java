@@ -14,7 +14,6 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link screenModel.Eingabefeld#getAttribut <em>Attribut</em>}</li>
- *   <li>{@link screenModel.Eingabefeld#getInputText <em>Input Text</em>}</li>
  * </ul>
  *
  * @see screenModel.ScreenModelPackage#getEingabefeld()
@@ -48,30 +47,4 @@ public interface Eingabefeld extends EObject {
 	 * @generated
 	 */
 	void setAttribut(Attribut value);
-
-	/**
-	 * Returns the value of the '<em><b>Input Text</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Input Text</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Input Text</em>' attribute.
-	 * @see #setInputText(String)
-	 * @see screenModel.ScreenModelPackage#getEingabefeld_InputText()
-	 * @model required="true"
-	 * @generated
-	 */
-	String getInputText();
-
-	/**
-	 * Sets the value of the '{@link screenModel.Eingabefeld#getInputText <em>Input Text</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Input Text</em>' attribute.
-	 * @see #getInputText()
-	 * @generated
-	 */
-	void setInputText(String value);
 } // Eingabefeld

@@ -4,6 +4,39 @@
 module Workflow2ModelTransformation;
 create OUT : ScreenModel from IN : WorkflowModel;
 
+helper context WorkflowModel!Zustand def: hasEingabe(): Boolean =
+	if not self.datenobjektEingabe.oclIsUndefined() then 
+		if self.datenobjektAusgabe.oclIsUndefined() then
+			true
+		else
+			false
+		endif
+	else 
+		false
+	endif;
+
+helper context WorkflowModel!Zustand def: hasAusgabe(): Boolean =
+	if not self.datenobjektAusgabe.oclIsUndefined() then 
+		if self.datenobjektEingabe.oclIsUndefined() then
+			true
+		else
+			false
+		endif
+	else 
+		false
+	endif;
+
+helper context WorkflowModel!Zustand def: hasEinUndAusgabe(): Boolean =
+	if not self.datenobjektAusgabe.oclIsUndefined() then 
+		if not self.datenobjektEingabe.oclIsUndefined() then
+			true
+		else
+			false
+		endif
+	else 
+		false
+	endif;
+
 rule Workflow2ScreenModel {
 	from workflow: WorkflowModel!Workflow
 	to screenModel: ScreenModel!ScreenModel (
@@ -13,30 +46,10 @@ rule Workflow2ScreenModel {
 		datenstruktur <- workflow.datenstruktur
 	)
 }
-rule Zustand2Seite {
-	from zustand: WorkflowModel!Zustand
-	to seite: ScreenModel!Seite (
-		pageName <- zustand.pageName,
-		button <-zustand.uebergang,
-		dateneingabe <- zustand.datenobjektEingabe,
-		datenausgabe <- zustand.datenobjektAusgabe
-	)
-}
-rule Datenobjekt2Dateneingabe {
-	from datenobjekt: WorkflowModel!Datenobjekt
-	to dateneingabe: ScreenModel2Dateneingabe ()
-}
-rule Uebergang2Button {
-	from uebergang: WorkflowModel!Uebergang
-	to button: ScreenModel!Button (
-		displayText <- uebergang.name,
-		seite <- uebergang.zustand
-	)
-}
 rule Datenobjekt2Datenobjekt {
 	from workflowDatenobjekt: WorkflowModel!Datenobjekt
 	to screenDatenobjekt: ScreenModel!Datenobjekt (
-		datenstruktur <- screenDatenobjekt.datenstruktur
+		datenstruktur <- workflowDatenobjekt.datenstruktur
 	)
 }
 rule Datenstruktur2Datenstruktur {
@@ -54,7 +67,82 @@ rule Attribut2Attribut {
 	)
 }
 
-
+--Seite mit Datenein- und ausgabe
+rule Zustand2SeiteEinUndAusgabe {
+	from zustand: WorkflowModel!Zustand (zustand.hasEinUndAusgabe())
+	to 	seite: ScreenModel!Seite (
+			pageName <- zustand.pageName,
+			button <- zustand.uebergang,
+			dateneingabe <- eingabe
+		),
+		eingabe: ScreenModel!Dateneingabe (
+			datenobjekt <- zustand.datenobjektEingabe,
+			dateneingabefeld <- zustand.datenobjektEingabe.datenstruktur.attribute->collect(e | 
+				thisModule.Attribut2Eingabe(e)
+			)
+		)
+}
+rule Zustand2SeiteEin {
+	from zustand: WorkflowModel!Zustand (zustand.hasEingabe())
+	to 	seite: ScreenModel!Seite (
+			pageName <- zustand.pageName,
+			button <- zustand.uebergang,
+			dateneingabe <- eingabe
+		),
+		eingabe: ScreenModel!Dateneingabe (
+			datenobjekt <- zustand.datenobjektEingabe,
+			dateneingabefeld <- zustand.datenobjektEingabe.datenstruktur.attribute->collect(e | 
+				thisModule.Attribut2Eingabe(e)
+			)
+		)
+}
+rule Zustand2SeiteAusgabe {
+	from zustand: WorkflowModel!Zustand (zustand.hasAusgabe())
+	to 	seite: ScreenModel!Seite (
+			pageName <- zustand.pageName,
+			button <- zustand.uebergang,
+			datenausgabe <- ausgabe
+		),
+		ausgabe: ScreenModel!Datenausgabe (
+			datenobjekt <- zustand.datenobjektAusgabe,
+			datenausgabefeld <- zustand.datenobjektAusgabe->collect(f | 
+				f.datenstruktur.attribute->collect(e | thisModule.Attribut2Ausgabe(e)))
+		)
+}
+rule Uebergang2Button {
+	from uebergang: WorkflowModel!Uebergang
+	to button: ScreenModel!Button (
+		displayText <- uebergang.name,
+		seite <- uebergang.zustand
+	)
+}
+--Lazy rules für jeden Attributtyp
+lazy rule Attribut2Eingabe {
+	from attribut: WorkflowModel!Attribut 
+	to eingabefeld: ScreenModel!Dateneingabefeld (
+			eingabefeld <- ScreenModelEingabefeld,
+			textfeld <- ScreenModelTextfeld
+		),
+		ScreenModelEingabefeld: ScreenModel!Eingabefeld (
+			attribut <- attribut
+		),
+		ScreenModelTextfeld: ScreenModel!Textfeld (
+			displayText <-attribut.name+':'
+		)
+}
+lazy rule Attribut2Ausgabe {
+	from attribut: WorkflowModel!Attribut 
+	to ausgabefeld: ScreenModel!Datenausgabefeld (
+			ausgabefeld <- ScreenModelAusgabefeld,
+			textfeld <- ScreenModelTextfeld
+		),
+		ScreenModelAusgabefeld: ScreenModel!Ausgabefeld (
+			attribut <- attribut
+		),
+		ScreenModelTextfeld: ScreenModel!Textfeld (
+			displayText <- attribut.name+':'
+		)
+}
 
 
 

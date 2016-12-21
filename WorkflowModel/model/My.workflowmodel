@@ -3,9 +3,16 @@
   <zustand pageName="Page1" datenobjektEingabe="//@datenobjekt.0">
     <uebergang zustand="//@zustand.1" name="Weiter"/>
   </zustand>
-  <zustand pageName="Page2" datenobjektAusgabe="//@datenobjekt.0"/>
+  <zustand pageName="Page2" datenobjektEingabe="//@datenobjekt.1" datenobjektAusgabe="//@datenobjekt.0">
+    <uebergang zustand="//@zustand.2" name="Weiter"/>
+  </zustand>
+  <zustand pageName="Page3" datenobjektAusgabe="//@datenobjekt.0 //@datenobjekt.1"/>
   <datenobjekt datenstruktur="//@datenstruktur.0"/>
+  <datenobjekt datenstruktur="//@datenstruktur.1"/>
   <datenstruktur name="Person">
     <attribute name="Name" datentyp="String"/>
+  </datenstruktur>
+  <datenstruktur name="Adresse">
+    <attribute name="Straße" datentyp="String"/>
   </datenstruktur>
 </workflowModel:Workflow>

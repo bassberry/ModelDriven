@@ -23,7 +23,6 @@ import screenModel.ScreenModelPackage;
  * </p>
  * <ul>
  *   <li>{@link screenModel.impl.EingabefeldImpl#getAttribut <em>Attribut</em>}</li>
- *   <li>{@link screenModel.impl.EingabefeldImpl#getInputText <em>Input Text</em>}</li>
  * </ul>
  *
  * @generated
@@ -38,26 +37,6 @@ public class EingabefeldImpl extends MinimalEObjectImpl.Container implements Ein
 	 * @ordered
 	 */
 	protected Attribut attribut;
-
-	/**
-	 * The default value of the '{@link #getInputText() <em>Input Text</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getInputText()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String INPUT_TEXT_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getInputText() <em>Input Text</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getInputText()
-	 * @generated
-	 * @ordered
-	 */
-	protected String inputText = INPUT_TEXT_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -121,35 +100,12 @@ public class EingabefeldImpl extends MinimalEObjectImpl.Container implements Ein
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getInputText() {
-		return inputText;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setInputText(String newInputText) {
-		String oldInputText = inputText;
-		inputText = newInputText;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ScreenModelPackage.EINGABEFELD__INPUT_TEXT, oldInputText, inputText));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case ScreenModelPackage.EINGABEFELD__ATTRIBUT:
 				if (resolve) return getAttribut();
 				return basicGetAttribut();
-			case ScreenModelPackage.EINGABEFELD__INPUT_TEXT:
-				return getInputText();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -164,9 +120,6 @@ public class EingabefeldImpl extends MinimalEObjectImpl.Container implements Ein
 		switch (featureID) {
 			case ScreenModelPackage.EINGABEFELD__ATTRIBUT:
 				setAttribut((Attribut)newValue);
-				return;
-			case ScreenModelPackage.EINGABEFELD__INPUT_TEXT:
-				setInputText((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -183,9 +136,6 @@ public class EingabefeldImpl extends MinimalEObjectImpl.Container implements Ein
 			case ScreenModelPackage.EINGABEFELD__ATTRIBUT:
 				setAttribut((Attribut)null);
 				return;
-			case ScreenModelPackage.EINGABEFELD__INPUT_TEXT:
-				setInputText(INPUT_TEXT_EDEFAULT);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -200,26 +150,8 @@ public class EingabefeldImpl extends MinimalEObjectImpl.Container implements Ein
 		switch (featureID) {
 			case ScreenModelPackage.EINGABEFELD__ATTRIBUT:
 				return attribut != null;
-			case ScreenModelPackage.EINGABEFELD__INPUT_TEXT:
-				return INPUT_TEXT_EDEFAULT == null ? inputText != null : !INPUT_TEXT_EDEFAULT.equals(inputText);
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (inputText: ");
-		result.append(inputText);
-		result.append(')');
-		return result.toString();
 	}
 
 } //EingabefeldImpl

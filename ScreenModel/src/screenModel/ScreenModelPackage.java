@@ -554,22 +554,13 @@ public interface ScreenModelPackage extends EPackage {
 	int EINGABEFELD__ATTRIBUT = 0;
 
 	/**
-	 * The feature id for the '<em><b>Input Text</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EINGABEFELD__INPUT_TEXT = 1;
-
-	/**
 	 * The number of structural features of the '<em>Eingabefeld</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EINGABEFELD_FEATURE_COUNT = 2;
+	int EINGABEFELD_FEATURE_COUNT = 1;
 
 	/**
 	 * The number of operations of the '<em>Eingabefeld</em>' class.
@@ -647,22 +638,13 @@ public interface ScreenModelPackage extends EPackage {
 	int AUSGABEFELD__ATTRIBUT = 0;
 
 	/**
-	 * The feature id for the '<em><b>Display Text</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int AUSGABEFELD__DISPLAY_TEXT = 1;
-
-	/**
 	 * The number of structural features of the '<em>Ausgabefeld</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int AUSGABEFELD_FEATURE_COUNT = 2;
+	int AUSGABEFELD_FEATURE_COUNT = 1;
 
 	/**
 	 * The number of operations of the '<em>Ausgabefeld</em>' class.
@@ -1038,17 +1020,6 @@ public interface ScreenModelPackage extends EPackage {
 	EReference getEingabefeld_Attribut();
 
 	/**
-	 * Returns the meta object for the attribute '{@link screenModel.Eingabefeld#getInputText <em>Input Text</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Input Text</em>'.
-	 * @see screenModel.Eingabefeld#getInputText()
-	 * @see #getEingabefeld()
-	 * @generated
-	 */
-	EAttribute getEingabefeld_InputText();
-
-	/**
 	 * Returns the meta object for class '{@link screenModel.Dateneingabefeld <em>Dateneingabefeld</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1100,17 +1071,6 @@ public interface ScreenModelPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getAusgabefeld_Attribut();
-
-	/**
-	 * Returns the meta object for the attribute '{@link screenModel.Ausgabefeld#getDisplayText <em>Display Text</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Display Text</em>'.
-	 * @see screenModel.Ausgabefeld#getDisplayText()
-	 * @see #getAusgabefeld()
-	 * @generated
-	 */
-	EAttribute getAusgabefeld_DisplayText();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1430,14 +1390,6 @@ public interface ScreenModelPackage extends EPackage {
 		EReference EINGABEFELD__ATTRIBUT = eINSTANCE.getEingabefeld_Attribut();
 
 		/**
-		 * The meta object literal for the '<em><b>Input Text</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute EINGABEFELD__INPUT_TEXT = eINSTANCE.getEingabefeld_InputText();
-
-		/**
 		 * The meta object literal for the '{@link screenModel.impl.DateneingabefeldImpl <em>Dateneingabefeld</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1480,14 +1432,6 @@ public interface ScreenModelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference AUSGABEFELD__ATTRIBUT = eINSTANCE.getAusgabefeld_Attribut();
-
-		/**
-		 * The meta object literal for the '<em><b>Display Text</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute AUSGABEFELD__DISPLAY_TEXT = eINSTANCE.getAusgabefeld_DisplayText();
 
 	}
 

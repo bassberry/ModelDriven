@@ -62,8 +62,6 @@
   <eClassifiers xsi:type="ecore:EClass" name="Eingabefeld">
     <eStructuralFeatures xsi:type="ecore:EReference" name="attribut" lowerBound="1"
         eType="#//Attribut"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="inputText" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Dateneingabefeld">
     <eStructuralFeatures xsi:type="ecore:EReference" name="eingabefeld" lowerBound="1"
@@ -74,7 +72,5 @@
   <eClassifiers xsi:type="ecore:EClass" name="Ausgabefeld">
     <eStructuralFeatures xsi:type="ecore:EReference" name="attribut" lowerBound="1"
         eType="#//Attribut"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="displayText" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>

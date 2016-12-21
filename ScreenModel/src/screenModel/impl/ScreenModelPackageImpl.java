@@ -495,15 +495,6 @@ public class ScreenModelPackageImpl extends EPackageImpl implements ScreenModelP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getEingabefeld_InputText() {
-		return (EAttribute)eingabefeldEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getDateneingabefeld() {
 		return dateneingabefeldEClass;
 	}
@@ -542,15 +533,6 @@ public class ScreenModelPackageImpl extends EPackageImpl implements ScreenModelP
 	 */
 	public EReference getAusgabefeld_Attribut() {
 		return (EReference)ausgabefeldEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getAusgabefeld_DisplayText() {
-		return (EAttribute)ausgabefeldEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -625,7 +607,6 @@ public class ScreenModelPackageImpl extends EPackageImpl implements ScreenModelP
 
 		eingabefeldEClass = createEClass(EINGABEFELD);
 		createEReference(eingabefeldEClass, EINGABEFELD__ATTRIBUT);
-		createEAttribute(eingabefeldEClass, EINGABEFELD__INPUT_TEXT);
 
 		dateneingabefeldEClass = createEClass(DATENEINGABEFELD);
 		createEReference(dateneingabefeldEClass, DATENEINGABEFELD__EINGABEFELD);
@@ -633,7 +614,6 @@ public class ScreenModelPackageImpl extends EPackageImpl implements ScreenModelP
 
 		ausgabefeldEClass = createEClass(AUSGABEFELD);
 		createEReference(ausgabefeldEClass, AUSGABEFELD__ATTRIBUT);
-		createEAttribute(ausgabefeldEClass, AUSGABEFELD__DISPLAY_TEXT);
 	}
 
 	/**
@@ -710,7 +690,6 @@ public class ScreenModelPackageImpl extends EPackageImpl implements ScreenModelP
 
 		initEClass(eingabefeldEClass, Eingabefeld.class, "Eingabefeld", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEingabefeld_Attribut(), this.getAttribut(), null, "attribut", null, 1, 1, Eingabefeld.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEingabefeld_InputText(), ecorePackage.getEString(), "inputText", null, 1, 1, Eingabefeld.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dateneingabefeldEClass, Dateneingabefeld.class, "Dateneingabefeld", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDateneingabefeld_Eingabefeld(), this.getEingabefeld(), null, "eingabefeld", null, 1, 1, Dateneingabefeld.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -718,7 +697,6 @@ public class ScreenModelPackageImpl extends EPackageImpl implements ScreenModelP
 
 		initEClass(ausgabefeldEClass, Ausgabefeld.class, "Ausgabefeld", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAusgabefeld_Attribut(), this.getAttribut(), null, "attribut", null, 1, 1, Ausgabefeld.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAusgabefeld_DisplayText(), ecorePackage.getEString(), "displayText", null, 1, 1, Ausgabefeld.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
