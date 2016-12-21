@@ -250,13 +250,22 @@ public interface WorkflowModelPackage extends EPackage {
 	int DATENOBJEKT__DATENSTRUKTUR = 0;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATENOBJEKT__NAME = 1;
+
+	/**
 	 * The number of structural features of the '<em>Datenobjekt</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATENOBJEKT_FEATURE_COUNT = 1;
+	int DATENOBJEKT_FEATURE_COUNT = 2;
 
 	/**
 	 * The number of operations of the '<em>Datenobjekt</em>' class.
@@ -522,6 +531,17 @@ public interface WorkflowModelPackage extends EPackage {
 	EReference getDatenobjekt_Datenstruktur();
 
 	/**
+	 * Returns the meta object for the attribute '{@link workflowModel.Datenobjekt#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see workflowModel.Datenobjekt#getName()
+	 * @see #getDatenobjekt()
+	 * @generated
+	 */
+	EAttribute getDatenobjekt_Name();
+
+	/**
 	 * Returns the meta object for class '{@link workflowModel.Datenstruktur <em>Datenstruktur</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -735,6 +755,14 @@ public interface WorkflowModelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference DATENOBJEKT__DATENSTRUKTUR = eINSTANCE.getDatenobjekt_Datenstruktur();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DATENOBJEKT__NAME = eINSTANCE.getDatenobjekt_Name();
 
 		/**
 		 * The meta object literal for the '{@link workflowModel.impl.DatenstrukturImpl <em>Datenstruktur</em>}' class.

@@ -23,6 +23,7 @@ import workflowModel.WorkflowModelPackage;
  * </p>
  * <ul>
  *   <li>{@link workflowModel.impl.DatenobjektImpl#getDatenstruktur <em>Datenstruktur</em>}</li>
+ *   <li>{@link workflowModel.impl.DatenobjektImpl#getName <em>Name</em>}</li>
  * </ul>
  *
  * @generated
@@ -37,6 +38,25 @@ public class DatenobjektImpl extends MinimalEObjectImpl.Container implements Dat
 	 * @ordered
 	 */
 	protected Datenstruktur datenstruktur;
+
+	/**
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NAME_EDEFAULT = null;
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -100,12 +120,35 @@ public class DatenobjektImpl extends MinimalEObjectImpl.Container implements Dat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, WorkflowModelPackage.DATENOBJEKT__NAME, oldName, name));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case WorkflowModelPackage.DATENOBJEKT__DATENSTRUKTUR:
 				if (resolve) return getDatenstruktur();
 				return basicGetDatenstruktur();
+			case WorkflowModelPackage.DATENOBJEKT__NAME:
+				return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -120,6 +163,9 @@ public class DatenobjektImpl extends MinimalEObjectImpl.Container implements Dat
 		switch (featureID) {
 			case WorkflowModelPackage.DATENOBJEKT__DATENSTRUKTUR:
 				setDatenstruktur((Datenstruktur)newValue);
+				return;
+			case WorkflowModelPackage.DATENOBJEKT__NAME:
+				setName((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -136,6 +182,9 @@ public class DatenobjektImpl extends MinimalEObjectImpl.Container implements Dat
 			case WorkflowModelPackage.DATENOBJEKT__DATENSTRUKTUR:
 				setDatenstruktur((Datenstruktur)null);
 				return;
+			case WorkflowModelPackage.DATENOBJEKT__NAME:
+				setName(NAME_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -150,8 +199,26 @@ public class DatenobjektImpl extends MinimalEObjectImpl.Container implements Dat
 		switch (featureID) {
 			case WorkflowModelPackage.DATENOBJEKT__DATENSTRUKTUR:
 				return datenstruktur != null;
+			case WorkflowModelPackage.DATENOBJEKT__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (name: ");
+		result.append(name);
+		result.append(')');
+		return result.toString();
 	}
 
 } //DatenobjektImpl

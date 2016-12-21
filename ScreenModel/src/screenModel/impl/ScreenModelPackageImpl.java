@@ -378,6 +378,15 @@ public class ScreenModelPackageImpl extends EPackageImpl implements ScreenModelP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getDatenobjekt_Name() {
+		return (EAttribute)datenobjektEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getDatenstruktur() {
 		return datenstrukturEClass;
 	}
@@ -589,6 +598,7 @@ public class ScreenModelPackageImpl extends EPackageImpl implements ScreenModelP
 
 		datenobjektEClass = createEClass(DATENOBJEKT);
 		createEReference(datenobjektEClass, DATENOBJEKT__DATENSTRUKTUR);
+		createEAttribute(datenobjektEClass, DATENOBJEKT__NAME);
 
 		datenstrukturEClass = createEClass(DATENSTRUKTUR);
 		createEReference(datenstrukturEClass, DATENSTRUKTUR__ATTRIBUTE);
@@ -672,6 +682,7 @@ public class ScreenModelPackageImpl extends EPackageImpl implements ScreenModelP
 
 		initEClass(datenobjektEClass, Datenobjekt.class, "Datenobjekt", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDatenobjekt_Datenstruktur(), this.getDatenstruktur(), null, "datenstruktur", null, 1, 1, Datenobjekt.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDatenobjekt_Name(), ecorePackage.getEString(), "name", null, 0, 1, Datenobjekt.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(datenstrukturEClass, Datenstruktur.class, "Datenstruktur", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDatenstruktur_Attribute(), this.getAttribut(), null, "attribute", null, 0, -1, Datenstruktur.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -7,8 +7,8 @@
     <uebergang zustand="//@zustand.2" name="Weiter"/>
   </zustand>
   <zustand pageName="Page3" datenobjektAusgabe="//@datenobjekt.0 //@datenobjekt.1"/>
-  <datenobjekt datenstruktur="//@datenstruktur.0"/>
-  <datenobjekt datenstruktur="//@datenstruktur.1"/>
+  <datenobjekt name="Person" datenstruktur="//@datenstruktur.0"/>
+  <datenobjekt name="Adresse" datenstruktur="//@datenstruktur.1"/>
   <datenstruktur name="Person">
     <attribute name="Name" datentyp="String"/>
   </datenstruktur>

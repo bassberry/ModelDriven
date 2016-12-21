@@ -4,7 +4,6 @@
     <button seite="//@seite.1" displayText="Weiter"/>
     <dateneingabe datenobjekt="//@datenobjekt.0">
       <dateneingabefeld>
-<<<<<<< HEAD
         <eingabefeld attribut="//@datenstruktur.0/@attribute.0"/>
         <textfeld displayText="Name:"/>
       </dateneingabefeld>
@@ -28,43 +27,15 @@
       <datenausgabefeld>
         <textfeld displayText="Straße:"/>
         <ausgabefeld attribut="//@datenstruktur.1/@attribute.0"/>
-=======
-        <eingabefeld/>
-      </dateneingabefeld>
-    </dateneingabe>
-    <datenausgabe>
-      <datenausgabefeld>
-        <textfeld/>
-        <ausgabefeld/>
       </datenausgabefeld>
     </datenausgabe>
   </seite>
-  <seite pageName="Page2">
-    <dateneingabe>
-      <dateneingabefeld>
-        <eingabefeld/>
-      </dateneingabefeld>
-    </dateneingabe>
-    <datenausgabe datenobjekt="//@datenobjekt.0">
-      <datenausgabefeld>
-        <textfeld/>
-        <ausgabefeld/>
->>>>>>> origin/master
-      </datenausgabefeld>
-    </datenausgabe>
-  </seite>
-  <datenobjekt datenstruktur="//@datenstruktur.0"/>
-<<<<<<< HEAD
-  <datenobjekt datenstruktur="//@datenstruktur.1"/>
+  <datenobjekt datenstruktur="//@datenstruktur.0" name="Person"/>
+  <datenobjekt datenstruktur="//@datenstruktur.1" name="Adresse"/>
   <datenstruktur name="Person">
     <attribute name="Name" datentyp="String"/>
   </datenstruktur>
   <datenstruktur name="Adresse">
     <attribute name="Straße" datentyp="String"/>
   </datenstruktur>
-=======
-  <datenstruktur name="Person">
-    <attribute name="Name" datentyp="String"/>
-  </datenstruktur>
->>>>>>> origin/master
 </screenModel:ScreenModel>

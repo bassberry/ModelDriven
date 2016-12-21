@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link screenModel.Datenobjekt#getDatenstruktur <em>Datenstruktur</em>}</li>
+ *   <li>{@link screenModel.Datenobjekt#getName <em>Name</em>}</li>
  * </ul>
  *
  * @see screenModel.ScreenModelPackage#getDatenobjekt()
@@ -46,5 +47,31 @@ public interface Datenobjekt extends EObject {
 	 * @generated
 	 */
 	void setDatenstruktur(Datenstruktur value);
+
+	/**
+	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Name</em>' attribute.
+	 * @see #setName(String)
+	 * @see screenModel.ScreenModelPackage#getDatenobjekt_Name()
+	 * @model
+	 * @generated
+	 */
+	String getName();
+
+	/**
+	 * Sets the value of the '{@link screenModel.Datenobjekt#getName <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * @see #getName()
+	 * @generated
+	 */
+	void setName(String value);
 
 } // Datenobjekt
