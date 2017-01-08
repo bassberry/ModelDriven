@@ -74,13 +74,19 @@ rule Zustand2SeiteEinUndAusgabe {
 	to 	seite: ScreenModel!Seite (
 			pageName <- zustand.pageName,
 			button <- zustand.uebergang,
-			dateneingabe <- eingabe
+			dateneingabe <- eingabe,
+			datenausgabe <- ausgabe
 		),
 		eingabe: ScreenModel!Dateneingabe (
 			datenobjekt <- zustand.datenobjektEingabe,
 			dateneingabefeld <- zustand.datenobjektEingabe.datenstruktur.attribute->collect(e | 
 				thisModule.Attribut2Eingabe(e)
 			)
+		)
+		ausgabe: ScreenModel!Datenausgabe (
+			datenobjekt <- zustand.datenobjektAusgabe,
+			datenausgabefeld <- zustand.datenobjektAusgabe->collect(f | 
+				f.datenstruktur.attribute->collect(e | thisModule.Attribut2Ausgabe(e)))
 		)
 }
 rule Zustand2SeiteEin {
