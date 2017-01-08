@@ -18,11 +18,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
-import org.eclipse.emf.edit.provider.ViewerNotification;
-
-import screenModel.Eingabefeld;
 import screenModel.ScreenModelPackage;
 
 /**
@@ -61,7 +57,6 @@ public class EingabefeldItemProvider
 			super.getPropertyDescriptors(object);
 
 			addAttributPropertyDescriptor(object);
-			addInputTextPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -89,28 +84,6 @@ public class EingabefeldItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Input Text feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addInputTextPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Eingabefeld_inputText_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Eingabefeld_inputText_feature", "_UI_Eingabefeld_type"),
-				 ScreenModelPackage.Literals.EINGABEFELD__INPUT_TEXT,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
 	 * This returns Eingabefeld.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -129,10 +102,7 @@ public class EingabefeldItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Eingabefeld)object).getInputText();
-		return label == null || label.length() == 0 ?
-			getString("_UI_Eingabefeld_type") :
-			getString("_UI_Eingabefeld_type") + " " + label;
+		return getString("_UI_Eingabefeld_type");
 	}
 	
 
@@ -146,12 +116,6 @@ public class EingabefeldItemProvider
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
-
-		switch (notification.getFeatureID(Eingabefeld.class)) {
-			case ScreenModelPackage.EINGABEFELD__INPUT_TEXT:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-		}
 		super.notifyChanged(notification);
 	}
 

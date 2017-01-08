@@ -18,8 +18,11 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 
+import org.eclipse.emf.edit.provider.ViewerNotification;
+import screenModel.Datenobjekt;
 import screenModel.ScreenModelPackage;
 
 /**
@@ -58,6 +61,7 @@ public class DatenobjektItemProvider
 			super.getPropertyDescriptors(object);
 
 			addDatenstrukturPropertyDescriptor(object);
+			addNamePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -85,6 +89,28 @@ public class DatenobjektItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Name feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNamePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Datenobjekt_name_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Datenobjekt_name_feature", "_UI_Datenobjekt_type"),
+				 ScreenModelPackage.Literals.DATENOBJEKT__NAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns Datenobjekt.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -103,7 +129,10 @@ public class DatenobjektItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_Datenobjekt_type");
+		String label = ((Datenobjekt)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_Datenobjekt_type") :
+			getString("_UI_Datenobjekt_type") + " " + label;
 	}
 	
 
@@ -117,6 +146,12 @@ public class DatenobjektItemProvider
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(Datenobjekt.class)) {
+			case ScreenModelPackage.DATENOBJEKT__NAME:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+		}
 		super.notifyChanged(notification);
 	}
 

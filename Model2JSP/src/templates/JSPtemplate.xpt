@@ -5,11 +5,133 @@
 «EXPAND seite FOREACH seite»«REM»Erstellen der Seiten für jsp«ENDREM»
 «EXPAND javaClass FOREACH datenstruktur»«REM»Erstellen der Datenstrukturen als Java-Code«ENDREM»
 
+«FILE "controller/IndexServlet.java"»
+package controller;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.Servlet;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import dataobjects.*;
+
+public class IndexServlet extends HttpServlet {
+
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		doPost(request, response);
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		String param = request.getParameter("proceedAction");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/«seite.first().pageName».jsp");
+
+		if (param != null) {
+			DataStorage storage = DataStorage.INSTANCE;
+			try {
+				switch (param) {
+				«EXPAND indexCase FOREACH seite»
+				}
+			} catch (NumberFormatException exception) {
+				// dispatcher should be left to the old page.
+			}
+		}
+
+		dispatcher.forward(request, response);
+
+	}
+}
+
+«ENDFILE»
+
+«FILE "dataobjects/DataStorage.java"»
+package dataobjects;
+
+import java.util.HashMap;
+
+public enum DataStorage {
+
+	INSTANCE;
+	
+	private HashMap<String, Object> storage = new HashMap<>();
+	
+	public Object get(String key)  {
+		return storage.get(key);		
+	}
+	
+	public void set(String key, Object value) {
+		storage.put(key, value);
+	}
+
+}
+
+«ENDFILE»
+
 «ENDDEFINE»
 
 
 «DEFINE seite FOR Seite»
-«FILE pageName + ".jsp"»
+«FILE "WebContent/" + pageName + ".jsp"»
+
+
+<%@page import="dataobjects.*"%>
+<%
+	// Fetch content to be displayed !
+	«EXPAND fetchData FOREACH datenausgabe»
+%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" media="screen,projection"
+	title="Standardstylesheet" href="stylesheets/default.css"
+	type="text/css" />
+</head>
+<body>
+	<form action="index.jsp" method="post">
+	«IF datenausgabe != null»
+	«FOREACH datenausgabe AS ausgabe»
+		<div class="object">
+			«FOREACH ausgabe.datenausgabefeld AS ausgabeFeld»
+			<div>
+				<label>«ausgabeFeld.textfeld.displayText»</label>
+				<%
+					out.print(«ausgabe.datenobjekt.name».get«ausgabeFeld.ausgabefeld.attribut.name»());
+				%>
+			</div>
+			«ENDFOREACH»
+		</div>
+	«ENDFOREACH»
+	«ENDIF»
+	«IF dateneingabe != null»
+		<div class="object">
+		«FOREACH dateneingabe.dateneingabefeld AS eingabeFeld»
+			<div>
+				<label>«eingabeFeld.textfeld.displayText»</label> <input type="«IF dateneingabe.datenobjekt.datenstruktur.attribute.datentyp.contains("String") == true»text«ELSEIF dateneingabe.datenobjekt.datenstruktur.attribute.datentyp.contains("Integer") == true»number«ENDIF»" name="«eingabeFeld.eingabefeld.attribut.name»" />
+			</div>
+		«ENDFOREACH»
+		</div>
+	«ENDIF»
+	«IF button != null»
+		<div class="controlPanel">
+			<button type="submit" name ="proceedAction" value="«pageName»">«button.displayText»</button>
+		</div>
+	«ENDIF»
+	</form>
+</body>
+</html>
 
 «ENDFILE»
 «ENDDEFINE»
@@ -33,120 +155,40 @@ public class «name» {
 «ENDDEFINE»
 
 «DEFINE getset FOR Attribut»
-	public «datentyp» get«name»() {
+	public «datentyp» get«name.toFirstUpper()»() {
 		return this.«name»;
 	}
 	
-	public void set«name»(«datentyp» «name») {
+	public void set«name.toFirstUpper()»(«datentyp» «name») {
 		this.«name» = «name»;
 	}
 	
 «ENDDEFINE»
 
-«DEFINE ausgabeFeld FOR Ausgabefeld»
-
+«DEFINE fetchData FOR Datenausgabe»
+	«datenobjekt.datenstruktur.name» «datenobjekt.name» = («datenobjekt.datenstruktur.name») DataStorage.INSTANCE.get("«datenobjekt.name»");
 «ENDDEFINE»
 
-
-«DEFINE eingabeFeld FOR Eingabefeld»
-
+«DEFINE indexCase FOR Seite»
+					case "«pageName»" :
+					«EXPAND indexEingabe FOR dateneingabe»
+					«IF button.seite != null»
+					dispatcher = getServletContext().getRequestDispatcher("/«button.seite.pageName».jsp");
+					«ENDIF»
+					break;
+					
 «ENDDEFINE»
 
-
-
-«REM»
-«DEFINE main FOR Student»
-«FILE "Page1.jsp"»
-
-
-<%@page import="dataobjects.*"%>
-<%
-	// Fetch content to be displayed !
-%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-<link rel="stylesheet" media="screen,projection"
-	title="Standardstylesheet" href="stylesheets/default.css"
-	type="text/css" />
-</head>
-<body>
-	<form action="index.jsp" method="post">
-		<div class="object">
-			<div>
-				<label>«name»</label> <input type="text" name="name" />
-			</div>
-			<div>
-				<label>«id»</label> <input type="number" name="id" />
-			</div>
-		</div>
-		<div class="controlPanel">
-			<button type="submit" name="proceedAction" value="Page1">Proceed</button>
-		</div>
-	</form>
-</body>
-</html>
-
-
-«ENDFILE»
-
-«FILE "Page2.jsp"»
-<%@page import="dataobjects.*"%>
-<%
-	// Fetch content to be displayed !
-
-	Student Student1 = (Student) DataStorage.INSTANCE.get("Student1");
-%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-<link rel="stylesheet" media="screen,projection"
-	title="Standardstylesheet" href="stylesheets/default.css"
-	type="text/css" />
-</head>
-<body>
-
-	<form action="index.jsp" method="post">
-		<div class="object">
-			<div>
-				<label>«name»</label>
-				<%
-					out.print(Student1.getName());
-				%>
-			</div>
-			<div>
-				<label>«id»</label>
-				<%
-					out.print(Student1.getId());
-				%>
-			</div>
-		</div>
-«EXPAND pruefung FOREACH pruefungsliste»
-	</form>
-</body>
-</html>
-«ENDFILE»
+«DEFINE indexEingabe FOR Dateneingabe»
+«FOREACH datenobjekt.datenstruktur.attribute AS attribut»
+					{
+						«datenobjekt.datenstruktur.name» «datenobjekt.name» = («datenobjekt.datenstruktur.name») storage.get("«datenobjekt.name»");
+						if («datenobjekt.name» == null) {
+							«datenobjekt.name» = new «datenobjekt.datenstruktur.name»();
+						}
+						«datenobjekt.name».set«attribut.name.toFirstUpper()»(request.getParameter("«attribut.name»"));
+						
+						storage.set("«datenobjekt.name»", «datenobjekt.name»);
+					}
+«ENDFOREACH»
 «ENDDEFINE»
-
-«DEFINE pruefung FOR Pruefung»
-		<div class="object">
-			<div>
-				<label>«name»</label> <input type="text" name="name" />
-			</div>
-			<div>
-				<label>«antritte»</label> <input type="number" name="antritte" />
-			</div>
-		</div>
-		<div class="controlPanel">
-			<button type="submit" name="proceedAction" value="Page2">Proceed</button>
-		</div>
-«ENDDEFINE»
-«ENDREM»

@@ -14,9 +14,15 @@
     <dateneingabe datenobjekt="//@datenobjekt.1">
       <dateneingabefeld>
         <eingabefeld attribut="//@datenstruktur.1/@attribute.0"/>
-        <textfeld displayText="Straße:"/>
+        <textfeld displayText="Strasse:"/>
       </dateneingabefeld>
     </dateneingabe>
+    <datenausgabe datenobjekt="//@datenobjekt.0">
+      <datenausgabefeld>
+        <textfeld displayText="Name:"/>
+        <ausgabefeld attribut="//@datenstruktur.0/@attribute.0"/>
+      </datenausgabefeld>
+    </datenausgabe>
   </seite>
   <seite pageName="Page3">
     <datenausgabe datenobjekt="//@datenobjekt.0">
@@ -24,18 +30,20 @@
         <textfeld displayText="Name:"/>
         <ausgabefeld attribut="//@datenstruktur.0/@attribute.0"/>
       </datenausgabefeld>
+    </datenausgabe>
+    <datenausgabe datenobjekt="//@datenobjekt.1">
       <datenausgabefeld>
-        <textfeld displayText="Straße:"/>
+        <textfeld displayText="Strasse:"/>
         <ausgabefeld attribut="//@datenstruktur.1/@attribute.0"/>
       </datenausgabefeld>
     </datenausgabe>
   </seite>
-  <datenobjekt datenstruktur="//@datenstruktur.0" name="Person"/>
-  <datenobjekt datenstruktur="//@datenstruktur.1" name="Adresse"/>
+  <datenobjekt datenstruktur="//@datenstruktur.0" name="Person1"/>
+  <datenobjekt datenstruktur="//@datenstruktur.1" name="Adresse1"/>
   <datenstruktur name="Person">
     <attribute name="Name" datentyp="String"/>
   </datenstruktur>
   <datenstruktur name="Adresse">
-    <attribute name="Straße" datentyp="String"/>
+    <attribute name="Strasse" datentyp="String"/>
   </datenstruktur>
 </screenModel:ScreenModel>

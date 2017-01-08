@@ -1,18 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workflowModel:Workflow xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:workflowModel="workflowModel" name="Personendaten">
-  <zustand pageName="Page1" datenobjektEingabe="//@datenobjekt.0">
-    <uebergang zustand="//@zustand.1" name="Weiter"/>
+<workflowModel:Workflow
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:workflowModel="workflowModel"
+    name="Personendaten">
+  <zustand pageName="Page1"
+      datenobjektEingabe="//@datenobjekt.0">
+    <uebergang
+        zustand="//@zustand.1"
+        name="Weiter"/>
   </zustand>
-  <zustand pageName="Page2" datenobjektEingabe="//@datenobjekt.1" datenobjektAusgabe="//@datenobjekt.0">
-    <uebergang zustand="//@zustand.2" name="Weiter"/>
+  <zustand pageName="Page2"
+      datenobjektEingabe="//@datenobjekt.1"
+      datenobjektAusgabe="//@datenobjekt.0">
+    <uebergang
+        zustand="//@zustand.2"
+        name="Weiter"/>
   </zustand>
-  <zustand pageName="Page3" datenobjektAusgabe="//@datenobjekt.0 //@datenobjekt.1"/>
-  <datenobjekt name="Person" datenstruktur="//@datenstruktur.0"/>
-  <datenobjekt name="Adresse" datenstruktur="//@datenstruktur.1"/>
-  <datenstruktur name="Person">
-    <attribute name="Name" datentyp="String"/>
+  <zustand pageName="Page3"
+      datenobjektAusgabe="//@datenobjekt.0 //@datenobjekt.1"/>
+  <datenobjekt
+      datenstruktur="//@datenstruktur.0"
+      name="Person1"/>
+  <datenobjekt
+      datenstruktur="//@datenstruktur.1"
+      name="Adresse1"/>
+  <datenstruktur
+      name="Person">
+    <attribute
+        name="Name"
+        datentyp="String"/>
   </datenstruktur>
-  <datenstruktur name="Adresse">
-    <attribute name="Straße" datentyp="String"/>
+  <datenstruktur
+      name="Adresse">
+    <attribute
+        name="Strasse"
+        datentyp="String"/>
   </datenstruktur>
 </workflowModel:Workflow>

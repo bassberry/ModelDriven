@@ -23,8 +23,8 @@
 <mapEntry key="OPTION_CONTENT_TYPE" value="false"/>
 <mapEntry key="OPTION_DERIVED" value="true"/>
 <mapEntry key="allowInterModelReferences" value="false"/>
-<mapEntry key="printExecutionTime" value="false"/>
-<mapEntry key="step" value="false"/>
+<mapEntry key="disassemblyMode" value="false"/>
+<mapEntry key="stopInMain" value="false"/>
 <mapEntry key="supportUML2Stereotypes" value="false"/>
 </mapAttribute>
 <listAttribute key="OrderedInput">
@@ -42,5 +42,6 @@
 <mapEntry key="ScreenModel" value="/ScreenModel/model/screenModel.ecore"/>
 <mapEntry key="WorkflowModel" value="/WorkflowModel/model/workflowModel.ecore"/>
 </mapAttribute>
+<stringAttribute key="Port" value="6060"/>
 <listAttribute key="Superimpose"/>
 </launchConfiguration>

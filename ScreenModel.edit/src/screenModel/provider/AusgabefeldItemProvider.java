@@ -18,11 +18,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
-import org.eclipse.emf.edit.provider.ViewerNotification;
-
-import screenModel.Ausgabefeld;
 import screenModel.ScreenModelPackage;
 
 /**
@@ -61,7 +57,6 @@ public class AusgabefeldItemProvider
 			super.getPropertyDescriptors(object);
 
 			addAttributPropertyDescriptor(object);
-			addDisplayTextPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -89,28 +84,6 @@ public class AusgabefeldItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Display Text feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addDisplayTextPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Ausgabefeld_displayText_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Ausgabefeld_displayText_feature", "_UI_Ausgabefeld_type"),
-				 ScreenModelPackage.Literals.AUSGABEFELD__DISPLAY_TEXT,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
 	 * This returns Ausgabefeld.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -129,10 +102,7 @@ public class AusgabefeldItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Ausgabefeld)object).getDisplayText();
-		return label == null || label.length() == 0 ?
-			getString("_UI_Ausgabefeld_type") :
-			getString("_UI_Ausgabefeld_type") + " " + label;
+		return getString("_UI_Ausgabefeld_type");
 	}
 	
 
@@ -146,12 +116,6 @@ public class AusgabefeldItemProvider
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
-
-		switch (notification.getFeatureID(Ausgabefeld.class)) {
-			case ScreenModelPackage.AUSGABEFELD__DISPLAY_TEXT:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-		}
 		super.notifyChanged(notification);
 	}
 

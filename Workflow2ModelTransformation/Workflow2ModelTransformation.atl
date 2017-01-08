@@ -6,7 +6,7 @@ create OUT : ScreenModel from IN : WorkflowModel;
 
 helper context WorkflowModel!Zustand def: hasEingabe(): Boolean =
 	if not self.datenobjektEingabe.oclIsUndefined() then 
-		if self.datenobjektAusgabe.oclIsUndefined() then
+		if self.datenobjektAusgabe.first().oclIsUndefined() then
 			true
 		else
 			false
@@ -16,7 +16,7 @@ helper context WorkflowModel!Zustand def: hasEingabe(): Boolean =
 	endif;
 
 helper context WorkflowModel!Zustand def: hasAusgabe(): Boolean =
-	if not self.datenobjektAusgabe.oclIsUndefined() then 
+	if not self.datenobjektAusgabe.first().oclIsUndefined() then 
 		if self.datenobjektEingabe.oclIsUndefined() then
 			true
 		else
@@ -27,7 +27,7 @@ helper context WorkflowModel!Zustand def: hasAusgabe(): Boolean =
 	endif;
 
 helper context WorkflowModel!Zustand def: hasEinUndAusgabe(): Boolean =
-	if not self.datenobjektAusgabe.oclIsUndefined() then 
+	if not self.datenobjektAusgabe.first().oclIsUndefined() then 
 		if not self.datenobjektEingabe.oclIsUndefined() then
 			true
 		else
@@ -74,19 +74,8 @@ rule Zustand2SeiteEinUndAusgabe {
 	to 	seite: ScreenModel!Seite (
 			pageName <- zustand.pageName,
 			button <- zustand.uebergang,
-			dateneingabe <- eingabe,
-			datenausgabe <- ausgabe
-		),
-		eingabe: ScreenModel!Dateneingabe (
-			datenobjekt <- zustand.datenobjektEingabe,
-			dateneingabefeld <- zustand.datenobjektEingabe.datenstruktur.attribute->collect(e | 
-				thisModule.Attribut2Eingabe(e)
-			)
-		)
-		ausgabe: ScreenModel!Datenausgabe (
-			datenobjekt <- zustand.datenobjektAusgabe,
-			datenausgabefeld <- zustand.datenobjektAusgabe->collect(f | 
-				f.datenstruktur.attribute->collect(e | thisModule.Attribut2Ausgabe(e)))
+			dateneingabe <- thisModule.Datenobjekt2Dateneingabe(zustand.datenobjektEingabe),
+			datenausgabe <- zustand.datenobjektAusgabe->collect(e | thisModule.Datenobjekt2Datenausgabe(e))
 		)
 }
 rule Zustand2SeiteEin {
@@ -94,13 +83,7 @@ rule Zustand2SeiteEin {
 	to 	seite: ScreenModel!Seite (
 			pageName <- zustand.pageName,
 			button <- zustand.uebergang,
-			dateneingabe <- eingabe
-		),
-		eingabe: ScreenModel!Dateneingabe (
-			datenobjekt <- zustand.datenobjektEingabe,
-			dateneingabefeld <- zustand.datenobjektEingabe.datenstruktur.attribute->collect(e | 
-				thisModule.Attribut2Eingabe(e)
-			)
+			dateneingabe <- thisModule.Datenobjekt2Dateneingabe(zustand.datenobjektEingabe)
 		)
 }
 rule Zustand2SeiteAusgabe {
@@ -108,12 +91,7 @@ rule Zustand2SeiteAusgabe {
 	to 	seite: ScreenModel!Seite (
 			pageName <- zustand.pageName,
 			button <- zustand.uebergang,
-			datenausgabe <- ausgabe
-		),
-		ausgabe: ScreenModel!Datenausgabe (
-			datenobjekt <- zustand.datenobjektAusgabe,
-			datenausgabefeld <- zustand.datenobjektAusgabe->collect(f | 
-				f.datenstruktur.attribute->collect(e | thisModule.Attribut2Ausgabe(e)))
+			datenausgabe <- zustand.datenobjektAusgabe->collect(f | thisModule.Datenobjekt2Datenausgabe(f))
 		)
 }
 rule Uebergang2Button {
@@ -123,6 +101,23 @@ rule Uebergang2Button {
 		seite <- uebergang.zustand
 	)
 }
+
+lazy rule Datenobjekt2Datenausgabe {
+	from datenobjektAusgabe: WorkflowModel!Datenobjekt
+	to datenausgabe: ScreenModel!Datenausgabe (
+		datenobjekt <- datenobjektAusgabe,
+		datenausgabefeld <- datenobjektAusgabe.datenstruktur.attribute->collect(f | thisModule.Attribut2Ausgabe(f))
+	)
+}
+
+lazy rule Datenobjekt2Dateneingabe {
+	from datenobjektEingabe: WorkflowModel!Datenobjekt
+	to dateneingabe: ScreenModel!Dateneingabe (
+		datenobjekt <- datenobjektEingabe,
+		dateneingabefeld <- datenobjektEingabe.datenstruktur.attribute->collect(f | thisModule.Attribut2Eingabe(f))
+	)
+}
+
 --Lazy rules für jeden Attributtyp
 lazy rule Attribut2Eingabe {
 	from attribut: WorkflowModel!Attribut 
