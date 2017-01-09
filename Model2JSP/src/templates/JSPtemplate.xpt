@@ -138,7 +138,7 @@ public enum DataStorage {
 
 
 «DEFINE javaClass FOR Datenstruktur»
-«FILE "dataobjects/" + name + ".java"»
+«FILE "dataobjects/" + name.toFirstUpper() + ".java"»
 package dataobjects;
 
 public class «name» {
