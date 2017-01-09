@@ -119,7 +119,7 @@ public enum DataStorage {
 		<div class="object">
 		«FOREACH dateneingabe.dateneingabefeld AS eingabeFeld»
 			<div>
-				<label>«eingabeFeld.textfeld.displayText»</label> <input type="«IF dateneingabe.datenobjekt.datenstruktur.attribute.datentyp.contains("String") == true»text«ELSEIF dateneingabe.datenobjekt.datenstruktur.attribute.datentyp.contains("Integer") == true»number«ENDIF»" name="«eingabeFeld.eingabefeld.attribut.name»" />
+				<label>«eingabeFeld.textfeld.displayText»</label> <input type="«IF dateneingabe.datenobjekt.datenstruktur.attribute.datentyp.contains("String")»text«ELSEIF dateneingabe.datenobjekt.datenstruktur.attribute.datentyp.contains("Integer")»number«ENDIF»" name="«eingabeFeld.eingabefeld.attribut.name»" />
 			</div>
 		«ENDFOREACH»
 		</div>

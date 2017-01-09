@@ -1,0 +1,326 @@
+«IMPORT screenModel»
+
+«DEFINE main FOR ScreenModel»
+
+«EXPAND datastorage FOR this»
+«EXPAND swingApp FOR this»
+
+«EXPAND javaClass FOREACH datenstruktur»
+«EXPAND userInterface FOR this»
+«EXPAND seite FOREACH seite»
+
+
+«ENDDEFINE»
+
+«REM»
+	Erzeugen der Datenstrukturen als Java-Klassen
+«ENDREM»
+«DEFINE javaClass FOR Datenstruktur»
+«FILE "dataobjects/" + name.toFirstUpper() + ".java"»
+package dataobjects;
+
+public class «name.toFirstUpper()» {
+	
+	«EXPAND deklaration FOREACH attribute»
+	«EXPAND getset FOREACH attribute»
+}
+
+«ENDFILE»
+«ENDDEFINE»
+
+«DEFINE deklaration FOR Attribut»
+	private «datentyp» «name.toLowerCase()»;
+	
+«ENDDEFINE»
+
+«DEFINE getset FOR Attribut»
+	public «datentyp» get«name.toFirstUpper()»() {
+		return this.«name.toLowerCase()»;
+	}
+	
+	public void set«name.toFirstUpper()»(«datentyp» «name.toLowerCase()») {
+		this.«name.toLowerCase()» = «name.toLowerCase()»;
+	}
+	
+«ENDDEFINE»
+
+
+«DEFINE userInterface FOR ScreenModel»
+«FILE "gui/AppUserInterface.java"»
+package gui;
+
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+
+import javax.swing.BoxLayout;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+
+public class AppUserInterface extends JFrame {
+	
+	private JPanel rootPanel = new JPanel();
+	private «seite.first().pageName.toFirstUpper()» «seite.first().pageName.toLowerCase()» = new «seite.first().pageName.toFirstUpper()»(this);
+	
+	public AppUserInterface(String title) {
+		this.setTitle(title);
+		
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setSize(new Dimension(800, 600));
+		this.setMinimumSize(new Dimension(400, 200));
+		this.initialize();
+		this.setVisible(true);
+	}
+	
+	private void initialize() {
+		rootPanel.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
+
+		// place the panel with our content and form at the top of the frame
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.weightx = 1.0;
+		c.weighty = 1.0;
+		c.anchor = GridBagConstraints.NORTH;
+
+		// Insert the first page of the form transactions here
+		rootPanel.add(«seite.first().pageName.toLowerCase()», c);
+
+		JScrollPane temp = new JScrollPane(rootPanel);
+
+		this.getRootPane().setLayout(new GridBagLayout());
+		c.fill = GridBagConstraints.BOTH;
+		this.getRootPane().add(temp, c);
+	}
+	
+	public void switchPage(String pageIdentifier) {
+		GridBagConstraints c = new GridBagConstraints();
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.weightx = 1.0;
+		c.weighty = 1.0;
+		c.anchor = GridBagConstraints.NORTH;
+
+		switch (pageIdentifier) {
+			«EXPAND switchPage FOREACH seite»
+			
+			default :
+				break;
+		}
+	}
+}
+
+«ENDFILE»
+«ENDDEFINE»
+
+«DEFINE switchPage FOR Seite»
+			case "«pageName.toFirstUpper()»" :
+				rootPanel.removeAll();
+			«IF button.seite != null»«LET button.seite.pageName AS nextPage»
+				«nextPage.toFirstUpper()» «nextPage.toLowerCase()» = new «nextPage.toFirstUpper()»(this);
+				rootPanel.add(«nextPage.toLowerCase()», c);
+			«ENDLET»«ENDIF»
+				rootPanel.revalidate();
+				rootPanel.repaint();
+				break;
+				
+«ENDDEFINE»
+
+
+«DEFINE seite FOR Seite»
+«FILE "gui/" + pageName + ".java"»
+package gui;
+
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+import dataobjects.*;
+
+public class «pageName.toFirstUpper()» extends JPanel {
+	
+	private AppUserInterface parent = null;
+	
+	«EXPAND inputObject FOR dateneingabe»
+	
+	public «pageName.toFirstUpper()»(AppUserInterface parent) {
+		this.parent = parent;
+		this.initialize();
+	}
+	
+	private void initialize() {
+		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+		this.addWidgetsToScreen();
+	}
+	
+	private void addWidgetsToScreen() {
+		«EXPAND renderOutput FOREACH datenausgabe»
+		«EXPAND renderInput FOR dateneingabe»
+		«EXPAND submitButton FOR button»
+	}
+	
+	private void triggerNextPage() {
+		try {
+			«EXPAND storeInput FOR dateneingabe»
+			
+			parent.switchPage("«pageName.toFirstUpper()»");
+		} catch (NumberFormatException exception) {
+			JOptionPane.showMessageDialog(«pageName.toFirstUpper()».this, "Number could not be converted", "Number Format Exception", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+}
+«ENDFILE»
+«ENDDEFINE»
+
+«DEFINE inputObject FOR Dateneingabe»
+	private «datenobjekt.datenstruktur.name.toFirstUpper()» «datenobjekt.name.toLowerCase()» = new «datenobjekt.datenstruktur.name.toFirstUpper()»();
+	«FOREACH dateneingabefeld.eingabefeld AS eingabeFeld»
+	private JTextField «eingabeFeld.attribut.name.toLowerCase()»TextField = new JTextField("«eingabeFeld.attribut.name»", 20);
+	
+	«ENDFOREACH»
+«ENDDEFINE»
+
+«DEFINE renderOutput FOR Datenausgabe»«LET datenobjekt.datenstruktur.name.toFirstUpper() AS Typ»«LET datenobjekt.name.toFirstUpper() AS Objekt»«LET datenobjekt.name.toLowerCase() AS objekt»
+		«Typ» «objekt» = («Typ») DataStorage.INSTANCE.get("«Objekt»");
+		
+		JPanel «objekt»Panel = new JPanel();
+		this.add(«objekt»Panel);
+		«objekt»Panel.setLayout(new BoxLayout(«objekt»Panel, BoxLayout.Y_AXIS));
+		
+		«FOREACH datenausgabefeld AS feld»«LET feld.ausgabefeld.attribut.name.toFirstUpper() AS attrName»
+		JPanel «objekt»Panel_«attrName»Panel = new JPanel();
+		«objekt»Panel.add(«objekt»Panel_«attrName»Panel);
+		
+		«objekt»Panel_«attrName»Panel.add(new JLabel("«feld.textfeld.displayText»"));
+		
+		«objekt»Panel_«attrName»Panel.add(new JLabel(((«Typ») «objekt»).get«attrName»().toString()));
+		«ENDLET»«ENDFOREACH»
+«ENDLET»«ENDLET»«ENDLET»«ENDDEFINE»
+
+«DEFINE renderInput FOR Dateneingabe»«LET datenobjekt.datenstruktur.name.toFirstUpper() AS Typ»«LET datenobjekt.name.toFirstUpper() AS Objekt»«LET datenobjekt.name.toLowerCase() AS objekt»
+		JPanel «objekt»Panel = new JPanel();
+		this.add(«objekt»Panel);
+		«objekt»Panel.setLayout(new BoxLayout(«objekt»Panel, BoxLayout.Y_AXIS));
+		
+		«FOREACH dateneingabefeld AS feld»«LET feld.eingabefeld.attribut.name.toFirstUpper() AS attrName»
+		JPanel «objekt»Panel_«attrName»Panel = new JPanel();
+		«objekt»Panel.add(«objekt»Panel_«attrName»Panel);
+		
+		«objekt»Panel_«attrName»Panel.add(new JLabel("«feld.textfeld.displayText»"));
+		
+		«attrName.toLowerCase()»TextField.addFocusListener(new FocusListener() {
+			@Override
+			public void focusLost(final FocusEvent pE) {
+			}
+			@Override
+			public void focusGained(final FocusEvent pE) {
+				«attrName.toLowerCase()»TextField.selectAll();
+			}
+		});
+		«objekt»Panel_«attrName»Panel.add(«attrName.toLowerCase()»TextField);
+		
+		«ENDLET»«ENDFOREACH»
+«ENDLET»«ENDLET»«ENDLET»«ENDDEFINE»
+
+«DEFINE submitButton FOR Button»
+		{
+			JPanel controlPanel = new JPanel();
+			
+			JButton proceedButton = new JButton("«displayText»");
+			proceedButton.addKeyListener(new KeyListener() {
+				@Override
+				public void keyTyped(KeyEvent e) {
+				}
+				
+				@Override
+				public void keyReleased(KeyEvent e) {
+				}
+				
+				@Override
+				public void keyPressed(KeyEvent e) {
+					if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+						triggerNextPage();
+					}
+				}
+			});
+			
+			proceedButton.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					triggerNextPage();
+				}
+			});
+			
+			controlPanel.add(proceedButton);
+			controlPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+			
+			this.add(controlPanel);
+		}
+«ENDDEFINE»
+
+«DEFINE storeInput FOR Dateneingabe»«LET datenobjekt.name.toLowerCase() AS objekt»
+			«FOREACH dateneingabefeld.eingabefeld.attribut AS attribut»«LET attribut.name.toLowerCase() AS attrName»
+			«IF attribut.datentyp.contains("Integer")»
+			«objekt».set«attrName.toFirstUpper()»(Integer.parseInt(«attrName»TextField.getText()));
+			«ELSE»
+			«objekt».set«attrName.toFirstUpper()»(«attrName»TextField.getText());
+			«ENDIF»
+			«ENDLET»«ENDFOREACH»
+			
+			DataStorage.INSTANCE.set("«objekt.toFirstUpper()»", «objekt»);
+«ENDLET»«ENDDEFINE»
+
+
+
+«REM» 
+	Static files go here
+«ENDREM»
+«DEFINE datastorage FOR ScreenModel»
+«FILE "dataobjects/DataStorage.java"»
+package dataobjects;
+
+import java.util.HashMap;
+
+public enum DataStorage {
+
+	INSTANCE;
+	
+	private HashMap<String, Object> storage = new HashMap<>();
+	
+	public Object get(String key)  {
+		return storage.get(key);		
+	}
+	
+	public void set(String key, Object value) {
+		storage.put(key, value);
+	}
+
+}
+
+«ENDFILE»
+«ENDDEFINE»
+
+«DEFINE swingApp FOR ScreenModel»
+«FILE "gui/SwingApp.java"»
+package gui;
+
+public class SwingApp {
+	
+	public static void main(String[] args) {
+		new AppUserInterface("«name»");
+	}
+}
+
+«ENDFILE»
+«ENDDEFINE»
