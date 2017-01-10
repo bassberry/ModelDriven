@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated workflowModel -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="workflowModel.presentation.WorkflowModelModelWizardID"
+            name="%_UI_WorkflowModelModelWizard_label"
+            class="workflowModel.presentation.WorkflowModelModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/WorkflowModelModelFile.gif">
+         <description>%_UI_WorkflowModelModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated workflowModel -->
+      <editor
+            id="workflowModel.presentation.WorkflowModelEditorID"
+            name="%_UI_WorkflowModelEditor_label"
+            icon="icons/full/obj16/WorkflowModelModelFile.gif"
+            extensions="workflowmodel"
+            class="workflowModel.presentation.WorkflowModelEditor"
+            contributorClass="workflowModel.presentation.WorkflowModelActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

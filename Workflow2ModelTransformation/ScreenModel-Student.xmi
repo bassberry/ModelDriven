@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<screenModel:ScreenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:screenModel="screenModel" name="Studentendaten">
+  <seite pageName="Studentendaten">
+    <button seite="//@seite.1" displayText="Weiter"/>
+    <dateneingabe datenobjekt="//@datenobjekt.2">
+      <dateneingabefeld>
+        <eingabefeld attribut="//@datenstruktur.0/@attribute.0"/>
+        <textfeld displayText="Name:"/>
+      </dateneingabefeld>
+      <dateneingabefeld>
+        <eingabefeld attribut="//@datenstruktur.0/@attribute.1"/>
+        <textfeld displayText="Matrikelnummer:"/>
+      </dateneingabefeld>
+      <dateneingabefeld>
+        <eingabefeld attribut="//@datenstruktur.0/@attribute.2"/>
+        <textfeld displayText="Semester:"/>
+      </dateneingabefeld>
+    </dateneingabe>
+  </seite>
+  <seite pageName="Pruefung1">
+    <button seite="//@seite.2" displayText="Weiter"/>
+    <dateneingabe datenobjekt="//@datenobjekt.0">
+      <dateneingabefeld>
+        <eingabefeld attribut="//@datenstruktur.1/@attribute.0"/>
+        <textfeld displayText="Name:"/>
+      </dateneingabefeld>
+      <dateneingabefeld>
+        <eingabefeld attribut="//@datenstruktur.1/@attribute.1"/>
+        <textfeld displayText="Note:"/>
+      </dateneingabefeld>
+    </dateneingabe>
+    <datenausgabe datenobjekt="//@datenobjekt.2">
+      <datenausgabefeld>
+        <textfeld displayText="Name:"/>
+        <ausgabefeld attribut="//@datenstruktur.0/@attribute.0"/>
+      </datenausgabefeld>
+      <datenausgabefeld>
+        <textfeld displayText="Matrikelnummer:"/>
+        <ausgabefeld attribut="//@datenstruktur.0/@attribute.1"/>
+      </datenausgabefeld>
+      <datenausgabefeld>
+        <textfeld displayText="Semester:"/>
+        <ausgabefeld attribut="//@datenstruktur.0/@attribute.2"/>
+      </datenausgabefeld>
+    </datenausgabe>
+  </seite>
+  <seite pageName="Pruefung2">
+    <button seite="//@seite.3" displayText="Beenden"/>
+    <dateneingabe datenobjekt="//@datenobjekt.1">
+      <dateneingabefeld>
+        <eingabefeld attribut="//@datenstruktur.1/@attribute.0"/>
+        <textfeld displayText="Name:"/>
+      </dateneingabefeld>
+      <dateneingabefeld>
+        <eingabefeld attribut="//@datenstruktur.1/@attribute.1"/>
+        <textfeld displayText="Note:"/>
+      </dateneingabefeld>
+    </dateneingabe>
+    <datenausgabe datenobjekt="//@datenobjekt.2">
+      <datenausgabefeld>
+        <textfeld displayText="Name:"/>
+        <ausgabefeld attribut="//@datenstruktur.0/@attribute.0"/>
+      </datenausgabefeld>
+      <datenausgabefeld>
+        <textfeld displayText="Matrikelnummer:"/>
+        <ausgabefeld attribut="//@datenstruktur.0/@attribute.1"/>
+      </datenausgabefeld>
+      <datenausgabefeld>
+        <textfeld displayText="Semester:"/>
+        <ausgabefeld attribut="//@datenstruktur.0/@attribute.2"/>
+      </datenausgabefeld>
+    </datenausgabe>
+    <datenausgabe datenobjekt="//@datenobjekt.0">
+      <datenausgabefeld>
+        <textfeld displayText="Name:"/>
+        <ausgabefeld attribut="//@datenstruktur.1/@attribute.0"/>
+      </datenausgabefeld>
+      <datenausgabefeld>
+        <textfeld displayText="Note:"/>
+        <ausgabefeld attribut="//@datenstruktur.1/@attribute.1"/>
+      </datenausgabefeld>
+    </datenausgabe>
+  </seite>
+  <seite pageName="Ende">
+    <datenausgabe datenobjekt="//@datenobjekt.0">
+      <datenausgabefeld>
+        <textfeld displayText="Name:"/>
+        <ausgabefeld attribut="//@datenstruktur.1/@attribute.0"/>
+      </datenausgabefeld>
+      <datenausgabefeld>
+        <textfeld displayText="Note:"/>
+        <ausgabefeld attribut="//@datenstruktur.1/@attribute.1"/>
+      </datenausgabefeld>
+    </datenausgabe>
+    <datenausgabe datenobjekt="//@datenobjekt.1">
+      <datenausgabefeld>
+        <textfeld displayText="Name:"/>
+        <ausgabefeld attribut="//@datenstruktur.1/@attribute.0"/>
+      </datenausgabefeld>
+      <datenausgabefeld>
+        <textfeld displayText="Note:"/>
+        <ausgabefeld attribut="//@datenstruktur.1/@attribute.1"/>
+      </datenausgabefeld>
+    </datenausgabe>
+    <datenausgabe datenobjekt="//@datenobjekt.2">
+      <datenausgabefeld>
+        <textfeld displayText="Name:"/>
+        <ausgabefeld attribut="//@datenstruktur.0/@attribute.0"/>
+      </datenausgabefeld>
+      <datenausgabefeld>
+        <textfeld displayText="Matrikelnummer:"/>
+        <ausgabefeld attribut="//@datenstruktur.0/@attribute.1"/>
+      </datenausgabefeld>
+      <datenausgabefeld>
+        <textfeld displayText="Semester:"/>
+        <ausgabefeld attribut="//@datenstruktur.0/@attribute.2"/>
+      </datenausgabefeld>
+    </datenausgabe>
+  </seite>
+  <datenobjekt datenstruktur="//@datenstruktur.1" name="Pruefung1"/>
+  <datenobjekt datenstruktur="//@datenstruktur.1" name="Pruefung2"/>
+  <datenobjekt datenstruktur="//@datenstruktur.0" name="Student"/>
+  <datenstruktur name="Student">
+    <attribute name="Name" datentyp="String"/>
+    <attribute name="Matrikelnummer" datentyp="String"/>
+    <attribute name="Semester" datentyp="Integer"/>
+  </datenstruktur>
+  <datenstruktur name="Pruefung">
+    <attribute name="Name" datentyp="String"/>
+    <attribute name="Note" datentyp="Integer"/>
+  </datenstruktur>
+</screenModel:ScreenModel>

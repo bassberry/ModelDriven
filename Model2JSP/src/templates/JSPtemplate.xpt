@@ -102,24 +102,29 @@ public enum DataStorage {
 <body>
 	<form action="index.jsp" method="post">
 	«IF datenausgabe != null»
-	«FOREACH datenausgabe AS ausgabe»
-		<div class="object">
-			«FOREACH ausgabe.datenausgabefeld AS ausgabeFeld»
-			<div>
-				<label>«ausgabeFeld.textfeld.displayText»</label>
-				<%
-					out.print(«ausgabe.datenobjekt.name».get«ausgabeFeld.ausgabefeld.attribut.name»());
-				%>
+		«FOREACH datenausgabe AS ausgabe»
+			<label>«ausgabe.datenobjekt.name»</label>
+			<div class="object">
+				«FOREACH ausgabe.datenausgabefeld AS ausgabeFeld»
+				<div>
+					<label>«ausgabeFeld.textfeld.displayText»</label>
+					<%
+						out.print(«ausgabe.datenobjekt.name».get«ausgabeFeld.ausgabefeld.attribut.name»());
+					%>
+				</div>
+				«ENDFOREACH»
 			</div>
-			«ENDFOREACH»
-		</div>
-	«ENDFOREACH»
+		«ENDFOREACH»
 	«ENDIF»
 	«IF dateneingabe != null»
+		<label>«dateneingabe.datenobjekt.name»</label>
 		<div class="object">
 		«FOREACH dateneingabe.dateneingabefeld AS eingabeFeld»
 			<div>
-				<label>«eingabeFeld.textfeld.displayText»</label> <input type="«IF dateneingabe.datenobjekt.datenstruktur.attribute.datentyp.contains("String")»text«ELSEIF dateneingabe.datenobjekt.datenstruktur.attribute.datentyp.contains("Integer")»number«ENDIF»" name="«eingabeFeld.eingabefeld.attribut.name»" />
+				<label>«eingabeFeld.textfeld.displayText»</label> <input type="
+				«IF dateneingabe.datenobjekt.datenstruktur.attribute.datentyp.contains("String")»text
+				«ELSEIF dateneingabe.datenobjekt.datenstruktur.attribute.datentyp.contains("Integer")»number
+				«ENDIF»" name="«eingabeFeld.eingabefeld.attribut.name»" />
 			</div>
 		«ENDFOREACH»
 		</div>
@@ -170,25 +175,27 @@ public class «name» {
 «ENDDEFINE»
 
 «DEFINE indexCase FOR Seite»
-					case "«pageName»" :
-					«EXPAND indexEingabe FOR dateneingabe»
-					«IF button.seite != null»
-					dispatcher = getServletContext().getRequestDispatcher("/«button.seite.pageName».jsp");
-					«ENDIF»
-					break;
+	case "«pageName»" :
+	«EXPAND indexEingabe FOR dateneingabe»
+	«IF button.seite != null»
+	dispatcher = getServletContext().getRequestDispatcher("/«button.seite.pageName».jsp");
+	«ENDIF»
+	break;
 					
 «ENDDEFINE»
 
 «DEFINE indexEingabe FOR Dateneingabe»
 «FOREACH datenobjekt.datenstruktur.attribute AS attribut»
-					{
-						«datenobjekt.datenstruktur.name» «datenobjekt.name» = («datenobjekt.datenstruktur.name») storage.get("«datenobjekt.name»");
-						if («datenobjekt.name» == null) {
-							«datenobjekt.name» = new «datenobjekt.datenstruktur.name»();
-						}
-						«datenobjekt.name».set«attribut.name.toFirstUpper()»(request.getParameter("«attribut.name»"));
-						
-						storage.set("«datenobjekt.name»", «datenobjekt.name»);
-					}
+	{
+		«datenobjekt.datenstruktur.name» «datenobjekt.name» = («datenobjekt.datenstruktur.name») storage.get("«datenobjekt.name»");
+		if («datenobjekt.name» == null) {
+			«datenobjekt.name» = new «datenobjekt.datenstruktur.name»();
+		}
+		«IF attribut.datentyp.contains("String")»«datenobjekt.name».set«attribut.name.toFirstUpper()»(request.getParameter("«attribut.name»"));
+		«ELSEIF attribut.datentyp.contains("Integer")»«datenobjekt.name».set«attribut.name.toFirstUpper()»(Integer.parseInt(request.getParameter("«attribut.name»")));
+		«ENDIF»
+		
+		storage.set("«datenobjekt.name»", «datenobjekt.name»);
+	}
 «ENDFOREACH»
 «ENDDEFINE»

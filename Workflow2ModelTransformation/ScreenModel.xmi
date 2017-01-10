@@ -1,49 +1,82 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<screenModel:ScreenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:screenModel="screenModel" name="Personendaten">
-  <seite pageName="Page1">
-    <button seite="//@seite.1" displayText="Weiter"/>
-    <dateneingabe datenobjekt="//@datenobjekt.0">
+<screenModel:ScreenModel
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:screenModel="screenModel"
+    name="Personendaten">
+  <seite pageName="Seite1">
+    <button
+        seite="//@seite.1"
+        displayText="Weiter"/>
+    <dateneingabe
+        datenobjekt="//@datenobjekt.0">
       <dateneingabefeld>
-        <eingabefeld attribut="//@datenstruktur.0/@attribute.0"/>
-        <textfeld displayText="Name:"/>
+        <eingabefeld
+            attribut="//@datenstruktur.0/@attribute.0"/>
+        <textfeld
+            displayText="Name:"/>
       </dateneingabefeld>
     </dateneingabe>
   </seite>
   <seite pageName="Page2">
-    <button seite="//@seite.2" displayText="Weiter"/>
-    <dateneingabe datenobjekt="//@datenobjekt.1">
+    <button
+        seite="//@seite.2"
+        displayText="Weiter"/>
+    <dateneingabe
+        datenobjekt="//@datenobjekt.1">
       <dateneingabefeld>
-        <eingabefeld attribut="//@datenstruktur.1/@attribute.0"/>
-        <textfeld displayText="Strasse:"/>
+        <eingabefeld
+            attribut="//@datenstruktur.1/@attribute.0"/>
+        <textfeld
+            displayText="Strasse:"/>
       </dateneingabefeld>
     </dateneingabe>
-    <datenausgabe datenobjekt="//@datenobjekt.0">
+    <datenausgabe
+        datenobjekt="//@datenobjekt.0">
       <datenausgabefeld>
-        <textfeld displayText="Name:"/>
-        <ausgabefeld attribut="//@datenstruktur.0/@attribute.0"/>
+        <textfeld
+            displayText="Name:"/>
+        <ausgabefeld
+            attribut="//@datenstruktur.0/@attribute.0"/>
       </datenausgabefeld>
     </datenausgabe>
   </seite>
   <seite pageName="Page3">
-    <datenausgabe datenobjekt="//@datenobjekt.0">
+    <datenausgabe
+        datenobjekt="//@datenobjekt.0">
       <datenausgabefeld>
-        <textfeld displayText="Name:"/>
-        <ausgabefeld attribut="//@datenstruktur.0/@attribute.0"/>
+        <textfeld
+            displayText="Name:"/>
+        <ausgabefeld
+            attribut="//@datenstruktur.0/@attribute.0"/>
       </datenausgabefeld>
     </datenausgabe>
-    <datenausgabe datenobjekt="//@datenobjekt.1">
+    <datenausgabe
+        datenobjekt="//@datenobjekt.1">
       <datenausgabefeld>
-        <textfeld displayText="Strasse:"/>
-        <ausgabefeld attribut="//@datenstruktur.1/@attribute.0"/>
+        <textfeld
+            displayText="Strasse:"/>
+        <ausgabefeld
+            attribut="//@datenstruktur.1/@attribute.0"/>
       </datenausgabefeld>
     </datenausgabe>
   </seite>
-  <datenobjekt datenstruktur="//@datenstruktur.0" name="Person1"/>
-  <datenobjekt datenstruktur="//@datenstruktur.1" name="Adresse1"/>
-  <datenstruktur name="Person">
-    <attribute name="Name" datentyp="String"/>
+  <datenobjekt
+      datenstruktur="//@datenstruktur.0"
+      name="Person1"/>
+  <datenobjekt
+      datenstruktur="//@datenstruktur.1"
+      name="Adresse1"/>
+  <datenstruktur
+      name="Person">
+    <attribute
+        name="Name"
+        datentyp="String"/>
   </datenstruktur>
-  <datenstruktur name="Adresse">
-    <attribute name="Strasse" datentyp="String"/>
+  <datenstruktur
+      name="Adresse">
+    <attribute
+        name="Strasse"
+        datentyp="String"/>
   </datenstruktur>
 </screenModel:ScreenModel>

@@ -23,8 +23,8 @@
 <mapEntry key="OPTION_CONTENT_TYPE" value="false"/>
 <mapEntry key="OPTION_DERIVED" value="true"/>
 <mapEntry key="allowInterModelReferences" value="false"/>
-<mapEntry key="disassemblyMode" value="false"/>
-<mapEntry key="stopInMain" value="false"/>
+<mapEntry key="printExecutionTime" value="false"/>
+<mapEntry key="step" value="false"/>
 <mapEntry key="supportUML2Stereotypes" value="false"/>
 </mapAttribute>
 <listAttribute key="OrderedInput">
@@ -37,8 +37,8 @@
 <mapEntry key="OUT" value="ScreenModel"/>
 </mapAttribute>
 <mapAttribute key="Path">
-<mapEntry key="IN" value="/WorkflowModel/model/My.workflowmodel"/>
-<mapEntry key="OUT" value="/Workflow2ModelTransformation/ScreenModel.xmi"/>
+<mapEntry key="IN" value="/WorkflowModel/model/Student.workflowmodel"/>
+<mapEntry key="OUT" value="/Workflow2ModelTransformation/ScreenModel-Student.xmi"/>
 <mapEntry key="ScreenModel" value="/ScreenModel/model/screenModel.ecore"/>
 <mapEntry key="WorkflowModel" value="/WorkflowModel/model/workflowModel.ecore"/>
 </mapAttribute>

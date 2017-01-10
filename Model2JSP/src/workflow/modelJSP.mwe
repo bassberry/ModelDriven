@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <workflow>
- <property name="model" value="platform:/resource/Workflow2ModelTransformation/ScreenModel.xmi" />
+ <property name="model" value="platform:/resource/Workflow2ModelTransformation/ScreenModel-Student.xmi" />
  <property name="src-gen" value="src-gen" />
  
  <!-- set up EMF for standalone execution -->
