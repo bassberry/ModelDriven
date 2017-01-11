@@ -4,6 +4,9 @@
 module Workflow2ModelTransformation;
 create OUT : ScreenModel from IN : WorkflowModel;
 
+--- Return:
+---		true, wenn Eingabe vorhaben ist
+---		flase, ansonsten
 helper context WorkflowModel!Zustand def: hasEingabe(): Boolean =
 	if not self.datenobjektEingabe.oclIsUndefined() then 
 		if self.datenobjektAusgabe.first().oclIsUndefined() then
@@ -15,6 +18,9 @@ helper context WorkflowModel!Zustand def: hasEingabe(): Boolean =
 		false
 	endif;
 
+--- Return:
+---		true, wenn Ausgabe vorhaben ist
+---		flase, ansonsten
 helper context WorkflowModel!Zustand def: hasAusgabe(): Boolean =
 	if not self.datenobjektAusgabe.first().oclIsUndefined() then 
 		if self.datenobjektEingabe.oclIsUndefined() then
@@ -26,6 +32,9 @@ helper context WorkflowModel!Zustand def: hasAusgabe(): Boolean =
 		false
 	endif;
 
+--- Return:
+---		true, wenn Ein- und Ausgabe vorhaben ist
+---		flase, ansonsten
 helper context WorkflowModel!Zustand def: hasEinUndAusgabe(): Boolean =
 	if not self.datenobjektAusgabe.first().oclIsUndefined() then 
 		if not self.datenobjektEingabe.oclIsUndefined() then
@@ -37,6 +46,9 @@ helper context WorkflowModel!Zustand def: hasEinUndAusgabe(): Boolean =
 		false
 	endif;
 
+--- matched rules:
+--- für eine Instanzen von einer Klasse im Quellmodel erstellt 
+--- ein matched rule genau eine Instanz von der Klasse im Zielmodel
 rule Workflow2ScreenModel {
 	from workflow: WorkflowModel!Workflow
 	to screenModel: ScreenModel!ScreenModel (
@@ -67,17 +79,21 @@ rule Attribut2Attribut {
 		datentyp <- workflowAttribut.datentyp
 	)
 }
-
---Seite mit Datenein- und ausgabe
+-- im Folgenden unterscheiden wir zwischen 3 Zustaenden:
+-- 1. Zustand mit Ein- und Ausgabe
 rule Zustand2SeiteEinUndAusgabe {
-	from zustand: WorkflowModel!Zustand (zustand.hasEinUndAusgabe())
+	from zustand: WorkflowModel!Zustand (zustand.hasEinUndAusgabe()) --ein matched rule kann 
+	-- eine Bedingung enthalten, die erfüllt werden muss, damit die Transformation erfolgt
 	to 	seite: ScreenModel!Seite (
 			pageName <- zustand.pageName,
 			button <- zustand.uebergang,
-			dateneingabe <- thisModule.Datenobjekt2Dateneingabe(zustand.datenobjektEingabe),
+			dateneingabe <- thisModule.Datenobjekt2Dateneingabe(zustand.datenobjektEingabe), --hier wird 
+			-- ein Lazy rule zur Erstellung der Dateneingabe für datenobjektEingabe benötigt
 			datenausgabe <- zustand.datenobjektAusgabe->collect(e | thisModule.Datenobjekt2Datenausgabe(e))
+			-- hier wird über jedes Datenobjekt in zustand.datenobjektAusgabe iteriert
 		)
 }
+-- 2. Zustand mit nur einer Eingabe
 rule Zustand2SeiteEin {
 	from zustand: WorkflowModel!Zustand (zustand.hasEingabe())
 	to 	seite: ScreenModel!Seite (
@@ -86,12 +102,13 @@ rule Zustand2SeiteEin {
 			dateneingabe <- thisModule.Datenobjekt2Dateneingabe(zustand.datenobjektEingabe)
 		)
 }
+-- 3. Zustand mit einer oder mehreren Ausgabe
 rule Zustand2SeiteAusgabe {
 	from zustand: WorkflowModel!Zustand (zustand.hasAusgabe())
 	to 	seite: ScreenModel!Seite (
 			pageName <- zustand.pageName,
 			button <- zustand.uebergang,
-			datenausgabe <- zustand.datenobjektAusgabe->collect(f | thisModule.Datenobjekt2Datenausgabe(f))
+			datenausgabe <- zustand.datenobjektAusgabe->collect(f | thisModule.Datenobjekt2Datenausgabe(f)) -- für jedes datenobjektAusgabe wird eine Datenausgabe erstellt
 		)
 }
 rule Uebergang2Button {
@@ -101,24 +118,26 @@ rule Uebergang2Button {
 		seite <- uebergang.zustand
 	)
 }
-
+--hier wird jedes Datenobjekt in die Datenausgabe umgewandelt 
 lazy rule Datenobjekt2Datenausgabe {
 	from datenobjektAusgabe: WorkflowModel!Datenobjekt
 	to datenausgabe: ScreenModel!Datenausgabe (
 		datenobjekt <- datenobjektAusgabe,
-		datenausgabefeld <- datenobjektAusgabe.datenstruktur.attribute->collect(f | thisModule.Attribut2Ausgabe(f))
+		datenausgabefeld <- datenobjektAusgabe.datenstruktur.attribute->collect(f | thisModule.Attribut2Ausgabe(f)) -- für jedes Attribut wird in der Ausgabe ein Datenausgabefeld erstellt
 	)
 }
 
+--- Lazy rules können beliebig oft aufgerufen werden, um Objekte zu erstellen, deren Anzahl nicht begrenzt ist
+--- Lazy rule für jedes Datenobjekt in Dateneingabe
 lazy rule Datenobjekt2Dateneingabe {
 	from datenobjektEingabe: WorkflowModel!Datenobjekt
 	to dateneingabe: ScreenModel!Dateneingabe (
 		datenobjekt <- datenobjektEingabe,
-		dateneingabefeld <- datenobjektEingabe.datenstruktur.attribute->collect(f | thisModule.Attribut2Eingabe(f))
+		dateneingabefeld <- datenobjektEingabe.datenstruktur.attribute->collect(f | thisModule.Attribut2Eingabe(f)) -- für jedes Attribut wird in der Eingabe ein Dateneingabefeld erstellt
 	)
 }
 
---Lazy rules für jeden Attributtyp
+--- Lazy rule für jedes Attribut in der Eingabe
 lazy rule Attribut2Eingabe {
 	from attribut: WorkflowModel!Attribut 
 	to eingabefeld: ScreenModel!Dateneingabefeld (
@@ -132,6 +151,7 @@ lazy rule Attribut2Eingabe {
 			displayText <-attribut.name+':'
 		)
 }
+---Lazy rule für jedes Attribut in der Ausgabe
 lazy rule Attribut2Ausgabe {
 	from attribut: WorkflowModel!Attribut 
 	to ausgabefeld: ScreenModel!Datenausgabefeld (

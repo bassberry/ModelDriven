@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<screenModel:ScreenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:screenModel="screenModel" name="Personendaten">
+  <seite pageName="Page1">
+    <button seite="//@seite.1" displayText="Weiter"/>
+    <dateneingabe datenobjekt="//@datenobjekt.0">
+      <dateneingabefeld>
+        <eingabefeld attribut="//@datenstruktur.0/@attribute.0"/>
+        <textfeld displayText="Vorname:"/>
+      </dateneingabefeld>
+      <dateneingabefeld>
+        <eingabefeld attribut="//@datenstruktur.0/@attribute.1"/>
+        <textfeld displayText="Nachname:"/>
+      </dateneingabefeld>
+      <dateneingabefeld>
+        <eingabefeld attribut="//@datenstruktur.0/@attribute.2"/>
+        <textfeld displayText="Alter:"/>
+      </dateneingabefeld>
+    </dateneingabe>
+  </seite>
+  <seite pageName="Page2">
+    <button seite="//@seite.2" displayText="Weiter"/>
+    <dateneingabe datenobjekt="//@datenobjekt.1">
+      <dateneingabefeld>
+        <eingabefeld attribut="//@datenstruktur.1/@attribute.0"/>
+        <textfeld displayText="Strasse:"/>
+      </dateneingabefeld>
+      <dateneingabefeld>
+        <eingabefeld attribut="//@datenstruktur.1/@attribute.1"/>
+        <textfeld displayText="Hausnummer:"/>
+      </dateneingabefeld>
+      <dateneingabefeld>
+        <eingabefeld attribut="//@datenstruktur.1/@attribute.2"/>
+        <textfeld displayText="Stadt:"/>
+      </dateneingabefeld>
+    </dateneingabe>
+    <datenausgabe datenobjekt="//@datenobjekt.0">
+      <datenausgabefeld>
+        <textfeld displayText="Vorname:"/>
+        <ausgabefeld attribut="//@datenstruktur.0/@attribute.0"/>
+      </datenausgabefeld>
+      <datenausgabefeld>
+        <textfeld displayText="Nachname:"/>
+        <ausgabefeld attribut="//@datenstruktur.0/@attribute.1"/>
+      </datenausgabefeld>
+      <datenausgabefeld>
+        <textfeld displayText="Alter:"/>
+        <ausgabefeld attribut="//@datenstruktur.0/@attribute.2"/>
+      </datenausgabefeld>
+    </datenausgabe>
+  </seite>
+  <seite pageName="Page3">
+    <datenausgabe datenobjekt="//@datenobjekt.0">
+      <datenausgabefeld>
+        <textfeld displayText="Vorname:"/>
+        <ausgabefeld attribut="//@datenstruktur.0/@attribute.0"/>
+      </datenausgabefeld>
+      <datenausgabefeld>
+        <textfeld displayText="Nachname:"/>
+        <ausgabefeld attribut="//@datenstruktur.0/@attribute.1"/>
+      </datenausgabefeld>
+      <datenausgabefeld>
+        <textfeld displayText="Alter:"/>
+        <ausgabefeld attribut="//@datenstruktur.0/@attribute.2"/>
+      </datenausgabefeld>
+    </datenausgabe>
+    <datenausgabe datenobjekt="//@datenobjekt.1">
+      <datenausgabefeld>
+        <textfeld displayText="Strasse:"/>
+        <ausgabefeld attribut="//@datenstruktur.1/@attribute.0"/>
+      </datenausgabefeld>
+      <datenausgabefeld>
+        <textfeld displayText="Hausnummer:"/>
+        <ausgabefeld attribut="//@datenstruktur.1/@attribute.1"/>
+      </datenausgabefeld>
+      <datenausgabefeld>
+        <textfeld displayText="Stadt:"/>
+        <ausgabefeld attribut="//@datenstruktur.1/@attribute.2"/>
+      </datenausgabefeld>
+    </datenausgabe>
+  </seite>
+  <datenobjekt datenstruktur="//@datenstruktur.0" name="Person"/>
+  <datenobjekt datenstruktur="//@datenstruktur.1" name="Adresse"/>
+  <datenstruktur name="Person">
+    <attribute name="Vorname" datentyp="String"/>
+    <attribute name="Nachname" datentyp="String"/>
+    <attribute name="Alter" datentyp="Integer"/>
+  </datenstruktur>
+  <datenstruktur name="Adresse">
+    <attribute name="Strasse" datentyp="String"/>
+    <attribute name="Hausnummer" datentyp="Integer"/>
+    <attribute name="Stadt" datentyp="String"/>
+  </datenstruktur>
+</screenModel:ScreenModel>

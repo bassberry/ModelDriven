@@ -5,6 +5,8 @@
 <%
 	// Fetch content to be displayed !
 	
+	Person Person = (Person) DataStorage.INSTANCE.get("Person");
+
 %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -21,34 +23,60 @@
 	<form action="index.jsp" method="post">
 	
 		
+			<label>Person</label>
+			<div class="object">
+				
+				<div>
+					<label>Vorname:</label>
+					<%
+						out.print(Person.getVorname());
+					%>
+				</div>
+				
+				<div>
+					<label>Nachname:</label>
+					<%
+						out.print(Person.getNachname());
+					%>
+				</div>
+				
+				<div>
+					<label>Alter:</label>
+					<%
+						out.print(Person.getAlter());
+					%>
+				</div>
+				
+			</div>
+		
 	
 	
-		<label>Student</label>
+		<label>Adresse</label>
 		<div class="object">
 		
 			<div>
-				<label>Name:</label> <input type="
+				<label>Strasse:</label> <input type="
 				text
-				" name="Name" />
+				" name="Strasse" />
 			</div>
 		
 			<div>
-				<label>Matrikelnummer:</label> <input type="
+				<label>Hausnummer:</label> <input type="
 				text
-				" name="Matrikelnummer" />
+				" name="Hausnummer" />
 			</div>
 		
 			<div>
-				<label>Semester:</label> <input type="
+				<label>Stadt:</label> <input type="
 				text
-				" name="Semester" />
+				" name="Stadt" />
 			</div>
 		
 		</div>
 	
 	
 		<div class="controlPanel">
-			<button type="submit" name ="proceedAction" value="Studentendaten">Weiter</button>
+			<button type="submit" name ="proceedAction" value="Page2">Weiter</button>
 		</div>
 	
 	</form>

@@ -5,11 +5,9 @@
 <%
 	// Fetch content to be displayed !
 	
-	Pruefung Pruefung1 = (Pruefung) DataStorage.INSTANCE.get("Pruefung1");
+	Person Person = (Person) DataStorage.INSTANCE.get("Person");
 
-	Pruefung Pruefung2 = (Pruefung) DataStorage.INSTANCE.get("Pruefung2");
-
-	Student Student = (Student) DataStorage.INSTANCE.get("Student");
+	Adresse Adresse = (Adresse) DataStorage.INSTANCE.get("Adresse");
 
 %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -27,65 +25,53 @@
 	<form action="index.jsp" method="post">
 	
 		
-			<label>Pruefung1</label>
+			<label>Person</label>
 			<div class="object">
 				
 				<div>
-					<label>Name:</label>
+					<label>Vorname:</label>
 					<%
-						out.print(Pruefung1.getName());
+						out.print(Person.getVorname());
 					%>
 				</div>
 				
 				<div>
-					<label>Note:</label>
+					<label>Nachname:</label>
 					<%
-						out.print(Pruefung1.getNote());
+						out.print(Person.getNachname());
+					%>
+				</div>
+				
+				<div>
+					<label>Alter:</label>
+					<%
+						out.print(Person.getAlter());
 					%>
 				</div>
 				
 			</div>
 		
-			<label>Pruefung2</label>
+			<label>Adresse</label>
 			<div class="object">
 				
 				<div>
-					<label>Name:</label>
+					<label>Strasse:</label>
 					<%
-						out.print(Pruefung2.getName());
+						out.print(Adresse.getStrasse());
 					%>
 				</div>
 				
 				<div>
-					<label>Note:</label>
+					<label>Hausnummer:</label>
 					<%
-						out.print(Pruefung2.getNote());
-					%>
-				</div>
-				
-			</div>
-		
-			<label>Student</label>
-			<div class="object">
-				
-				<div>
-					<label>Name:</label>
-					<%
-						out.print(Student.getName());
+						out.print(Adresse.getHausnummer());
 					%>
 				</div>
 				
 				<div>
-					<label>Matrikelnummer:</label>
+					<label>Stadt:</label>
 					<%
-						out.print(Student.getMatrikelnummer());
-					%>
-				</div>
-				
-				<div>
-					<label>Semester:</label>
-					<%
-						out.print(Student.getSemester());
+						out.print(Adresse.getStadt());
 					%>
 				</div>
 				

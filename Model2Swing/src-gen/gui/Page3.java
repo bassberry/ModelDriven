@@ -34,31 +34,59 @@ public class Page3 extends JPanel {
 
 	private void addWidgetsToScreen() {
 
-		Person person1 = (Person) DataStorage.INSTANCE.get("Person1");
+		Person person = (Person) DataStorage.INSTANCE.get("Person");
 
-		JPanel person1Panel = new JPanel();
-		this.add(person1Panel);
-		person1Panel.setLayout(new BoxLayout(person1Panel, BoxLayout.Y_AXIS));
+		JPanel personPanel = new JPanel();
+		this.add(personPanel);
+		personPanel.setLayout(new BoxLayout(personPanel, BoxLayout.Y_AXIS));
 
-		JPanel person1Panel_NamePanel = new JPanel();
-		person1Panel.add(person1Panel_NamePanel);
+		JPanel personPanel_VornamePanel = new JPanel();
+		personPanel.add(personPanel_VornamePanel);
 
-		person1Panel_NamePanel.add(new JLabel("Name:"));
+		personPanel_VornamePanel.add(new JLabel("Vorname:"));
 
-		person1Panel_NamePanel.add(new JLabel(((Person) person1).getName().toString()));
+		personPanel_VornamePanel.add(new JLabel(((Person) person).getVorname().toString()));
 
-		Adresse adresse1 = (Adresse) DataStorage.INSTANCE.get("Adresse1");
+		JPanel personPanel_NachnamePanel = new JPanel();
+		personPanel.add(personPanel_NachnamePanel);
 
-		JPanel adresse1Panel = new JPanel();
-		this.add(adresse1Panel);
-		adresse1Panel.setLayout(new BoxLayout(adresse1Panel, BoxLayout.Y_AXIS));
+		personPanel_NachnamePanel.add(new JLabel("Nachname:"));
 
-		JPanel adresse1Panel_StrassePanel = new JPanel();
-		adresse1Panel.add(adresse1Panel_StrassePanel);
+		personPanel_NachnamePanel.add(new JLabel(((Person) person).getNachname().toString()));
 
-		adresse1Panel_StrassePanel.add(new JLabel("Strasse:"));
+		JPanel personPanel_AlterPanel = new JPanel();
+		personPanel.add(personPanel_AlterPanel);
 
-		adresse1Panel_StrassePanel.add(new JLabel(((Adresse) adresse1).getStrasse().toString()));
+		personPanel_AlterPanel.add(new JLabel("Alter:"));
+
+		personPanel_AlterPanel.add(new JLabel(((Person) person).getAlter().toString()));
+
+		Adresse adresse = (Adresse) DataStorage.INSTANCE.get("Adresse");
+
+		JPanel adressePanel = new JPanel();
+		this.add(adressePanel);
+		adressePanel.setLayout(new BoxLayout(adressePanel, BoxLayout.Y_AXIS));
+
+		JPanel adressePanel_StrassePanel = new JPanel();
+		adressePanel.add(adressePanel_StrassePanel);
+
+		adressePanel_StrassePanel.add(new JLabel("Strasse:"));
+
+		adressePanel_StrassePanel.add(new JLabel(((Adresse) adresse).getStrasse().toString()));
+
+		JPanel adressePanel_HausnummerPanel = new JPanel();
+		adressePanel.add(adressePanel_HausnummerPanel);
+
+		adressePanel_HausnummerPanel.add(new JLabel("Hausnummer:"));
+
+		adressePanel_HausnummerPanel.add(new JLabel(((Adresse) adresse).getHausnummer().toString()));
+
+		JPanel adressePanel_StadtPanel = new JPanel();
+		adressePanel.add(adressePanel_StadtPanel);
+
+		adressePanel_StadtPanel.add(new JLabel("Stadt:"));
+
+		adressePanel_StadtPanel.add(new JLabel(((Adresse) adresse).getStadt().toString()));
 
 	}
 

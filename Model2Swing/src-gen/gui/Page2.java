@@ -22,9 +22,13 @@ public class Page2 extends JPanel {
 
 	private AppUserInterface parent = null;
 
-	private Adresse adresse1 = new Adresse();
+	private Adresse adresse = new Adresse();
 
 	private JTextField strasseTextField = new JTextField("Strasse", 20);
+
+	private JTextField hausnummerTextField = new JTextField("Hausnummer", 20);
+
+	private JTextField stadtTextField = new JTextField("Stadt", 20);
 
 	public Page2(AppUserInterface parent) {
 		this.parent = parent;
@@ -38,27 +42,41 @@ public class Page2 extends JPanel {
 
 	private void addWidgetsToScreen() {
 
-		Person person1 = (Person) DataStorage.INSTANCE.get("Person1");
+		Person person = (Person) DataStorage.INSTANCE.get("Person");
 
-		JPanel person1Panel = new JPanel();
-		this.add(person1Panel);
-		person1Panel.setLayout(new BoxLayout(person1Panel, BoxLayout.Y_AXIS));
+		JPanel personPanel = new JPanel();
+		this.add(personPanel);
+		personPanel.setLayout(new BoxLayout(personPanel, BoxLayout.Y_AXIS));
 
-		JPanel person1Panel_NamePanel = new JPanel();
-		person1Panel.add(person1Panel_NamePanel);
+		JPanel personPanel_VornamePanel = new JPanel();
+		personPanel.add(personPanel_VornamePanel);
 
-		person1Panel_NamePanel.add(new JLabel("Name:"));
+		personPanel_VornamePanel.add(new JLabel("Vorname:"));
 
-		person1Panel_NamePanel.add(new JLabel(((Person) person1).getName().toString()));
+		personPanel_VornamePanel.add(new JLabel(((Person) person).getVorname().toString()));
 
-		JPanel adresse1Panel = new JPanel();
-		this.add(adresse1Panel);
-		adresse1Panel.setLayout(new BoxLayout(adresse1Panel, BoxLayout.Y_AXIS));
+		JPanel personPanel_NachnamePanel = new JPanel();
+		personPanel.add(personPanel_NachnamePanel);
 
-		JPanel adresse1Panel_StrassePanel = new JPanel();
-		adresse1Panel.add(adresse1Panel_StrassePanel);
+		personPanel_NachnamePanel.add(new JLabel("Nachname:"));
 
-		adresse1Panel_StrassePanel.add(new JLabel("Strasse:"));
+		personPanel_NachnamePanel.add(new JLabel(((Person) person).getNachname().toString()));
+
+		JPanel personPanel_AlterPanel = new JPanel();
+		personPanel.add(personPanel_AlterPanel);
+
+		personPanel_AlterPanel.add(new JLabel("Alter:"));
+
+		personPanel_AlterPanel.add(new JLabel(((Person) person).getAlter().toString()));
+
+		JPanel adressePanel = new JPanel();
+		this.add(adressePanel);
+		adressePanel.setLayout(new BoxLayout(adressePanel, BoxLayout.Y_AXIS));
+
+		JPanel adressePanel_StrassePanel = new JPanel();
+		adressePanel.add(adressePanel_StrassePanel);
+
+		adressePanel_StrassePanel.add(new JLabel("Strasse:"));
 
 		strasseTextField.addFocusListener(new FocusListener() {
 			@Override
@@ -69,7 +87,39 @@ public class Page2 extends JPanel {
 				strasseTextField.selectAll();
 			}
 		});
-		adresse1Panel_StrassePanel.add(strasseTextField);
+		adressePanel_StrassePanel.add(strasseTextField);
+
+		JPanel adressePanel_HausnummerPanel = new JPanel();
+		adressePanel.add(adressePanel_HausnummerPanel);
+
+		adressePanel_HausnummerPanel.add(new JLabel("Hausnummer:"));
+
+		hausnummerTextField.addFocusListener(new FocusListener() {
+			@Override
+			public void focusLost(final FocusEvent pE) {
+			}
+			@Override
+			public void focusGained(final FocusEvent pE) {
+				hausnummerTextField.selectAll();
+			}
+		});
+		adressePanel_HausnummerPanel.add(hausnummerTextField);
+
+		JPanel adressePanel_StadtPanel = new JPanel();
+		adressePanel.add(adressePanel_StadtPanel);
+
+		adressePanel_StadtPanel.add(new JLabel("Stadt:"));
+
+		stadtTextField.addFocusListener(new FocusListener() {
+			@Override
+			public void focusLost(final FocusEvent pE) {
+			}
+			@Override
+			public void focusGained(final FocusEvent pE) {
+				stadtTextField.selectAll();
+			}
+		});
+		adressePanel_StadtPanel.add(stadtTextField);
 
 		{
 			JPanel controlPanel = new JPanel();
@@ -111,9 +161,13 @@ public class Page2 extends JPanel {
 	private void triggerNextPage() {
 		try {
 
-			adresse1.setStrasse(strasseTextField.getText());
+			adresse.setStrasse(strasseTextField.getText());
 
-			DataStorage.INSTANCE.set("Adresse1", adresse1);
+			adresse.setHausnummer(Integer.parseInt(hausnummerTextField.getText()));
+
+			adresse.setStadt(stadtTextField.getText());
+
+			DataStorage.INSTANCE.set("Adresse", adresse);
 
 			parent.switchPage("Page2");
 		} catch (NumberFormatException exception) {

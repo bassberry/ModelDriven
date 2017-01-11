@@ -5,9 +5,7 @@
 <%
 	// Fetch content to be displayed !
 	
-	Student Student = (Student) DataStorage.INSTANCE.get("Student");
-
-	Pruefung Pruefung1 = (Pruefung) DataStorage.INSTANCE.get("Pruefung1");
+	Person Person = (Person) DataStorage.INSTANCE.get("Person");
 
 %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -25,46 +23,27 @@
 	<form action="index.jsp" method="post">
 	
 		
-			<label>Student</label>
+			<label>Person</label>
 			<div class="object">
 				
 				<div>
-					<label>Name:</label>
+					<label>Vorname:</label>
 					<%
-						out.print(Student.getName());
+						out.print(Person.getVorname());
 					%>
 				</div>
 				
 				<div>
-					<label>Matrikelnummer:</label>
+					<label>Nachname:</label>
 					<%
-						out.print(Student.getMatrikelnummer());
+						out.print(Person.getNachname());
 					%>
 				</div>
 				
 				<div>
-					<label>Semester:</label>
+					<label>Alter:</label>
 					<%
-						out.print(Student.getSemester());
-					%>
-				</div>
-				
-			</div>
-		
-			<label>Pruefung1</label>
-			<div class="object">
-				
-				<div>
-					<label>Name:</label>
-					<%
-						out.print(Pruefung1.getName());
-					%>
-				</div>
-				
-				<div>
-					<label>Note:</label>
-					<%
-						out.print(Pruefung1.getNote());
+						out.print(Person.getAlter());
 					%>
 				</div>
 				
@@ -72,26 +51,32 @@
 		
 	
 	
-		<label>Pruefung2</label>
+		<label>Adresse</label>
 		<div class="object">
 		
 			<div>
-				<label>Name:</label> <input type="
+				<label>Strasse:</label> <input type="
 				text
-				" name="Name" />
+				" name="Strasse" />
 			</div>
 		
 			<div>
-				<label>Note:</label> <input type="
+				<label>Hausnummer:</label> <input type="
 				text
-				" name="Note" />
+				" name="Hausnummer" />
+			</div>
+		
+			<div>
+				<label>Stadt:</label> <input type="
+				text
+				" name="Stadt" />
 			</div>
 		
 		</div>
 	
 	
 		<div class="controlPanel">
-			<button type="submit" name ="proceedAction" value="Pruefung2">Beenden</button>
+			<button type="submit" name ="proceedAction" value="Page2">Weiter</button>
 		</div>
 	
 	</form>

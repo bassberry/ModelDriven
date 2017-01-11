@@ -22,9 +22,13 @@ public class Page1 extends JPanel {
 
 	private AppUserInterface parent = null;
 
-	private Person person1 = new Person();
+	private Person person = new Person();
 
-	private JTextField nameTextField = new JTextField("Name", 20);
+	private JTextField vornameTextField = new JTextField("Vorname", 20);
+
+	private JTextField nachnameTextField = new JTextField("Nachname", 20);
+
+	private JTextField alterTextField = new JTextField("Alter", 20);
 
 	public Page1(AppUserInterface parent) {
 		this.parent = parent;
@@ -38,25 +42,57 @@ public class Page1 extends JPanel {
 
 	private void addWidgetsToScreen() {
 
-		JPanel person1Panel = new JPanel();
-		this.add(person1Panel);
-		person1Panel.setLayout(new BoxLayout(person1Panel, BoxLayout.Y_AXIS));
+		JPanel personPanel = new JPanel();
+		this.add(personPanel);
+		personPanel.setLayout(new BoxLayout(personPanel, BoxLayout.Y_AXIS));
 
-		JPanel person1Panel_NamePanel = new JPanel();
-		person1Panel.add(person1Panel_NamePanel);
+		JPanel personPanel_VornamePanel = new JPanel();
+		personPanel.add(personPanel_VornamePanel);
 
-		person1Panel_NamePanel.add(new JLabel("Name:"));
+		personPanel_VornamePanel.add(new JLabel("Vorname:"));
 
-		nameTextField.addFocusListener(new FocusListener() {
+		vornameTextField.addFocusListener(new FocusListener() {
 			@Override
 			public void focusLost(final FocusEvent pE) {
 			}
 			@Override
 			public void focusGained(final FocusEvent pE) {
-				nameTextField.selectAll();
+				vornameTextField.selectAll();
 			}
 		});
-		person1Panel_NamePanel.add(nameTextField);
+		personPanel_VornamePanel.add(vornameTextField);
+
+		JPanel personPanel_NachnamePanel = new JPanel();
+		personPanel.add(personPanel_NachnamePanel);
+
+		personPanel_NachnamePanel.add(new JLabel("Nachname:"));
+
+		nachnameTextField.addFocusListener(new FocusListener() {
+			@Override
+			public void focusLost(final FocusEvent pE) {
+			}
+			@Override
+			public void focusGained(final FocusEvent pE) {
+				nachnameTextField.selectAll();
+			}
+		});
+		personPanel_NachnamePanel.add(nachnameTextField);
+
+		JPanel personPanel_AlterPanel = new JPanel();
+		personPanel.add(personPanel_AlterPanel);
+
+		personPanel_AlterPanel.add(new JLabel("Alter:"));
+
+		alterTextField.addFocusListener(new FocusListener() {
+			@Override
+			public void focusLost(final FocusEvent pE) {
+			}
+			@Override
+			public void focusGained(final FocusEvent pE) {
+				alterTextField.selectAll();
+			}
+		});
+		personPanel_AlterPanel.add(alterTextField);
 
 		{
 			JPanel controlPanel = new JPanel();
@@ -98,9 +134,13 @@ public class Page1 extends JPanel {
 	private void triggerNextPage() {
 		try {
 
-			person1.setName(nameTextField.getText());
+			person.setVorname(vornameTextField.getText());
 
-			DataStorage.INSTANCE.set("Person1", person1);
+			person.setNachname(nachnameTextField.getText());
+
+			person.setAlter(Integer.parseInt(alterTextField.getText()));
+
+			DataStorage.INSTANCE.set("Person", person);
 
 			parent.switchPage("Page1");
 		} catch (NumberFormatException exception) {

@@ -5,7 +5,9 @@
 <%
 	// Fetch content to be displayed !
 	
-	Student Student = (Student) DataStorage.INSTANCE.get("Student");
+	Person Person = (Person) DataStorage.INSTANCE.get("Person");
+
+	Adresse Adresse = (Adresse) DataStorage.INSTANCE.get("Adresse");
 
 %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -23,27 +25,53 @@
 	<form action="index.jsp" method="post">
 	
 		
-			<label>Student</label>
+			<label>Person</label>
 			<div class="object">
 				
 				<div>
-					<label>Name:</label>
+					<label>Vorname:</label>
 					<%
-						out.print(Student.getName());
+						out.print(Person.getVorname());
 					%>
 				</div>
 				
 				<div>
-					<label>Matrikelnummer:</label>
+					<label>Nachname:</label>
 					<%
-						out.print(Student.getMatrikelnummer());
+						out.print(Person.getNachname());
 					%>
 				</div>
 				
 				<div>
-					<label>Semester:</label>
+					<label>Alter:</label>
 					<%
-						out.print(Student.getSemester());
+						out.print(Person.getAlter());
+					%>
+				</div>
+				
+			</div>
+		
+			<label>Adresse</label>
+			<div class="object">
+				
+				<div>
+					<label>Strasse:</label>
+					<%
+						out.print(Adresse.getStrasse());
+					%>
+				</div>
+				
+				<div>
+					<label>Hausnummer:</label>
+					<%
+						out.print(Adresse.getHausnummer());
+					%>
+				</div>
+				
+				<div>
+					<label>Stadt:</label>
+					<%
+						out.print(Adresse.getStadt());
 					%>
 				</div>
 				
@@ -51,27 +79,6 @@
 		
 	
 	
-		<label>Pruefung1</label>
-		<div class="object">
-		
-			<div>
-				<label>Name:</label> <input type="
-				text
-				" name="Name" />
-			</div>
-		
-			<div>
-				<label>Note:</label> <input type="
-				text
-				" name="Note" />
-			</div>
-		
-		</div>
-	
-	
-		<div class="controlPanel">
-			<button type="submit" name ="proceedAction" value="Pruefung1">Weiter</button>
-		</div>
 	
 	</form>
 </body>
