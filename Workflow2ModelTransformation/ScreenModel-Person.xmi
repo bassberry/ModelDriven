@@ -15,6 +15,7 @@
         <eingabefeld attribut="//@datenstruktur.0/@attribute.2"/>
         <textfeld displayText="Alter:"/>
       </dateneingabefeld>
+      <datenobjektname displayText="Person"/>
     </dateneingabe>
   </seite>
   <seite pageName="Page2">
@@ -32,6 +33,7 @@
         <eingabefeld attribut="//@datenstruktur.1/@attribute.2"/>
         <textfeld displayText="Stadt:"/>
       </dateneingabefeld>
+      <datenobjektname displayText="Adresse"/>
     </dateneingabe>
     <datenausgabe datenobjekt="//@datenobjekt.0">
       <datenausgabefeld>
@@ -46,6 +48,7 @@
         <textfeld displayText="Alter:"/>
         <ausgabefeld attribut="//@datenstruktur.0/@attribute.2"/>
       </datenausgabefeld>
+      <datenobjektname displayText="Person"/>
     </datenausgabe>
   </seite>
   <seite pageName="Page3">
@@ -62,6 +65,7 @@
         <textfeld displayText="Alter:"/>
         <ausgabefeld attribut="//@datenstruktur.0/@attribute.2"/>
       </datenausgabefeld>
+      <datenobjektname displayText="Person"/>
     </datenausgabe>
     <datenausgabe datenobjekt="//@datenobjekt.1">
       <datenausgabefeld>
@@ -76,6 +80,7 @@
         <textfeld displayText="Stadt:"/>
         <ausgabefeld attribut="//@datenstruktur.1/@attribute.2"/>
       </datenausgabefeld>
+      <datenobjektname displayText="Adresse"/>
     </datenausgabe>
   </seite>
   <datenobjekt datenstruktur="//@datenstruktur.0" name="Person"/>

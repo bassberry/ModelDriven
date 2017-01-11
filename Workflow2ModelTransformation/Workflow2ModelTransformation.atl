@@ -123,7 +123,11 @@ lazy rule Datenobjekt2Datenausgabe {
 	from datenobjektAusgabe: WorkflowModel!Datenobjekt
 	to datenausgabe: ScreenModel!Datenausgabe (
 		datenobjekt <- datenobjektAusgabe,
+		datenobjektname <- ScreenModelTextfeld,
 		datenausgabefeld <- datenobjektAusgabe.datenstruktur.attribute->collect(f | thisModule.Attribut2Ausgabe(f)) -- für jedes Attribut wird in der Ausgabe ein Datenausgabefeld erstellt
+	),
+	ScreenModelTextfeld: ScreenModel!Textfeld (
+		displayText <- datenobjektAusgabe.name
 	)
 }
 
@@ -133,7 +137,11 @@ lazy rule Datenobjekt2Dateneingabe {
 	from datenobjektEingabe: WorkflowModel!Datenobjekt
 	to dateneingabe: ScreenModel!Dateneingabe (
 		datenobjekt <- datenobjektEingabe,
+		datenobjektname <- ScreenModelTextFeld,
 		dateneingabefeld <- datenobjektEingabe.datenstruktur.attribute->collect(f | thisModule.Attribut2Eingabe(f)) -- für jedes Attribut wird in der Eingabe ein Dateneingabefeld erstellt
+	),
+	ScreenModelTextFeld: ScreenModel!Textfeld (
+		displayText <- datenobjektEingabe.name
 	)
 }
 

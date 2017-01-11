@@ -24,10 +24,12 @@
     <genClasses ecoreClass="screenModel.ecore#//Dateneingabe">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference screenModel.ecore#//Dateneingabe/datenobjekt"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference screenModel.ecore#//Dateneingabe/dateneingabefeld"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference screenModel.ecore#//Dateneingabe/datenobjektname"/>
     </genClasses>
     <genClasses ecoreClass="screenModel.ecore#//Datenausgabe">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference screenModel.ecore#//Datenausgabe/datenobjekt"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference screenModel.ecore#//Datenausgabe/datenausgabefeld"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference screenModel.ecore#//Datenausgabe/datenobjektname"/>
     </genClasses>
     <genClasses ecoreClass="screenModel.ecore#//Datenobjekt">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference screenModel.ecore#//Datenobjekt/datenstruktur"/>

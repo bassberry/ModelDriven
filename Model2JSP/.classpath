@@ -4,8 +4,8 @@
 	<classpathentry kind="src" path="src-gen"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
-	<classpathentry kind="lib" path="/Users/filip/Desktop/ModelDriven/Model2JSP/org.eclipse.core.resources.jar"/>
-	<classpathentry kind="lib" path="/Users/filip/Desktop/ModelDriven/Model2JSP/org.eclipse.emf.common-2.9.0.v20130528-0742.jar"/>
-	<classpathentry kind="lib" path="/Users/filip/Desktop/ModelDriven/Model2JSP/org.eclipse.emf.ecore-2.9.0.v20130528-0742.jar"/>
+	<classpathentry kind="lib" path="org.eclipse.core.resources.jar"/>
+	<classpathentry kind="lib" path="org.eclipse.emf.common-2.9.0.v20130528-0742.jar"/>
+	<classpathentry kind="lib" path="org.eclipse.emf.ecore-2.9.0.v20130528-0742.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

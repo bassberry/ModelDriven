@@ -103,8 +103,9 @@ public enum DataStorage {
 	<form action="index.jsp" method="post">
 	«IF datenausgabe != null»
 		«FOREACH datenausgabe AS ausgabe»
-			<label>«ausgabe.datenobjekt.name»</label>
 			<div class="object">
+				<label>«ausgabe.datenobjektname.displayText»</label>
+				<hr>
 				«FOREACH ausgabe.datenausgabefeld AS ausgabeFeld»
 				<div>
 					<label>«ausgabeFeld.textfeld.displayText»</label>
@@ -117,8 +118,9 @@ public enum DataStorage {
 		«ENDFOREACH»
 	«ENDIF»
 	«IF dateneingabe != null»
-		<label>«dateneingabe.datenobjekt.name»</label>
 		<div class="object">
+			<label>«dateneingabe.datenobjektname.displayText»</label>
+			<hr>
 		«FOREACH dateneingabe.dateneingabefeld AS eingabeFeld»
 			<div>
 				<label>«eingabeFeld.textfeld.displayText»</label> <input type="
