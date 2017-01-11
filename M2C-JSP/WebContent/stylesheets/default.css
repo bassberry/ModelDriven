@@ -16,7 +16,7 @@ div.object div {
 	padding: 0.4em;
 }
 
-div.object div label {
+div.object label {
 	font-weight:bold;
 	min-width: 8em;
 	display: inline-block;

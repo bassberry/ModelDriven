@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JSeparator;
 import javax.swing.JTextField;
 
 import dataobjects.*;
@@ -40,6 +41,8 @@ public class Page3 extends JPanel {
 		this.add(personPanel);
 		personPanel.setLayout(new BoxLayout(personPanel, BoxLayout.Y_AXIS));
 
+		personPanel.add(new JLabel("<html><b>Person</b></html>"));
+
 		JPanel personPanel_VornamePanel = new JPanel();
 		personPanel.add(personPanel_VornamePanel);
 
@@ -61,11 +64,15 @@ public class Page3 extends JPanel {
 
 		personPanel_AlterPanel.add(new JLabel(((Person) person).getAlter().toString()));
 
+		personPanel.add(new JSeparator(JSeparator.HORIZONTAL));
+
 		Adresse adresse = (Adresse) DataStorage.INSTANCE.get("Adresse");
 
 		JPanel adressePanel = new JPanel();
 		this.add(adressePanel);
 		adressePanel.setLayout(new BoxLayout(adressePanel, BoxLayout.Y_AXIS));
+
+		adressePanel.add(new JLabel("<html><b>Adresse</b></html>"));
 
 		JPanel adressePanel_StrassePanel = new JPanel();
 		adressePanel.add(adressePanel_StrassePanel);
@@ -87,6 +94,8 @@ public class Page3 extends JPanel {
 		adressePanel_StadtPanel.add(new JLabel("Stadt:"));
 
 		adressePanel_StadtPanel.add(new JLabel(((Adresse) adresse).getStadt().toString()));
+
+		adressePanel.add(new JSeparator(JSeparator.HORIZONTAL));
 
 	}
 

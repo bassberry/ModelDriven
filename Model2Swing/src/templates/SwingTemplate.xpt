@@ -1,14 +1,25 @@
 «IMPORT screenModel»
 
+«REM»
+	main - Hier startet die Transformation
+«ENDREM»
 «DEFINE main FOR ScreenModel»
 
+«REM»
+	Datastorage.java - Speichert die Datenobjekte in einem Hash
+	SwingApp.java - Erzeugt das GUI für die Anwendung
+«ENDREM»
 «EXPAND datastorage FOR this»
 «EXPAND swingApp FOR this»
 
+«REM»
+	javaClass - erzeugt Java-Klassen für jede Datenstruktur
+	userInterface - erzeugt die Steuerung für das GUI, welche das Fenster erzeugt sowie die Seiten lädt
+	seite - erzeugt die Seiten, welche den jeweiligen Zustand im Workflow repräsentieren
+«ENDREM»
 «EXPAND javaClass FOREACH datenstruktur»
 «EXPAND userInterface FOR this»
 «EXPAND seite FOREACH seite»
-
 
 «ENDDEFINE»
 
@@ -20,19 +31,26 @@
 package dataobjects;
 
 public class «name.toFirstUpper()» {
-	
+	// deklariere alle Attribute
 	«EXPAND deklaration FOREACH attribute»
+	// get- / set-Methoden für jedes Attribut
 	«EXPAND getset FOREACH attribute»
 }
 
 «ENDFILE»
 «ENDDEFINE»
 
+«REM»
+	Deklaration für ein Attribut eines Datentyps
+«ENDREM»
 «DEFINE deklaration FOR Attribut»
 	private «datentyp» «name.toLowerCase()»;
 	
 «ENDDEFINE»
 
+«REM»
+	get- und set-Methoden für ein Attribut eines Datentyps
+«ENDREM»
 «DEFINE getset FOR Attribut»
 	public «datentyp» get«name.toFirstUpper()»() {
 		return this.«name.toLowerCase()»;
@@ -64,6 +82,7 @@ public class AppUserInterface extends JFrame {
 	private «seite.first().pageName.toFirstUpper()» «seite.first().pageName.toLowerCase()» = new «seite.first().pageName.toFirstUpper()»(this);
 	
 	public AppUserInterface(String title) {
+		// Fenster definieren und sichtbar machen
 		this.setTitle(title);
 		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -74,16 +93,17 @@ public class AppUserInterface extends JFrame {
 	}
 	
 	private void initialize() {
+		// Layout des Fensters setzen
 		rootPanel.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
-
-		// place the panel with our content and form at the top of the frame
+		
+		// Das Panel mit allen Inhalten an die vorderste Ebene im Fenster setzen
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.weightx = 1.0;
 		c.weighty = 1.0;
 		c.anchor = GridBagConstraints.NORTH;
 
-		// Insert the first page of the form transactions here
+		// Erste Seite laden
 		rootPanel.add(«seite.first().pageName.toLowerCase()», c);
 
 		JScrollPane temp = new JScrollPane(rootPanel);
@@ -93,13 +113,15 @@ public class AppUserInterface extends JFrame {
 		this.getRootPane().add(temp, c);
 	}
 	
+	// Seite wechseln
 	public void switchPage(String pageIdentifier) {
 		GridBagConstraints c = new GridBagConstraints();
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.weightx = 1.0;
 		c.weighty = 1.0;
 		c.anchor = GridBagConstraints.NORTH;
-
+		
+		// Erkennen, welche Seite gerade angezeigt wird
 		switch (pageIdentifier) {
 			«EXPAND switchPage FOREACH seite»
 			
@@ -116,6 +138,7 @@ public class AppUserInterface extends JFrame {
 			case "«pageName.toFirstUpper()»" :
 				rootPanel.removeAll();
 			«IF button.seite != null»«LET button.seite.pageName AS nextPage»
+				// Nächste Seite in das Fenster laden
 				«nextPage.toFirstUpper()» «nextPage.toLowerCase()» = new «nextPage.toFirstUpper()»(this);
 				rootPanel.add(«nextPage.toLowerCase()», c);
 			«ENDLET»«ENDIF»
@@ -143,6 +166,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JSeparator;
 import javax.swing.JTextField;
 
 import dataobjects.*;
@@ -197,6 +221,8 @@ public class «pageName.toFirstUpper()» extends JPanel {
 		this.add(«objekt»Panel);
 		«objekt»Panel.setLayout(new BoxLayout(«objekt»Panel, BoxLayout.Y_AXIS));
 		
+		«objekt»Panel.add(new JLabel("<html><b>«datenobjektname.displayText»</b></html>"));
+		
 		«FOREACH datenausgabefeld AS feld»«LET feld.ausgabefeld.attribut.name.toFirstUpper() AS attrName»
 		JPanel «objekt»Panel_«attrName»Panel = new JPanel();
 		«objekt»Panel.add(«objekt»Panel_«attrName»Panel);
@@ -205,12 +231,15 @@ public class «pageName.toFirstUpper()» extends JPanel {
 		
 		«objekt»Panel_«attrName»Panel.add(new JLabel(((«Typ») «objekt»).get«attrName»().toString()));
 		«ENDLET»«ENDFOREACH»
+		«objekt»Panel.add(new JSeparator(JSeparator.HORIZONTAL));
 «ENDLET»«ENDLET»«ENDLET»«ENDDEFINE»
 
 «DEFINE renderInput FOR Dateneingabe»«LET datenobjekt.datenstruktur.name.toFirstUpper() AS Typ»«LET datenobjekt.name.toFirstUpper() AS Objekt»«LET datenobjekt.name.toLowerCase() AS objekt»
 		JPanel «objekt»Panel = new JPanel();
 		this.add(«objekt»Panel);
 		«objekt»Panel.setLayout(new BoxLayout(«objekt»Panel, BoxLayout.Y_AXIS));
+		
+		«objekt»Panel.add(new JLabel("<html><b>«datenobjektname.displayText»</b></html>"));
 		
 		«FOREACH dateneingabefeld AS feld»«LET feld.eingabefeld.attribut.name.toFirstUpper() AS attrName»
 		JPanel «objekt»Panel_«attrName»Panel = new JPanel();
@@ -228,8 +257,8 @@ public class «pageName.toFirstUpper()» extends JPanel {
 			}
 		});
 		«objekt»Panel_«attrName»Panel.add(«attrName.toLowerCase()»TextField);
-		
 		«ENDLET»«ENDFOREACH»
+		«objekt»Panel.add(new JSeparator(JSeparator.HORIZONTAL));
 «ENDLET»«ENDLET»«ENDLET»«ENDDEFINE»
 
 «DEFINE submitButton FOR Button»
