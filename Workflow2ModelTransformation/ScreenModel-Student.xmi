@@ -2,7 +2,7 @@
 <screenModel:ScreenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:screenModel="screenModel" name="Studentendaten">
   <seite pageName="Studentendaten">
     <button seite="//@seite.1" displayText="Weiter"/>
-    <dateneingabe datenobjekt="//@datenobjekt.2">
+    <dateneingabe datenobjekt="//@datenobjekt.0">
       <dateneingabefeld>
         <eingabefeld attribut="//@datenstruktur.0/@attribute.0"/>
         <textfeld displayText="Name:"/>
@@ -15,37 +15,11 @@
         <eingabefeld attribut="//@datenstruktur.0/@attribute.2"/>
         <textfeld displayText="Semester:"/>
       </dateneingabefeld>
+      <datenobjektname displayText="Student"/>
     </dateneingabe>
   </seite>
   <seite pageName="Pruefung1">
     <button seite="//@seite.2" displayText="Weiter"/>
-    <dateneingabe datenobjekt="//@datenobjekt.0">
-      <dateneingabefeld>
-        <eingabefeld attribut="//@datenstruktur.1/@attribute.0"/>
-        <textfeld displayText="Name:"/>
-      </dateneingabefeld>
-      <dateneingabefeld>
-        <eingabefeld attribut="//@datenstruktur.1/@attribute.1"/>
-        <textfeld displayText="Note:"/>
-      </dateneingabefeld>
-    </dateneingabe>
-    <datenausgabe datenobjekt="//@datenobjekt.2">
-      <datenausgabefeld>
-        <textfeld displayText="Name:"/>
-        <ausgabefeld attribut="//@datenstruktur.0/@attribute.0"/>
-      </datenausgabefeld>
-      <datenausgabefeld>
-        <textfeld displayText="Matrikelnummer:"/>
-        <ausgabefeld attribut="//@datenstruktur.0/@attribute.1"/>
-      </datenausgabefeld>
-      <datenausgabefeld>
-        <textfeld displayText="Semester:"/>
-        <ausgabefeld attribut="//@datenstruktur.0/@attribute.2"/>
-      </datenausgabefeld>
-    </datenausgabe>
-  </seite>
-  <seite pageName="Pruefung2">
-    <button seite="//@seite.3" displayText="Beenden"/>
     <dateneingabe datenobjekt="//@datenobjekt.1">
       <dateneingabefeld>
         <eingabefeld attribut="//@datenstruktur.1/@attribute.0"/>
@@ -55,8 +29,9 @@
         <eingabefeld attribut="//@datenstruktur.1/@attribute.1"/>
         <textfeld displayText="Note:"/>
       </dateneingabefeld>
+      <datenobjektname displayText="Pruefung1"/>
     </dateneingabe>
-    <datenausgabe datenobjekt="//@datenobjekt.2">
+    <datenausgabe datenobjekt="//@datenobjekt.0">
       <datenausgabefeld>
         <textfeld displayText="Name:"/>
         <ausgabefeld attribut="//@datenstruktur.0/@attribute.0"/>
@@ -69,28 +44,36 @@
         <textfeld displayText="Semester:"/>
         <ausgabefeld attribut="//@datenstruktur.0/@attribute.2"/>
       </datenausgabefeld>
-    </datenausgabe>
-    <datenausgabe datenobjekt="//@datenobjekt.0">
-      <datenausgabefeld>
-        <textfeld displayText="Name:"/>
-        <ausgabefeld attribut="//@datenstruktur.1/@attribute.0"/>
-      </datenausgabefeld>
-      <datenausgabefeld>
-        <textfeld displayText="Note:"/>
-        <ausgabefeld attribut="//@datenstruktur.1/@attribute.1"/>
-      </datenausgabefeld>
+      <datenobjektname displayText="Student"/>
     </datenausgabe>
   </seite>
-  <seite pageName="Ende">
+  <seite pageName="Pruefung2">
+    <button seite="//@seite.3" displayText="Beenden"/>
+    <dateneingabe datenobjekt="//@datenobjekt.2">
+      <dateneingabefeld>
+        <eingabefeld attribut="//@datenstruktur.1/@attribute.0"/>
+        <textfeld displayText="Name:"/>
+      </dateneingabefeld>
+      <dateneingabefeld>
+        <eingabefeld attribut="//@datenstruktur.1/@attribute.1"/>
+        <textfeld displayText="Note:"/>
+      </dateneingabefeld>
+      <datenobjektname displayText="Pruefung2"/>
+    </dateneingabe>
     <datenausgabe datenobjekt="//@datenobjekt.0">
       <datenausgabefeld>
         <textfeld displayText="Name:"/>
-        <ausgabefeld attribut="//@datenstruktur.1/@attribute.0"/>
+        <ausgabefeld attribut="//@datenstruktur.0/@attribute.0"/>
       </datenausgabefeld>
       <datenausgabefeld>
-        <textfeld displayText="Note:"/>
-        <ausgabefeld attribut="//@datenstruktur.1/@attribute.1"/>
+        <textfeld displayText="Matrikelnummer:"/>
+        <ausgabefeld attribut="//@datenstruktur.0/@attribute.1"/>
       </datenausgabefeld>
+      <datenausgabefeld>
+        <textfeld displayText="Semester:"/>
+        <ausgabefeld attribut="//@datenstruktur.0/@attribute.2"/>
+      </datenausgabefeld>
+      <datenobjektname displayText="Student"/>
     </datenausgabe>
     <datenausgabe datenobjekt="//@datenobjekt.1">
       <datenausgabefeld>
@@ -101,8 +84,11 @@
         <textfeld displayText="Note:"/>
         <ausgabefeld attribut="//@datenstruktur.1/@attribute.1"/>
       </datenausgabefeld>
+      <datenobjektname displayText="Pruefung1"/>
     </datenausgabe>
-    <datenausgabe datenobjekt="//@datenobjekt.2">
+  </seite>
+  <seite pageName="Ende">
+    <datenausgabe datenobjekt="//@datenobjekt.0">
       <datenausgabefeld>
         <textfeld displayText="Name:"/>
         <ausgabefeld attribut="//@datenstruktur.0/@attribute.0"/>
@@ -115,11 +101,34 @@
         <textfeld displayText="Semester:"/>
         <ausgabefeld attribut="//@datenstruktur.0/@attribute.2"/>
       </datenausgabefeld>
+      <datenobjektname displayText="Student"/>
+    </datenausgabe>
+    <datenausgabe datenobjekt="//@datenobjekt.1">
+      <datenausgabefeld>
+        <textfeld displayText="Name:"/>
+        <ausgabefeld attribut="//@datenstruktur.1/@attribute.0"/>
+      </datenausgabefeld>
+      <datenausgabefeld>
+        <textfeld displayText="Note:"/>
+        <ausgabefeld attribut="//@datenstruktur.1/@attribute.1"/>
+      </datenausgabefeld>
+      <datenobjektname displayText="Pruefung1"/>
+    </datenausgabe>
+    <datenausgabe datenobjekt="//@datenobjekt.2">
+      <datenausgabefeld>
+        <textfeld displayText="Name:"/>
+        <ausgabefeld attribut="//@datenstruktur.1/@attribute.0"/>
+      </datenausgabefeld>
+      <datenausgabefeld>
+        <textfeld displayText="Note:"/>
+        <ausgabefeld attribut="//@datenstruktur.1/@attribute.1"/>
+      </datenausgabefeld>
+      <datenobjektname displayText="Pruefung2"/>
     </datenausgabe>
   </seite>
+  <datenobjekt datenstruktur="//@datenstruktur.0" name="Student"/>
   <datenobjekt datenstruktur="//@datenstruktur.1" name="Pruefung1"/>
   <datenobjekt datenstruktur="//@datenstruktur.1" name="Pruefung2"/>
-  <datenobjekt datenstruktur="//@datenstruktur.0" name="Student"/>
   <datenstruktur name="Student">
     <attribute name="Name" datentyp="String"/>
     <attribute name="Matrikelnummer" datentyp="String"/>

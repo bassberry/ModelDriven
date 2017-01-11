@@ -2,35 +2,38 @@
 package dataobjects;
 
 public class Person {
+	// deklariere alle Attribute
 
-	private String Vorname;
+	private String vorname;
 
-	private String Nachname;
+	private String nachname;
 
-	private Integer Alter;
+	private Integer alter;
+
+	// get- / set-Methoden für jedes Attribut
 
 	public String getVorname() {
-		return this.Vorname;
+		return this.vorname;
 	}
 
-	public void setVorname(String Vorname) {
-		this.Vorname = Vorname;
+	public void setVorname(String vorname) {
+		this.vorname = vorname;
 	}
 
 	public String getNachname() {
-		return this.Nachname;
+		return this.nachname;
 	}
 
-	public void setNachname(String Nachname) {
-		this.Nachname = Nachname;
+	public void setNachname(String nachname) {
+		this.nachname = nachname;
 	}
 
 	public Integer getAlter() {
-		return this.Alter;
+		return this.alter;
 	}
 
-	public void setAlter(Integer Alter) {
-		this.Alter = Alter;
+	public void setAlter(Integer alter) {
+		this.alter = alter;
 	}
 
 }

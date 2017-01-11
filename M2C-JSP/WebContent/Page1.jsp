@@ -1,9 +1,7 @@
 
-
-
 <%@page import="dataobjects.*"%>
 <%
-	// Fetch content to be displayed !
+	// Ausgabeobjekte aus Hash laden
 	
 %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -12,46 +10,39 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Personendaten</title>
 <link rel="stylesheet" media="screen,projection"
 	title="Standardstylesheet" href="stylesheets/default.css"
 	type="text/css" />
 </head>
 <body>
 	<form action="index.jsp" method="post">
-	
 		
-	
-	
-		<div class="object">
+		
+			<div class="object">
 			<label>Person</label>
 			<hr>
 		
+		
 			<div>
-				<label>Vorname:</label> <input type="
-				text
-				" name="Vorname" />
+				<label>Vorname:</label> <input type="text" name="Vorname" />
 			</div>
 		
 			<div>
-				<label>Nachname:</label> <input type="
-				text
-				" name="Nachname" />
+				<label>Nachname:</label> <input type="text" name="Nachname" />
 			</div>
 		
 			<div>
-				<label>Alter:</label> <input type="
-				text
-				" name="Alter" />
+				<label>Alter:</label> <input type="number" name="Alter" />
 			</div>
 		
 		</div>
-	
-	
+
+		
 		<div class="controlPanel">
 			<button type="submit" name ="proceedAction" value="Page1">Weiter</button>
 		</div>
-	
+
 	</form>
 </body>
 </html>

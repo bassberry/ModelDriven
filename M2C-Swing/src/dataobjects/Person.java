@@ -2,12 +2,15 @@
 package dataobjects;
 
 public class Person {
+	// deklariere alle Attribute
 
 	private String vorname;
 
 	private String nachname;
 
 	private Integer alter;
+
+	// get-/set-Methoden fuer jedes Attribut
 
 	public String getVorname() {
 		return this.vorname;

@@ -36,33 +36,33 @@ public class IndexServlet extends HttpServlet {
 					case "Page1" :
 
 					{
-						Person Person = (Person) storage.get("Person");
-						if (Person == null) {
-							Person = new Person();
+						Person person = (Person) storage.get("Person");
+						if (person == null) {
+							person = new Person();
 						}
-						Person.setVorname(request.getParameter("Vorname"));
+						person.setVorname(request.getParameter("Vorname"));
 
-						storage.set("Person", Person);
+						storage.set("Person", person);
 					}
 
 					{
-						Person Person = (Person) storage.get("Person");
-						if (Person == null) {
-							Person = new Person();
+						Person person = (Person) storage.get("Person");
+						if (person == null) {
+							person = new Person();
 						}
-						Person.setNachname(request.getParameter("Nachname"));
+						person.setNachname(request.getParameter("Nachname"));
 
-						storage.set("Person", Person);
+						storage.set("Person", person);
 					}
 
 					{
-						Person Person = (Person) storage.get("Person");
-						if (Person == null) {
-							Person = new Person();
+						Person person = (Person) storage.get("Person");
+						if (person == null) {
+							person = new Person();
 						}
-						Person.setAlter(Integer.parseInt(request.getParameter("Alter")));
+						person.setAlter(Integer.parseInt(request.getParameter("Alter")));
 
-						storage.set("Person", Person);
+						storage.set("Person", person);
 					}
 
 						dispatcher = getServletContext().getRequestDispatcher("/Page2.jsp");
@@ -72,33 +72,33 @@ public class IndexServlet extends HttpServlet {
 					case "Page2" :
 
 					{
-						Adresse Adresse = (Adresse) storage.get("Adresse");
-						if (Adresse == null) {
-							Adresse = new Adresse();
+						Adresse adresse = (Adresse) storage.get("Adresse");
+						if (adresse == null) {
+							adresse = new Adresse();
 						}
-						Adresse.setStrasse(request.getParameter("Strasse"));
+						adresse.setStrasse(request.getParameter("Strasse"));
 
-						storage.set("Adresse", Adresse);
+						storage.set("Adresse", adresse);
 					}
 
 					{
-						Adresse Adresse = (Adresse) storage.get("Adresse");
-						if (Adresse == null) {
-							Adresse = new Adresse();
+						Adresse adresse = (Adresse) storage.get("Adresse");
+						if (adresse == null) {
+							adresse = new Adresse();
 						}
-						Adresse.setHausnummer(Integer.parseInt(request.getParameter("Hausnummer")));
+						adresse.setHausnummer(Integer.parseInt(request.getParameter("Hausnummer")));
 
-						storage.set("Adresse", Adresse);
+						storage.set("Adresse", adresse);
 					}
 
 					{
-						Adresse Adresse = (Adresse) storage.get("Adresse");
-						if (Adresse == null) {
-							Adresse = new Adresse();
+						Adresse adresse = (Adresse) storage.get("Adresse");
+						if (adresse == null) {
+							adresse = new Adresse();
 						}
-						Adresse.setStadt(request.getParameter("Stadt"));
+						adresse.setStadt(request.getParameter("Stadt"));
 
-						storage.set("Adresse", Adresse);
+						storage.set("Adresse", adresse);
 					}
 
 						dispatcher = getServletContext().getRequestDispatcher("/Page3.jsp");
@@ -109,6 +109,8 @@ public class IndexServlet extends HttpServlet {
 
 						break;
 
+					default :
+						break;
 				}
 			} catch (NumberFormatException exception) {
 				// dispatcher should be left to the old page.

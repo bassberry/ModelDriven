@@ -2,12 +2,15 @@
 package dataobjects;
 
 public class Adresse {
+	// deklariere alle Attribute
 
 	private String strasse;
 
 	private Integer hausnummer;
 
 	private String stadt;
+
+	// get-/set-Methoden fuer jedes Attribut
 
 	public String getStrasse() {
 		return this.strasse;

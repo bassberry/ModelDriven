@@ -1,10 +1,73 @@
 «IMPORT screenModel»
 
+«REM»
+	main - Hier startet die Transformation
+«ENDREM»
 «DEFINE main FOR ScreenModel»
 
-«EXPAND seite FOREACH seite»«REM»Erstellen der Seiten für jsp«ENDREM»
-«EXPAND javaClass FOREACH datenstruktur»«REM»Erstellen der Datenstrukturen als Java-Code«ENDREM»
+«REM»
+	Datastorage.java - Speichert die Datenobjekte in einem Hash
+«ENDREM»
+«EXPAND datastorage FOR this»
 
+«REM»
+	javaClass - erzeugt Java-Klassen für jede Datenstruktur
+	indexServlet - erzeugt die Steuerung für das GUI, welche Serveranfragen verarbeitet und die Seiten liefert
+	seite - erzeugt die Seiten, welche den jeweiligen Zustand im Workflow repräsentieren
+«ENDREM»
+«EXPAND javaClass FOREACH datenstruktur»
+«EXPAND indexServlet FOR this»
+«EXPAND seite(name) FOREACH seite»
+
+«ENDDEFINE»
+
+
+
+«REM»
+	Erzeugen der Datenstrukturen als Java-Klassen
+«ENDREM»
+«DEFINE javaClass FOR Datenstruktur»
+«FILE "dataobjects/" + name.toFirstUpper() + ".java"»
+package dataobjects;
+
+public class «name.toFirstUpper()» {
+	// deklariere alle Attribute
+	«EXPAND deklaration FOREACH attribute»
+	// get- / set-Methoden fuer jedes Attribut
+	«EXPAND getset FOREACH attribute»
+}
+
+«ENDFILE»
+«ENDDEFINE»
+
+«REM»
+	Deklaration für ein Attribut eines Datentyps
+«ENDREM»
+«DEFINE deklaration FOR Attribut»
+	private «datentyp» «name.toLowerCase()»;
+	
+«ENDDEFINE»
+
+«REM»
+	get- und set-Methoden für ein Attribut eines Datentyps
+«ENDREM»
+«DEFINE getset FOR Attribut»
+	public «datentyp» get«name.toFirstUpper()»() {
+		return this.«name.toLowerCase()»;
+	}
+	
+	public void set«name.toFirstUpper()»(«datentyp» «name.toLowerCase()») {
+		this.«name.toLowerCase()» = «name.toLowerCase()»;
+	}
+	
+«ENDDEFINE»
+
+
+
+«REM»
+	Steuerung für das GUI
+«ENDREM»
+«DEFINE indexServlet FOR ScreenModel»
 «FILE "controller/IndexServlet.java"»
 package controller;
 
@@ -39,7 +102,10 @@ public class IndexServlet extends HttpServlet {
 			DataStorage storage = DataStorage.INSTANCE;
 			try {
 				switch (param) {
-				«EXPAND indexCase FOREACH seite»
+				«EXPAND switchPage FOREACH seite» «REM» Unterscheidung für jede vorhandene Seite erzeugen «ENDREM»
+				
+					default :
+						break;
 				}
 			} catch (NumberFormatException exception) {
 				// dispatcher should be left to the old page.
@@ -52,7 +118,133 @@ public class IndexServlet extends HttpServlet {
 }
 
 «ENDFILE»
+«ENDDEFINE»
 
+«REM»
+	Unterscheidung, was beim Wechseln zur nächsten Seite geschehen soll (und ob etwas geschehen soll)
+«ENDREM»
+«DEFINE switchPage FOR Seite»«LET dateneingabe.datenobjekt.datenstruktur.name.toFirstUpper() AS Typ»«LET dateneingabe.datenobjekt.name.toLowerCase() AS objekt»
+	case "«pageName»" :
+		«REM»
+		
+			Jedes Attribut des eingegebenen Datenobjekts einzeln im Hash speichern
+		«ENDREM»
+		«FOREACH dateneingabe.datenobjekt.datenstruktur.attribute AS attribut»«LET attribut.name.toFirstUpper() AS Attributname»
+		{
+			«Typ» «objekt» = («Typ») storage.get("«objekt.toFirstUpper()»");
+			if («objekt» == null) {
+				«objekt» = new «Typ»();
+			}
+		«IF attribut.datentyp.matches("Integer")-»
+			«objekt».set«Attributname»(Integer.parseInt(request.getParameter("«Attributname»")));
+		«ELSE-»
+			«objekt».set«attribut.name.toFirstUpper()»(request.getParameter("«attribut.name.toFirstUpper()»"));
+		«ENDIF-»
+			
+			storage.set("«objekt.toFirstUpper()»", «objekt»);
+		}
+		«ENDLET»«ENDFOREACH»
+		
+		«IF button.seite != null» «REM» Nächste Seite laden, falls vorhanden «ENDREM»
+		dispatcher = getServletContext().getRequestDispatcher("/«button.seite.pageName».jsp");
+		«ENDIF»
+		break;
+«ENDLET»«ENDLET»«ENDDEFINE»
+
+
+«REM»
+	erzeugt eine jsp-Datei für jede Seite, in der Aussehen und Verhalten der Anwendung für den aktuellen
+	Zustand definiert werden
+	appName - Name des ScreenModels, wird benötigt, um den Titel der Seite zu setzen
+«ENDREM»
+«DEFINE seite(String appName) FOR Seite»
+«FILE "WebContent/" + pageName + ".jsp"»
+<%@page import="dataobjects.*"%>
+<%
+	// Ausgabeobjekte aus Hash laden
+	«FOREACH datenausgabe AS ausgabe-»
+	«LET ausgabe.datenobjekt.datenstruktur.name.toFirstUpper() AS Typ-»
+	«LET ausgabe.datenobjekt.name.toLowerCase() AS objekt-»
+		«Typ» «objekt» = («Typ») DataStorage.INSTANCE.get("«objekt.toFirstUpper()»");
+	«ENDLET»«ENDLET»«ENDFOREACH»
+%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>«appName»</title>
+<link rel="stylesheet" media="screen,projection"
+	title="Standardstylesheet" href="stylesheets/default.css"
+	type="text/css" />
+</head>
+<body>
+	<form action="index.jsp" method="post">
+		«EXPAND renderOutput FOREACH datenausgabe»
+		«EXPAND renderInput FOR dateneingabe»
+		«EXPAND submitButton(pageName) FOR button»
+	</form>
+</body>
+</html>
+
+«ENDFILE»
+«ENDDEFINE»
+
+«REM»
+	Datenausgabe definieren (für jeweils ein Datenobjekt)
+«ENDREM»
+«DEFINE renderOutput FOR Datenausgabe»
+			<div class="object">
+				<label>«datenobjektname.displayText»</label>
+				<hr>
+			«REM» Datenausgabefelder für jedes Attribut erstellen «ENDREM»
+			«FOREACH datenausgabefeld AS ausgabeFeld»
+				<div>
+					<label>«ausgabeFeld.textfeld.displayText»</label>
+					<%
+						out.print(«datenobjekt.name.toLowerCase()».get«ausgabeFeld.ausgabefeld.attribut.name.toFirstUpper()»());
+					%>
+				</div>
+			«ENDFOREACH»
+			</div>
+«ENDDEFINE»
+
+«REM»
+	Dateneingabe definieren (für das aktuell einzulesende Datenobjekt)
+«ENDREM»
+«DEFINE renderInput FOR Dateneingabe»
+			<div class="object">
+			<label>«datenobjektname.displayText»</label>
+			<hr>
+		«REM» Dateneingabefelder für jedes Attribut von Datenobjekt «ENDREM»
+		«FOREACH dateneingabefeld AS eingabeFeld»
+			<div>
+				<label>«eingabeFeld.textfeld.displayText»</label> <input type="«REM»
+				«ENDREM»«IF eingabeFeld.eingabefeld.attribut.datentyp.matches("Integer")»number«REM»
+				«ENDREM»«ELSE»text«REM»
+				«ENDREM»«ENDIF»" name="«eingabeFeld.eingabefeld.attribut.name.toFirstUpper()»" />
+			</div>
+		«ENDFOREACH»
+		</div>
+«ENDDEFINE»
+
+«REM»
+	Button, der das Laden der nächsten Seite initiiert
+	pageName - Name der aktuellen Seite
+«ENDREM»
+«DEFINE submitButton(String pageName) FOR Button»
+		<div class="controlPanel">
+			<button type="submit" name ="proceedAction" value="«pageName»">«displayText»</button>
+		</div>
+«ENDDEFINE»
+
+
+
+«REM» 
+	DataStorage - Hash, welches alle eingelesenen Datenobjekte speichert
+«ENDREM»
+«DEFINE datastorage FOR ScreenModel»
 «FILE "dataobjects/DataStorage.java"»
 package dataobjects;
 
@@ -75,129 +267,4 @@ public enum DataStorage {
 }
 
 «ENDFILE»
-
-«ENDDEFINE»
-
-
-«DEFINE seite FOR Seite»
-«FILE "WebContent/" + pageName + ".jsp"»
-
-
-<%@page import="dataobjects.*"%>
-<%
-	// Fetch content to be displayed !
-	«EXPAND fetchData FOREACH datenausgabe»
-%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-<link rel="stylesheet" media="screen,projection"
-	title="Standardstylesheet" href="stylesheets/default.css"
-	type="text/css" />
-</head>
-<body>
-	<form action="index.jsp" method="post">
-	«IF datenausgabe != null»
-		«FOREACH datenausgabe AS ausgabe»
-			<div class="object">
-				<label>«ausgabe.datenobjektname.displayText»</label>
-				<hr>
-				«FOREACH ausgabe.datenausgabefeld AS ausgabeFeld»
-				<div>
-					<label>«ausgabeFeld.textfeld.displayText»</label>
-					<%
-						out.print(«ausgabe.datenobjekt.name».get«ausgabeFeld.ausgabefeld.attribut.name»());
-					%>
-				</div>
-				«ENDFOREACH»
-			</div>
-		«ENDFOREACH»
-	«ENDIF»
-	«IF dateneingabe != null»
-		<div class="object">
-			<label>«dateneingabe.datenobjektname.displayText»</label>
-			<hr>
-		«FOREACH dateneingabe.dateneingabefeld AS eingabeFeld»
-			<div>
-				<label>«eingabeFeld.textfeld.displayText»</label> <input type="
-				«IF dateneingabe.datenobjekt.datenstruktur.attribute.datentyp.contains("String")»text
-				«ELSEIF dateneingabe.datenobjekt.datenstruktur.attribute.datentyp.contains("Integer")»number
-				«ENDIF»" name="«eingabeFeld.eingabefeld.attribut.name»" />
-			</div>
-		«ENDFOREACH»
-		</div>
-	«ENDIF»
-	«IF button != null»
-		<div class="controlPanel">
-			<button type="submit" name ="proceedAction" value="«pageName»">«button.displayText»</button>
-		</div>
-	«ENDIF»
-	</form>
-</body>
-</html>
-
-«ENDFILE»
-«ENDDEFINE»
-
-
-«DEFINE javaClass FOR Datenstruktur»
-«FILE "dataobjects/" + name.toFirstUpper() + ".java"»
-package dataobjects;
-
-public class «name» {
-	
-	«EXPAND deklaration FOREACH attribute»
-	«EXPAND getset FOREACH attribute»
-}
-«ENDFILE»
-«ENDDEFINE»
-
-«DEFINE deklaration FOR Attribut»
-	private «datentyp» «name»;
-	
-«ENDDEFINE»
-
-«DEFINE getset FOR Attribut»
-	public «datentyp» get«name.toFirstUpper()»() {
-		return this.«name»;
-	}
-	
-	public void set«name.toFirstUpper()»(«datentyp» «name») {
-		this.«name» = «name»;
-	}
-	
-«ENDDEFINE»
-
-«DEFINE fetchData FOR Datenausgabe»
-	«datenobjekt.datenstruktur.name» «datenobjekt.name» = («datenobjekt.datenstruktur.name») DataStorage.INSTANCE.get("«datenobjekt.name»");
-«ENDDEFINE»
-
-«DEFINE indexCase FOR Seite»
-	case "«pageName»" :
-	«EXPAND indexEingabe FOR dateneingabe»
-	«IF button.seite != null»
-	dispatcher = getServletContext().getRequestDispatcher("/«button.seite.pageName».jsp");
-	«ENDIF»
-	break;
-					
-«ENDDEFINE»
-
-«DEFINE indexEingabe FOR Dateneingabe»
-«FOREACH datenobjekt.datenstruktur.attribute AS attribut»
-	{
-		«datenobjekt.datenstruktur.name» «datenobjekt.name» = («datenobjekt.datenstruktur.name») storage.get("«datenobjekt.name»");
-		if («datenobjekt.name» == null) {
-			«datenobjekt.name» = new «datenobjekt.datenstruktur.name»();
-		}
-		«IF attribut.datentyp.contains("String")»«datenobjekt.name».set«attribut.name.toFirstUpper()»(request.getParameter("«attribut.name»"));
-		«ELSEIF attribut.datentyp.contains("Integer")»«datenobjekt.name».set«attribut.name.toFirstUpper()»(Integer.parseInt(request.getParameter("«attribut.name»")));
-		«ENDIF»
-		
-		storage.set("«datenobjekt.name»", «datenobjekt.name»);
-	}
-«ENDFOREACH»
 «ENDDEFINE»

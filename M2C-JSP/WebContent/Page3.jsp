@@ -1,14 +1,10 @@
 
-
-
 <%@page import="dataobjects.*"%>
 <%
-	// Fetch content to be displayed !
+	// Ausgabeobjekte aus Hash laden
+		Person person = (Person) DataStorage.INSTANCE.get("Person");
+		Adresse adresse = (Adresse) DataStorage.INSTANCE.get("Adresse");
 	
-	Person Person = (Person) DataStorage.INSTANCE.get("Person");
-
-	Adresse Adresse = (Adresse) DataStorage.INSTANCE.get("Adresse");
-
 %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -16,72 +12,72 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Personendaten</title>
 <link rel="stylesheet" media="screen,projection"
 	title="Standardstylesheet" href="stylesheets/default.css"
 	type="text/css" />
 </head>
 <body>
 	<form action="index.jsp" method="post">
-	
 		
 			<div class="object">
 				<label>Person</label>
 				<hr>
-				
+			
+			
 				<div>
 					<label>Vorname:</label>
 					<%
-						out.print(Person.getVorname());
+						out.print(person.getVorname());
 					%>
 				</div>
-				
+			
 				<div>
 					<label>Nachname:</label>
 					<%
-						out.print(Person.getNachname());
+						out.print(person.getNachname());
 					%>
 				</div>
-				
+			
 				<div>
 					<label>Alter:</label>
 					<%
-						out.print(Person.getAlter());
+						out.print(person.getAlter());
 					%>
 				</div>
-				
+			
 			</div>
-		
+
 			<div class="object">
 				<label>Adresse</label>
 				<hr>
-				
+			
+			
 				<div>
 					<label>Strasse:</label>
 					<%
-						out.print(Adresse.getStrasse());
+						out.print(adresse.getStrasse());
 					%>
 				</div>
-				
+			
 				<div>
 					<label>Hausnummer:</label>
 					<%
-						out.print(Adresse.getHausnummer());
+						out.print(adresse.getHausnummer());
 					%>
 				</div>
-				
+			
 				<div>
 					<label>Stadt:</label>
 					<%
-						out.print(Adresse.getStadt());
+						out.print(adresse.getStadt());
 					%>
 				</div>
-				
+			
 			</div>
+
 		
-	
-	
-	
+		
 	</form>
 </body>
 </html>

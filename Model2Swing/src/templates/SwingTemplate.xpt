@@ -33,7 +33,7 @@ package dataobjects;
 public class «name.toFirstUpper()» {
 	// deklariere alle Attribute
 	«EXPAND deklaration FOREACH attribute»
-	// get- / set-Methoden für jedes Attribut
+	// get-/set-Methoden fuer jedes Attribut
 	«EXPAND getset FOREACH attribute»
 }
 
@@ -62,7 +62,9 @@ public class «name.toFirstUpper()» {
 	
 «ENDDEFINE»
 
-
+«REM»
+	Steuerung für das GUI
+«ENDREM»
 «DEFINE userInterface FOR ScreenModel»
 «FILE "gui/AppUserInterface.java"»
 package gui;
@@ -123,7 +125,7 @@ public class AppUserInterface extends JFrame {
 		
 		// Erkennen, welche Seite gerade angezeigt wird
 		switch (pageIdentifier) {
-			«EXPAND switchPage FOREACH seite»
+			«EXPAND switchPage FOREACH seite»«REM» Unterscheidung für jede vorhandene Seite erzeugen «ENDREM»
 			
 			default :
 				break;
@@ -134,11 +136,14 @@ public class AppUserInterface extends JFrame {
 «ENDFILE»
 «ENDDEFINE»
 
+«REM»
+	Evaluierung, was beim Wechseln zur nächsten Seite geschehen soll (und ob etwas geschehen soll)
+«ENDREM»
 «DEFINE switchPage FOR Seite»
 			case "«pageName.toFirstUpper()»" :
 				rootPanel.removeAll();
 			«IF button.seite != null»«LET button.seite.pageName AS nextPage»
-				// Nächste Seite in das Fenster laden
+				// Naechste Seite in das Fenster laden
 				«nextPage.toFirstUpper()» «nextPage.toLowerCase()» = new «nextPage.toFirstUpper()»(this);
 				rootPanel.add(«nextPage.toLowerCase()», c);
 			«ENDLET»«ENDIF»
@@ -149,6 +154,10 @@ public class AppUserInterface extends JFrame {
 «ENDDEFINE»
 
 
+«REM»
+	Erzeugt eine Klasse für jede Seite, in der Aussehen und Verhalten der Anwendung für den aktuellen
+	Zustand definiert werden
+«ENDREM»
 «DEFINE seite FOR Seite»
 «FILE "gui/" + pageName + ".java"»
 package gui;
@@ -175,7 +184,7 @@ public class «pageName.toFirstUpper()» extends JPanel {
 	
 	private AppUserInterface parent = null;
 	
-	«EXPAND inputObject FOR dateneingabe»
+	«EXPAND inputObject FOR dateneingabe» «REM» Objekte für alle Eingabefelder erzeugen «ENDREM»
 	
 	public «pageName.toFirstUpper()»(AppUserInterface parent) {
 		this.parent = parent;
@@ -183,22 +192,24 @@ public class «pageName.toFirstUpper()» extends JPanel {
 	}
 	
 	private void initialize() {
+		// Layout setzen und alle Ein-/Ausgaben hinzufuegen
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		this.addWidgetsToScreen();
 	}
 	
 	private void addWidgetsToScreen() {
-		«EXPAND renderOutput FOREACH datenausgabe»
-		«EXPAND renderInput FOR dateneingabe»
-		«EXPAND submitButton FOR button»
+		«EXPAND renderOutput FOREACH datenausgabe» «REM» Alle Datenausgaben hinzufügen «ENDREM»
+		«EXPAND renderInput FOR dateneingabe» «REM» Die Dateneingabe hinzufügen (falls vorhanden) «ENDREM»
+		«EXPAND submitButton FOR button» «REM» Weiter-Button hizufügen (falls vorhanden) «ENDREM»
 	}
 	
 	private void triggerNextPage() {
 		try {
-			«EXPAND storeInput FOR dateneingabe»
+			«EXPAND storeInput FOR dateneingabe» «REM» Speichern aller Eingaben «ENDREM»
 			
 			parent.switchPage("«pageName.toFirstUpper()»");
 		} catch (NumberFormatException exception) {
+			// Integer-Konvertierungsfehler abfangen
 			JOptionPane.showMessageDialog(«pageName.toFirstUpper()».this, "Number could not be converted", "Number Format Exception", JOptionPane.ERROR_MESSAGE);
 		}
 	}
@@ -206,47 +217,76 @@ public class «pageName.toFirstUpper()» extends JPanel {
 «ENDFILE»
 «ENDDEFINE»
 
+«REM»
+	Deklaration der Dateneingabeobjekte
+«ENDREM»
 «DEFINE inputObject FOR Dateneingabe»
+	// Dateneingabeobjekt (Datenobjekt) deklarieren
 	private «datenobjekt.datenstruktur.name.toFirstUpper()» «datenobjekt.name.toLowerCase()» = new «datenobjekt.datenstruktur.name.toFirstUpper()»();
-	«FOREACH dateneingabefeld.eingabefeld AS eingabeFeld»
+	
+	// Eingabefelder (Textfelder) fuer die jeweiligen Attribute des Datenobjekts
+	«FOREACH dateneingabefeld.eingabefeld AS eingabeFeld-» «REM» Textfeld für jedes Eingabefeld erzeugen «ENDREM-»
 	private JTextField «eingabeFeld.attribut.name.toLowerCase()»TextField = new JTextField("«eingabeFeld.attribut.name»", 20);
 	
 	«ENDFOREACH»
 «ENDDEFINE»
 
-«DEFINE renderOutput FOR Datenausgabe»«LET datenobjekt.datenstruktur.name.toFirstUpper() AS Typ»«LET datenobjekt.name.toFirstUpper() AS Objekt»«LET datenobjekt.name.toLowerCase() AS objekt»
+«REM»
+	Datenausgabe definieren (für jeweils ein Datenobjekt)
+«ENDREM»
+«DEFINE renderOutput FOR Datenausgabe»«LET datenobjekt.datenstruktur.name.toFirstUpper() AS Typ»
+«LET datenobjekt.name.toFirstUpper() AS Objekt-»
+«LET datenobjekt.name.toLowerCase() AS objekt-»
+		// Datenobjekt laden
 		«Typ» «objekt» = («Typ») DataStorage.INSTANCE.get("«Objekt»");
 		
+		// Panel fuer die Ausgabe erzeugen
 		JPanel «objekt»Panel = new JPanel();
 		this.add(«objekt»Panel);
 		«objekt»Panel.setLayout(new BoxLayout(«objekt»Panel, BoxLayout.Y_AXIS));
 		
+		// Name des Datenobjekts
 		«objekt»Panel.add(new JLabel("<html><b>«datenobjektname.displayText»</b></html>"));
 		
-		«FOREACH datenausgabefeld AS feld»«LET feld.ausgabefeld.attribut.name.toFirstUpper() AS attrName»
+		«REM» Textausgaben für jedes Attribut erstellen «ENDREM»
+		«FOREACH datenausgabefeld AS feld»«LET feld.ausgabefeld.attribut.name.toFirstUpper() AS attrName» «REM» Datenausgabefeld für jedes Attribut «ENDREM»
+		// Panel fuer das Datenausgabefeld
 		JPanel «objekt»Panel_«attrName»Panel = new JPanel();
 		«objekt»Panel.add(«objekt»Panel_«attrName»Panel);
 		
+		// Textfeld (beschreibt das Attribut)
 		«objekt»Panel_«attrName»Panel.add(new JLabel("«feld.textfeld.displayText»"));
 		
+		// Ausgabefeld (Wert des Attributs)
 		«objekt»Panel_«attrName»Panel.add(new JLabel(((«Typ») «objekt»).get«attrName»().toString()));
 		«ENDLET»«ENDFOREACH»
+		// Trennlinie zum Hervorheben der verschiedenen Datenobjekte
 		«objekt»Panel.add(new JSeparator(JSeparator.HORIZONTAL));
 «ENDLET»«ENDLET»«ENDLET»«ENDDEFINE»
 
-«DEFINE renderInput FOR Dateneingabe»«LET datenobjekt.datenstruktur.name.toFirstUpper() AS Typ»«LET datenobjekt.name.toFirstUpper() AS Objekt»«LET datenobjekt.name.toLowerCase() AS objekt»
+«REM»
+	Dateneingabe definieren (für das aktuell einzulesende Datenobjekt)
+«ENDREM»
+«DEFINE renderInput FOR Dateneingabe»«LET datenobjekt.datenstruktur.name.toFirstUpper() AS Typ»
+«LET datenobjekt.name.toFirstUpper() AS Objekt»«LET datenobjekt.name.toLowerCase() AS objekt-»
+		// Panel erzeugen
 		JPanel «objekt»Panel = new JPanel();
 		this.add(«objekt»Panel);
 		«objekt»Panel.setLayout(new BoxLayout(«objekt»Panel, BoxLayout.Y_AXIS));
 		
+		// Name des Datenobjekts
 		«objekt»Panel.add(new JLabel("<html><b>«datenobjektname.displayText»</b></html>"));
 		
+		«REM» Dateneingabefelder für jedes Attribut von Datenobjekt «ENDREM»
 		«FOREACH dateneingabefeld AS feld»«LET feld.eingabefeld.attribut.name.toFirstUpper() AS attrName»
+		// Panel fuer das aktuelle Dateneingabefeld
 		JPanel «objekt»Panel_«attrName»Panel = new JPanel();
 		«objekt»Panel.add(«objekt»Panel_«attrName»Panel);
 		
+		// Name des Attributs ausgeben
 		«objekt»Panel_«attrName»Panel.add(new JLabel("«feld.textfeld.displayText»"));
 		
+		// FocusListener fuer das aktuelle Eingabefeld (um den Text zu markieren, wenn in das Textfeld geklickt wird)
 		«attrName.toLowerCase()»TextField.addFocusListener(new FocusListener() {
 			@Override
 			public void focusLost(final FocusEvent pE) {
@@ -256,16 +296,24 @@ public class «pageName.toFirstUpper()» extends JPanel {
 				«attrName.toLowerCase()»TextField.selectAll();
 			}
 		});
+		
+		// Eingabefeld in das Panel einfuegen
 		«objekt»Panel_«attrName»Panel.add(«attrName.toLowerCase()»TextField);
 		«ENDLET»«ENDFOREACH»
+		// Trennlinie zum Hervorheben der verschiedenen Datenobjekte
 		«objekt»Panel.add(new JSeparator(JSeparator.HORIZONTAL));
 «ENDLET»«ENDLET»«ENDLET»«ENDDEFINE»
 
+«REM»
+	Button, der das Laden der nächsten Seite initiiert
+«ENDREM»
 «DEFINE submitButton FOR Button»
 		{
+			// neues Panel fuer den Button
 			JPanel controlPanel = new JPanel();
 			
 			JButton proceedButton = new JButton("«displayText»");
+			// KeyListener, laedt die naechste Seite, wenn Enter gedrueckt wird
 			proceedButton.addKeyListener(new KeyListener() {
 				@Override
 				public void keyTyped(KeyEvent e) {
@@ -283,6 +331,7 @@ public class «pageName.toFirstUpper()» extends JPanel {
 				}
 			});
 			
+			// ActionListener, lauscht auf Interaktion mit dem Button
 			proceedButton.addActionListener(new ActionListener() {
 				
 				@Override
@@ -291,29 +340,37 @@ public class «pageName.toFirstUpper()» extends JPanel {
 				}
 			});
 			
+			// Button dem Panel hinzufuegen
 			controlPanel.add(proceedButton);
 			controlPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			
+			// Panel ins GUI hinzufuegen
 			this.add(controlPanel);
 		}
 «ENDDEFINE»
 
+«REM»
+	Speichern der eingegebenen Daten
+«ENDREM»
 «DEFINE storeInput FOR Dateneingabe»«LET datenobjekt.name.toLowerCase() AS objekt»
-			«FOREACH dateneingabefeld.eingabefeld.attribut AS attribut»«LET attribut.name.toLowerCase() AS attrName»
-			«IF attribut.datentyp.contains("Integer")»
+			// Attribute aus Textfeldern auslesen und im Datenobjekt speichern
+			«REM» Jedes Attribut des Datenobjekts verarbeiten «ENDREM»
+			«FOREACH dateneingabefeld.eingabefeld.attribut AS attribut-»
+			«LET attribut.name.toLowerCase() AS attrName-»
+			«IF attribut.datentyp.matches("Integer")» «REM» Prüfen, ob das Attribut ein Integer ist «ENDREM» 
 			«objekt».set«attrName.toFirstUpper()»(Integer.parseInt(«attrName»TextField.getText()));
-			«ELSE»
+			«ELSE» «REM» Alle nicht-Integer werden als String gespeichert «ENDREM»
 			«objekt».set«attrName.toFirstUpper()»(«attrName»TextField.getText());
 			«ENDIF»
 			«ENDLET»«ENDFOREACH»
-			
+			// Objekt ins Hash schreiben
 			DataStorage.INSTANCE.set("«objekt.toFirstUpper()»", «objekt»);
 «ENDLET»«ENDDEFINE»
 
 
 
 «REM» 
-	Static files go here
+	DataStorage - Hash, welches alle eingelesenen Datenobjekte speichert
 «ENDREM»
 «DEFINE datastorage FOR ScreenModel»
 «FILE "dataobjects/DataStorage.java"»
@@ -340,6 +397,9 @@ public enum DataStorage {
 «ENDFILE»
 «ENDDEFINE»
 
+«REM»
+	SwingApp - Ausgangspunkt für die Anwendung
+«ENDREM»
 «DEFINE swingApp FOR ScreenModel»
 «FILE "gui/SwingApp.java"»
 package gui;

@@ -310,7 +310,7 @@
           </edges>
           <edges xmi:type="notation:Edge" xmi:id="_h4KX0MFhEeaOaqdzak6qZw" type="4001" element="_h4E4QMFhEeaOaqdzak6qZw" source="_Bhf74MFIEeaOaqdzak6qZw" target="_XpXBgMFhEeaOaqdzak6qZw">
             <children xmi:type="notation:Node" xmi:id="_h4K-4MFhEeaOaqdzak6qZw" type="6001">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_h4K-4cFhEeaOaqdzak6qZw" x="-26" y="-61"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_h4K-4cFhEeaOaqdzak6qZw" x="42" y="-8"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_h4K-4sFhEeaOaqdzak6qZw" type="6002">
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_h4K-48FhEeaOaqdzak6qZw" x="42" y="10"/>

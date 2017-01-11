@@ -1,0 +1,37 @@
+body {
+	padding:1em;
+	background: #f1f1f1; 
+}
+
+
+div.object {
+	background: #e8e8e8;
+	margin-bottom:1em;
+	padding: 0.4em 1em;
+	border: 0.1em solid #fafafa;
+	border-radius: 1em;
+}
+
+div.object div {
+	padding: 0.4em;
+}
+
+div.object label {
+	font-weight:bold;
+	min-width: 8em;
+	display: inline-block;
+}
+
+div.controlPanel {
+	padding: 0.4em 1em;
+	background: #e8e8e8; 
+	border: 0.1em solid #fafafa;
+	text-align: left;
+	border-radius: 1em;
+}
+
+div.controlPanel button {
+	padding: 0.4em 2em;
+	margin: 0.3em;
+	font-weight: bold;
+}

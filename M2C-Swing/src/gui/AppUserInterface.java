@@ -16,6 +16,7 @@ public class AppUserInterface extends JFrame {
 	private Page1 page1 = new Page1(this);
 
 	public AppUserInterface(String title) {
+		// Fenster definieren und sichtbar machen
 		this.setTitle(title);
 
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -26,16 +27,17 @@ public class AppUserInterface extends JFrame {
 	}
 
 	private void initialize() {
+		// Layout des Fensters setzen
 		rootPanel.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 
-		// place the panel with our content and form at the top of the frame
+		// Das Panel mit allen Inhalten an die vorderste Ebene im Fenster setzen
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.weightx = 1.0;
 		c.weighty = 1.0;
 		c.anchor = GridBagConstraints.NORTH;
 
-		// Insert the first page of the form transactions here
+		// Erste Seite laden
 		rootPanel.add(page1, c);
 
 		JScrollPane temp = new JScrollPane(rootPanel);
@@ -45,6 +47,7 @@ public class AppUserInterface extends JFrame {
 		this.getRootPane().add(temp, c);
 	}
 
+	// Seite wechseln
 	public void switchPage(String pageIdentifier) {
 		GridBagConstraints c = new GridBagConstraints();
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -52,11 +55,13 @@ public class AppUserInterface extends JFrame {
 		c.weighty = 1.0;
 		c.anchor = GridBagConstraints.NORTH;
 
+		// Erkennen, welche Seite gerade angezeigt wird
 		switch (pageIdentifier) {
 
 			case "Page1" :
 				rootPanel.removeAll();
 
+				// Naechste Seite in das Fenster laden
 				Page2 page2 = new Page2(this);
 				rootPanel.add(page2, c);
 
@@ -67,6 +72,7 @@ public class AppUserInterface extends JFrame {
 			case "Page2" :
 				rootPanel.removeAll();
 
+				// Naechste Seite in das Fenster laden
 				Page3 page3 = new Page3(this);
 				rootPanel.add(page3, c);
 

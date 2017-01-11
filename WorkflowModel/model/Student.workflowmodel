@@ -1,25 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workflowModel:Workflow xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:workflowModel="workflowModel" name="Studentendaten">
-  <zustand pageName="Studentendaten" datenobjektEingabe="//@datenobjekt.2">
-    <uebergang zustand="//@zustand.1" name="Weiter"/>
+<workflowModel:Workflow
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:workflowModel="workflowModel"
+    name="Studentendaten">
+  <zustand pageName="Studentendaten"
+      datenobjektEingabe="//@datenobjekt.0">
+    <uebergang
+        zustand="//@zustand.1"
+        name="Weiter"/>
   </zustand>
-  <zustand pageName="Pruefung1" datenobjektEingabe="//@datenobjekt.0" datenobjektAusgabe="//@datenobjekt.2">
-    <uebergang zustand="//@zustand.2" name="Weiter"/>
+  <zustand pageName="Pruefung1"
+      datenobjektEingabe="//@datenobjekt.1"
+      datenobjektAusgabe="//@datenobjekt.0">
+    <uebergang
+        zustand="//@zustand.2"
+        name="Weiter"/>
   </zustand>
-  <zustand pageName="Pruefung2" datenobjektEingabe="//@datenobjekt.1" datenobjektAusgabe="//@datenobjekt.2 //@datenobjekt.0">
-    <uebergang zustand="//@zustand.3" name="Beenden"/>
+  <zustand pageName="Pruefung2"
+      datenobjektEingabe="//@datenobjekt.2"
+      datenobjektAusgabe="//@datenobjekt.0 //@datenobjekt.1">
+    <uebergang
+        zustand="//@zustand.3"
+        name="Beenden"/>
   </zustand>
-  <zustand pageName="Ende" datenobjektAusgabe="//@datenobjekt.0 //@datenobjekt.1 //@datenobjekt.2"/>
-  <datenobjekt datenstruktur="//@datenstruktur.1" name="Pruefung1"/>
-  <datenobjekt datenstruktur="//@datenstruktur.1" name="Pruefung2"/>
-  <datenobjekt datenstruktur="//@datenstruktur.0" name="Student"/>
-  <datenstruktur name="Student">
-    <attribute name="Name" datentyp="String"/>
-    <attribute name="Matrikelnummer" datentyp="String"/>
-    <attribute name="Semester" datentyp="Integer"/>
+  <zustand pageName="Ende"
+      datenobjektAusgabe="//@datenobjekt.0 //@datenobjekt.1 //@datenobjekt.2"/>
+  <datenobjekt
+      datenstruktur="//@datenstruktur.0"
+      name="Student"/>
+  <datenobjekt
+      datenstruktur="//@datenstruktur.1"
+      name="Pruefung1"/>
+  <datenobjekt
+      datenstruktur="//@datenstruktur.1"
+      name="Pruefung2"/>
+  <datenstruktur
+      name="Student">
+    <attribute
+        name="Name"
+        datentyp="String"/>
+    <attribute
+        name="Matrikelnummer"
+        datentyp="String"/>
+    <attribute
+        name="Semester"
+        datentyp="Integer"/>
   </datenstruktur>
-  <datenstruktur name="Pruefung">
-    <attribute name="Name" datentyp="String"/>
-    <attribute name="Note" datentyp="Integer"/>
+  <datenstruktur
+      name="Pruefung">
+    <attribute
+        name="Name"
+        datentyp="String"/>
+    <attribute
+        name="Note"
+        datentyp="Integer"/>
   </datenstruktur>
 </workflowModel:Workflow>

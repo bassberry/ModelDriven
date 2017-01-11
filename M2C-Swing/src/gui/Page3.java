@@ -19,168 +19,120 @@ import javax.swing.JTextField;
 
 import dataobjects.*;
 
-public class Page2 extends JPanel {
+public class Page3 extends JPanel {
 
 	private AppUserInterface parent = null;
 
-	private Adresse adresse = new Adresse();
-
-	private JTextField strasseTextField = new JTextField("Strasse", 20);
-
-	private JTextField hausnummerTextField = new JTextField("Hausnummer", 20);
-
-	private JTextField stadtTextField = new JTextField("Stadt", 20);
-
-	public Page2(AppUserInterface parent) {
+	public Page3(AppUserInterface parent) {
 		this.parent = parent;
 		this.initialize();
 	}
 
 	private void initialize() {
+		// Layout setzen und alle Ein-/Ausgaben hinzufuegen
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		this.addWidgetsToScreen();
 	}
 
 	private void addWidgetsToScreen() {
 
+		// Datenobjekt laden
 		Person person = (Person) DataStorage.INSTANCE.get("Person");
 
+		// Panel fuer die Ausgabe erzeugen
 		JPanel personPanel = new JPanel();
 		this.add(personPanel);
 		personPanel.setLayout(new BoxLayout(personPanel, BoxLayout.Y_AXIS));
 
+		// Name des Datenobjekts
 		personPanel.add(new JLabel("<html><b>Person</b></html>"));
 
+		// Panel fuer das Datenausgabefeld
 		JPanel personPanel_VornamePanel = new JPanel();
 		personPanel.add(personPanel_VornamePanel);
 
+		// Textfeld (beschreibt das Attribut)
 		personPanel_VornamePanel.add(new JLabel("Vorname:"));
 
+		// Ausgabefeld (Wert des Attributs)
 		personPanel_VornamePanel.add(new JLabel(((Person) person).getVorname().toString()));
 
+		// Panel fuer das Datenausgabefeld
 		JPanel personPanel_NachnamePanel = new JPanel();
 		personPanel.add(personPanel_NachnamePanel);
 
+		// Textfeld (beschreibt das Attribut)
 		personPanel_NachnamePanel.add(new JLabel("Nachname:"));
 
+		// Ausgabefeld (Wert des Attributs)
 		personPanel_NachnamePanel.add(new JLabel(((Person) person).getNachname().toString()));
 
+		// Panel fuer das Datenausgabefeld
 		JPanel personPanel_AlterPanel = new JPanel();
 		personPanel.add(personPanel_AlterPanel);
 
+		// Textfeld (beschreibt das Attribut)
 		personPanel_AlterPanel.add(new JLabel("Alter:"));
 
+		// Ausgabefeld (Wert des Attributs)
 		personPanel_AlterPanel.add(new JLabel(((Person) person).getAlter().toString()));
 
+		// Trennlinie zum Hervorheben der verschiedenen Datenobjekte
 		personPanel.add(new JSeparator(JSeparator.HORIZONTAL));
 
+		// Datenobjekt laden
+		Adresse adresse = (Adresse) DataStorage.INSTANCE.get("Adresse");
+
+		// Panel fuer die Ausgabe erzeugen
 		JPanel adressePanel = new JPanel();
 		this.add(adressePanel);
 		adressePanel.setLayout(new BoxLayout(adressePanel, BoxLayout.Y_AXIS));
 
+		// Name des Datenobjekts
 		adressePanel.add(new JLabel("<html><b>Adresse</b></html>"));
 
+		// Panel fuer das Datenausgabefeld
 		JPanel adressePanel_StrassePanel = new JPanel();
 		adressePanel.add(adressePanel_StrassePanel);
 
+		// Textfeld (beschreibt das Attribut)
 		adressePanel_StrassePanel.add(new JLabel("Strasse:"));
 
-		strasseTextField.addFocusListener(new FocusListener() {
-			@Override
-			public void focusLost(final FocusEvent pE) {
-			}
-			@Override
-			public void focusGained(final FocusEvent pE) {
-				strasseTextField.selectAll();
-			}
-		});
-		adressePanel_StrassePanel.add(strasseTextField);
+		// Ausgabefeld (Wert des Attributs)
+		adressePanel_StrassePanel.add(new JLabel(((Adresse) adresse).getStrasse().toString()));
 
+		// Panel fuer das Datenausgabefeld
 		JPanel adressePanel_HausnummerPanel = new JPanel();
 		adressePanel.add(adressePanel_HausnummerPanel);
 
+		// Textfeld (beschreibt das Attribut)
 		adressePanel_HausnummerPanel.add(new JLabel("Hausnummer:"));
 
-		hausnummerTextField.addFocusListener(new FocusListener() {
-			@Override
-			public void focusLost(final FocusEvent pE) {
-			}
-			@Override
-			public void focusGained(final FocusEvent pE) {
-				hausnummerTextField.selectAll();
-			}
-		});
-		adressePanel_HausnummerPanel.add(hausnummerTextField);
+		// Ausgabefeld (Wert des Attributs)
+		adressePanel_HausnummerPanel.add(new JLabel(((Adresse) adresse).getHausnummer().toString()));
 
+		// Panel fuer das Datenausgabefeld
 		JPanel adressePanel_StadtPanel = new JPanel();
 		adressePanel.add(adressePanel_StadtPanel);
 
+		// Textfeld (beschreibt das Attribut)
 		adressePanel_StadtPanel.add(new JLabel("Stadt:"));
 
-		stadtTextField.addFocusListener(new FocusListener() {
-			@Override
-			public void focusLost(final FocusEvent pE) {
-			}
-			@Override
-			public void focusGained(final FocusEvent pE) {
-				stadtTextField.selectAll();
-			}
-		});
-		adressePanel_StadtPanel.add(stadtTextField);
+		// Ausgabefeld (Wert des Attributs)
+		adressePanel_StadtPanel.add(new JLabel(((Adresse) adresse).getStadt().toString()));
 
+		// Trennlinie zum Hervorheben der verschiedenen Datenobjekte
 		adressePanel.add(new JSeparator(JSeparator.HORIZONTAL));
-
-		{
-			JPanel controlPanel = new JPanel();
-
-			JButton proceedButton = new JButton("Weiter");
-			proceedButton.addKeyListener(new KeyListener() {
-				@Override
-				public void keyTyped(KeyEvent e) {
-				}
-
-				@Override
-				public void keyReleased(KeyEvent e) {
-				}
-
-				@Override
-				public void keyPressed(KeyEvent e) {
-					if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-						triggerNextPage();
-					}
-				}
-			});
-
-			proceedButton.addActionListener(new ActionListener() {
-
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					triggerNextPage();
-				}
-			});
-
-			controlPanel.add(proceedButton);
-			controlPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
-
-			this.add(controlPanel);
-		}
 
 	}
 
 	private void triggerNextPage() {
 		try {
 
-			adresse.setStrasse(strasseTextField.getText());
-
-			adresse.setHausnummer(Integer.parseInt(hausnummerTextField.getText()));
-
-			adresse.setStadt(stadtTextField.getText());
-
-			DataStorage.INSTANCE.set("Adresse", adresse);
-
-			parent.switchPage("Page2");
+			parent.switchPage("Page3");
 		} catch (NumberFormatException exception) {
-			JOptionPane.showMessageDialog(Page2.this, "Number could not be converted", "Number Format Exception",
+			// Integer-Konvertierungsfehler abfangen
+			JOptionPane.showMessageDialog(Page3.this, "Number could not be converted", "Number Format Exception",
 					JOptionPane.ERROR_MESSAGE);
 		}
 	}

@@ -1,12 +1,9 @@
 
-
-
 <%@page import="dataobjects.*"%>
 <%
-	// Fetch content to be displayed !
+	// Ausgabeobjekte aus Hash laden
+		Student student = (Student) DataStorage.INSTANCE.get("Student");
 	
-	Person Person = (Person) DataStorage.INSTANCE.get("Person");
-
 %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -14,73 +11,63 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Studentendaten</title>
 <link rel="stylesheet" media="screen,projection"
 	title="Standardstylesheet" href="stylesheets/default.css"
 	type="text/css" />
 </head>
 <body>
 	<form action="index.jsp" method="post">
-	
 		
 			<div class="object">
-				<label>Person</label>
+				<label>Student</label>
 				<hr>
-				
+			
+			
 				<div>
-					<label>Vorname:</label>
+					<label>Name:</label>
 					<%
-						out.print(Person.getVorname());
+						out.print(student.getName());
 					%>
 				</div>
-				
+			
 				<div>
-					<label>Nachname:</label>
+					<label>Matrikelnummer:</label>
 					<%
-						out.print(Person.getNachname());
+						out.print(student.getMatrikelnummer());
 					%>
 				</div>
-				
+			
 				<div>
-					<label>Alter:</label>
+					<label>Semester:</label>
 					<%
-						out.print(Person.getAlter());
+						out.print(student.getSemester());
 					%>
 				</div>
-				
+			
 			</div>
+
 		
-	
-	
-		<div class="object">
-			<label>Adresse</label>
+			<div class="object">
+			<label>Pruefung1</label>
 			<hr>
 		
+		
 			<div>
-				<label>Strasse:</label> <input type="
-				text
-				" name="Strasse" />
+				<label>Name:</label> <input type="text" name="Name" />
 			</div>
 		
 			<div>
-				<label>Hausnummer:</label> <input type="
-				text
-				" name="Hausnummer" />
-			</div>
-		
-			<div>
-				<label>Stadt:</label> <input type="
-				text
-				" name="Stadt" />
+				<label>Note:</label> <input type="number" name="Note" />
 			</div>
 		
 		</div>
-	
-	
+
+		
 		<div class="controlPanel">
-			<button type="submit" name ="proceedAction" value="Page2">Weiter</button>
+			<button type="submit" name ="proceedAction" value="Pruefung1">Weiter</button>
 		</div>
-	
+
 	</form>
 </body>
 </html>

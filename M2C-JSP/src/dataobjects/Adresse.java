@@ -2,35 +2,38 @@
 package dataobjects;
 
 public class Adresse {
+	// deklariere alle Attribute
 
-	private String Strasse;
+	private String strasse;
 
-	private Integer Hausnummer;
+	private Integer hausnummer;
 
-	private String Stadt;
+	private String stadt;
+
+	// get- / set-Methoden für jedes Attribut
 
 	public String getStrasse() {
-		return this.Strasse;
+		return this.strasse;
 	}
 
-	public void setStrasse(String Strasse) {
-		this.Strasse = Strasse;
+	public void setStrasse(String strasse) {
+		this.strasse = strasse;
 	}
 
 	public Integer getHausnummer() {
-		return this.Hausnummer;
+		return this.hausnummer;
 	}
 
-	public void setHausnummer(Integer Hausnummer) {
-		this.Hausnummer = Hausnummer;
+	public void setHausnummer(Integer hausnummer) {
+		this.hausnummer = hausnummer;
 	}
 
 	public String getStadt() {
-		return this.Stadt;
+		return this.stadt;
 	}
 
-	public void setStadt(String Stadt) {
-		this.Stadt = Stadt;
+	public void setStadt(String stadt) {
+		this.stadt = stadt;
 	}
 
 }

@@ -1,12 +1,9 @@
 
-
-
 <%@page import="dataobjects.*"%>
 <%
-	// Fetch content to be displayed !
+	// Ausgabeobjekte aus Hash laden
+		Person person = (Person) DataStorage.INSTANCE.get("Person");
 	
-	Person Person = (Person) DataStorage.INSTANCE.get("Person");
-
 %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -14,73 +11,67 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Personendaten</title>
 <link rel="stylesheet" media="screen,projection"
 	title="Standardstylesheet" href="stylesheets/default.css"
 	type="text/css" />
 </head>
 <body>
 	<form action="index.jsp" method="post">
-	
 		
 			<div class="object">
 				<label>Person</label>
 				<hr>
-				
+			
+			
 				<div>
 					<label>Vorname:</label>
 					<%
-						out.print(Person.getVorname());
+						out.print(person.getVorname());
 					%>
 				</div>
-				
+			
 				<div>
 					<label>Nachname:</label>
 					<%
-						out.print(Person.getNachname());
+						out.print(person.getNachname());
 					%>
 				</div>
-				
+			
 				<div>
 					<label>Alter:</label>
 					<%
-						out.print(Person.getAlter());
+						out.print(person.getAlter());
 					%>
 				</div>
-				
+			
 			</div>
+
 		
-	
-	
-		<div class="object">
+			<div class="object">
 			<label>Adresse</label>
 			<hr>
 		
+		
 			<div>
-				<label>Strasse:</label> <input type="
-				text
-				" name="Strasse" />
+				<label>Strasse:</label> <input type="text" name="Strasse" />
 			</div>
 		
 			<div>
-				<label>Hausnummer:</label> <input type="
-				text
-				" name="Hausnummer" />
+				<label>Hausnummer:</label> <input type="number" name="Hausnummer" />
 			</div>
 		
 			<div>
-				<label>Stadt:</label> <input type="
-				text
-				" name="Stadt" />
+				<label>Stadt:</label> <input type="text" name="Stadt" />
 			</div>
 		
 		</div>
-	
-	
+
+		
 		<div class="controlPanel">
 			<button type="submit" name ="proceedAction" value="Page2">Weiter</button>
 		</div>
-	
+
 	</form>
 </body>
 </html>

@@ -37,8 +37,8 @@
 <mapEntry key="OUT" value="ScreenModel"/>
 </mapAttribute>
 <mapAttribute key="Path">
-<mapEntry key="IN" value="/WorkflowModel/model/Person.workflowmodel"/>
-<mapEntry key="OUT" value="/Workflow2ModelTransformation/ScreenModel-Person.xmi"/>
+<mapEntry key="IN" value="/WorkflowModel/model/Student.workflowmodel"/>
+<mapEntry key="OUT" value="/Workflow2ModelTransformation/ScreenModel-Student.xmi"/>
 <mapEntry key="ScreenModel" value="/ScreenModel/model/screenModel.ecore"/>
 <mapEntry key="WorkflowModel" value="/WorkflowModel/model/workflowModel.ecore"/>
 </mapAttribute>
